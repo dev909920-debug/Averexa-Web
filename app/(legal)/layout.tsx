@@ -16,7 +16,7 @@ export default function LegalLayout({
             aria-label="Averexa Placement — Home"
             className="inline-flex items-center gap-2 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
           >
-            <Image src="/brand/logo.png" alt="Averexa Placement" width={36} height={36} className="h-9 w-auto" />
+            <Image src="/brand/logo.svg" alt="Averexa Placement" width={96} height={96} className="h-24 w-auto" />
             <span className="text-base font-semibold text-white">Averexa Placement</span>
           </Link>
         </div>

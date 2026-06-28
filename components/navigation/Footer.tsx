@@ -137,11 +137,11 @@ export function Footer() {
             <div className="col-span-2 flex flex-col gap-5 lg:col-span-1">
               <Link href="/" aria-label="Averexa Placement — Home" className="inline-flex">
                 <Image
-                  src="/brand/logo.png"
+                  src="/brand/logo.svg"
                   alt="Averexa Placement"
-                  width={40}
-                  height={40}
-                  className="h-9 w-auto"
+                  width={112}
+                  height={112}
+                  className="h-28 w-auto"
                 />
               </Link>
               <p

@@ -44,11 +44,11 @@ export function NavPill({ isScrolled, className }: NavPillProps) {
           aria-label="Averexa Placement — Home"
         >
           <Image
-            src="/brand/logo.png"
+            src="/brand/logo-nav.svg"
             alt="Averexa Placement"
-            width={32}
-            height={32}
-            className="h-8 w-auto"
+            width={64}
+            height={64}
+            className="h-16 w-auto"
             priority
           />
           <AnimatePresence>

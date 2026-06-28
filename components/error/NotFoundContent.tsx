@@ -7,11 +7,11 @@ export function NotFoundContent() {
     <div className="min-h-screen bg-ink-900 flex flex-col items-center justify-center text-center px-6">
       <Link href="/" aria-label="Averexa Placement — Home" className="mb-8 inline-block">
         <Image
-          src="/brand/logo.png"
+          src="/brand/logo.svg"
           alt="Averexa Placement"
-          width={48}
-          height={48}
-          className="h-12 w-auto mx-auto"
+          width={128}
+          height={128}
+          className="h-32 w-auto mx-auto"
         />
       </Link>
 
