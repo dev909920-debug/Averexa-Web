@@ -9,6 +9,7 @@ import { AboutSummarySection } from '@/components/sections/home/AboutSummarySect
 import { BentoSection } from '@/components/sections/home/BentoSection'
 import { ProcessOverviewSection } from '@/components/sections/home/ProcessOverviewSection'
 import { StatisticsSection } from '@/components/sections/home/StatisticsSection'
+import { ReferTeaserSection } from '@/components/sections/home/ReferTeaserSection'
 import { LogoScroller } from '@/components/sections/home/LogoScroller'
 import { TestimonialsSection } from '@/components/sections/home/TestimonialsSection'
 import { FAQSection } from '@/components/sections/home/FAQSection'
@@ -31,6 +32,7 @@ export default function HomePage() {
       <BentoSection />
       <ProcessOverviewSection />
       <StatisticsSection />
+      <ReferTeaserSection />
       <LogoScroller />
       <TestimonialsSection />
       <FAQSection />

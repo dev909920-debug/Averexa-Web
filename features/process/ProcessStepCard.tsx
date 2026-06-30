@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import Image from 'next/image'
 import { motion, useInView } from 'motion/react'
 import type { ProcessStep } from '@/content/process-steps'
 
@@ -243,10 +244,11 @@ export function ProcessStepCard({ step, index, cardRef }: ProcessStepCardProps) 
                 transition={{ duration: 1.05, delay: 0.1, ease }}
               >
                 {step.image ? (
-                  <img
+                  <Image
                     src={step.image}
                     alt={step.title}
-                    className="w-full h-full object-contain"
+                    fill
+                    className="object-contain"
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">

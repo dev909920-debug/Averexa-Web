@@ -12,21 +12,21 @@ const pillars = [
     title: 'Guaranteed\nInterviews',
     description:
       'Every enrolled candidate receives a guaranteed interview opportunity. We make the connections that others cannot.',
-    image: '/assets/hero/second.png',
+    image: '/assets/hero/home/pillar-guaranteed-interviews.png',
   },
   {
     number: '02',
     title: 'Expert\nPreparation',
     description:
       'From resume optimization to mock interviews, we prepare you to walk in with confidence and perform at your best.',
-    image: '/assets/hero/third.png',
+    image: '/assets/hero/home/pillar-expert-preparation.png',
   },
   {
     number: '03',
     title: 'Dedicated\nRecruiter',
     description:
       'You get a personal recruiter who knows your background, advocates for your profile, and guides you every step of the way.',
-    image: '/assets/hero/fourth.png',
+    image: '/assets/hero/home/pillar-dedicated-recruiter.png',
   },
 ]
 

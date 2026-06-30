@@ -12,7 +12,10 @@ export function buildOrganizationSchema() {
     foundingDate: String(site.foundedYear),
     address: {
       '@type': 'PostalAddress',
+      streetAddress: site.address.street,
       addressLocality: site.address.city,
+      addressRegion: site.address.state,
+      postalCode: site.address.zip,
       addressCountry: site.address.country,
     },
     contactPoint: {

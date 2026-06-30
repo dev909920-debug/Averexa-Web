@@ -33,7 +33,7 @@ export function EmployerNetworkSection({ disclaimer }: EmployerNetworkSectionPro
           <div className="relative overflow-hidden rounded-2xl border border-white/8">
             <div className="relative h-72 sm:h-96">
               <Image
-                src="/assets/hero/third.png"
+                src="/assets/hero/about/employer-network.png"
                 alt="Professional networking and employer connections"
                 fill
                 className="object-cover object-center"

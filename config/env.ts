@@ -1,19 +1,23 @@
 import { z } from 'zod'
 
+// Blank .env.local values arrive as '' — treat them the same as absent (undefined)
+const e = (schema: z.ZodTypeAny) =>
+  z.preprocess((v) => (v === '' ? undefined : v), schema)
+
 const serverEnvSchema = z.object({
-  RESEND_API_KEY: z.string().min(1).optional(),
-  GOOGLE_SHEETS_CLIENT_EMAIL: z.string().email().optional(),
-  GOOGLE_SHEETS_PRIVATE_KEY: z.string().min(1).optional(),
-  GOOGLE_SHEETS_SPREADSHEET_ID: z.string().min(1).optional(),
-  CLOUDFLARE_TURNSTILE_SECRET_KEY: z.string().min(1).optional(),
+  RESEND_API_KEY: e(z.string().min(1).optional()),
+  GOOGLE_SHEETS_CLIENT_EMAIL: e(z.string().email().optional()),
+  GOOGLE_SHEETS_PRIVATE_KEY: e(z.string().min(1).optional()),
+  GOOGLE_SHEETS_SPREADSHEET_ID: e(z.string().min(1).optional()),
+  CLOUDFLARE_TURNSTILE_SECRET_KEY: e(z.string().min(1).optional()),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
 })
 
 const clientEnvSchema = z.object({
-  NEXT_PUBLIC_TURNSTILE_SITE_KEY: z.string().min(1).optional(),
-  NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string().optional(),
-  NEXT_PUBLIC_GTM_ID: z.string().optional(),
-  NEXT_PUBLIC_SITE_URL: z.string().url().default('https://averexa.com'),
+  NEXT_PUBLIC_TURNSTILE_SITE_KEY: e(z.string().min(1).optional()),
+  NEXT_PUBLIC_GA_MEASUREMENT_ID: e(z.string().optional()),
+  NEXT_PUBLIC_GTM_ID: e(z.string().optional()),
+  NEXT_PUBLIC_SITE_URL: e(z.string().url().default('https://averexa.com')),
 })
 
 function parseEnv() {

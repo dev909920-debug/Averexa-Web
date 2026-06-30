@@ -9,7 +9,7 @@ export function ServicesHero() {
     >
       <div className="absolute inset-0" aria-hidden="true">
         <Image
-          src="/assets/hero/second.png"
+          src="/assets/hero/services/services-hero.png"
           alt=""
           fill
           className="object-cover object-center"

@@ -2,25 +2,32 @@ import { Icon } from '@/components/ui/Icon'
 import { ContactForm } from '@/components/forms/ContactForm'
 import { FadeUp } from '@/components/motion/FadeUp'
 import { RevealSection } from '@/components/motion/RevealSection'
+import { site } from '@/config/site'
 
 const contactInfo = [
   {
+    icon: 'Phone' as const,
+    label: 'Phone',
+    value: site.phone,
+    href: `tel:${site.phone.replace(/\D/g, '').replace(/^/, '+')}`,
+  },
+  {
     icon: 'Mail' as const,
     label: 'Email',
-    value: 'info@averexa.com',
-    href: 'mailto:info@averexa.com',
+    value: site.email,
+    href: `mailto:${site.email}`,
   },
   {
     icon: 'MessageCircle' as const,
     label: 'WhatsApp',
     value: 'Chat with us on WhatsApp',
-    href: 'https://wa.me/',
+    href: `https://wa.me/${site.whatsapp}`,
   },
   {
     icon: 'MapPin' as const,
-    label: 'Market',
-    value: 'US & Canada — Remote-first',
-    href: undefined,
+    label: 'Office',
+    value: `${site.address.street}, ${site.address.city}, ${site.address.state} ${site.address.zip}`,
+    href: `https://maps.google.com/?q=${encodeURIComponent(`${site.address.street}, ${site.address.city}, ${site.address.state} ${site.address.zip}`)}`,
   },
 ]
 

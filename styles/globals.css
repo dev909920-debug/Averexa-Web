@@ -31,11 +31,14 @@
   --color-info: #3A8DB8;
 
   /* ── Typography Families ────────────────────────────────── */
-  /* Font CSS variables are set in app/layout.tsx via next/font/local  */
-  /* These reference those CSS variables with system fallbacks for M0  */
-  --font-clash: var(--font-display, 'Syne', 'Clash Display', system-ui, sans-serif);
-  --font-satoshi: var(--font-body, 'DM Sans', 'Satoshi', system-ui, sans-serif);
-  --font-mono: var(--font-jetbrains-mono, 'JetBrains Mono', ui-monospace, monospace);
+  /* Font CSS variables are set in app/layout.tsx via next/font/google */
+  /* --font-display  → Instrument Serif (editorial serif display)       */
+  /* --font-heading  → Plus Jakarta Sans (geometric sans headings)      */
+  /* --font-body     → DM Sans (humanist body)                         */
+  /* --font-jetbrains-mono → DM Mono (refined label mono)              */
+  --font-clash: var(--font-heading, 'Plus Jakarta Sans', system-ui, sans-serif);
+  --font-satoshi: var(--font-body, 'DM Sans', system-ui, sans-serif);
+  --font-mono: var(--font-jetbrains-mono, 'DM Mono', ui-monospace, monospace);
 
   /* ── Border Radius ──────────────────────────────────────── */
   --radius-sm: 0.5rem;    /* 8px */
@@ -142,7 +145,7 @@
     background-color: #001413; /* ink-900 — no flash of white on load */
     color: #FFFFFF;
     font-family: var(--font-body, 'DM Sans', system-ui, sans-serif);
-    line-height: 1.65;
+    line-height: 1.7;
     overflow-x: hidden;
   }
 
@@ -176,10 +179,18 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
-   BLOCK 4: Effect Tokens (not generatable by Tailwind utilities)
+   BLOCK 4: Effect Tokens + Font Aliases
    ───────────────────────────────────────────────────────────────────────── */
 
 :root {
+  /* ── Font backward-compat aliases ───────────────────────────────────────
+     Components that reference --font-editorial now get Instrument Serif.
+     Components that reference --font-condensed now get Plus Jakarta Sans.
+     No component files need to change — the alias does the work.
+     ──────────────────────────────────────────────────────────────────── */
+  --font-editorial: var(--font-display); /* Instrument Serif — editorial serif */
+  --font-condensed: var(--font-heading); /* Plus Jakarta Sans — replaces Bebas Neue */
+
   --accent-glow: rgba(26, 138, 113, 0.45);
   --bg-glass: rgba(0, 20, 19, 0.85);
   --bg-glass-light: rgba(244, 248, 246, 0.85);
@@ -242,8 +253,8 @@
 
   /* Eyebrow label */
   .eyebrow {
-    font-family: var(--font-jetbrains-mono, 'JetBrains Mono', ui-monospace, monospace);
-    font-size: 0.7rem;
+    font-family: var(--font-jetbrains-mono, 'DM Mono', ui-monospace, monospace);
+    font-size: 0.6875rem;
     font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -279,5 +290,81 @@
   }
   .animate-accordion-up {
     animation: accordion-up 0.2s ease-out;
+  }
+}
+
+/* ── Blog card — hover-reveal image card ──────────────────────────────────
+   Scoped to .blog-card / .blog-card-overlay / .blog-card-content.
+   Does not affect any other card type on the site.
+   ───────────────────────────────────────────────────────────────────────── */
+
+.blog-card {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s var(--ease-brand);
+}
+
+@media (min-width: 640px) {
+  .blog-card {
+    height: 380px;
+  }
+}
+
+.blog-card:hover,
+.blog-card:focus-within {
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.55);
+}
+
+/* Inset focus ring so it is never clipped by overflow: hidden */
+.blog-card a:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--color-emerald-400);
+  border-radius: inherit;
+  outline: none;
+}
+
+.blog-card-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(0, 20, 19, 0.97) 0%,
+    rgba(0, 20, 19, 0.8) 32%,
+    rgba(0, 20, 19, 0.3) 62%,
+    transparent 80%
+  );
+}
+
+.blog-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.25rem;
+  transition: transform 0.4s var(--ease-brand);
+}
+
+/* On hover-capable (non-touch) devices: push excerpt below the fold by default */
+@media (hover: hover) and (pointer: fine) {
+  .blog-card-content {
+    transform: translateY(calc(100% - 6rem));
+  }
+  .blog-card:hover .blog-card-content,
+  .blog-card:focus-within .blog-card-content {
+    transform: translateY(0);
+  }
+}
+
+/* Reduced motion: skip the slide, always show full content */
+@media (prefers-reduced-motion: reduce) {
+  .blog-card,
+  .blog-card-content {
+    transition: none;
+  }
+  .blog-card-content {
+    transform: none !important;
   }
 }

@@ -22,7 +22,7 @@ const cards: FeatureCard[] = [
     title: 'End-to-End Career Support',
     description:
       'From profile review to offer negotiation and onboarding, we support candidates through every step of the hiring journey.',
-    image: '/assets/hero/about-bg.png',
+    image: '/assets/hero/home/bento-end-to-end-support.png',
     colSpan: 2,
   },
   {
@@ -31,7 +31,7 @@ const cards: FeatureCard[] = [
     title: 'Guaranteed Interviews',
     description:
       'Every enrolled candidate receives at least one guaranteed interview with a relevant employer.',
-    image: '/assets/hero/first.png',
+    image: '/assets/hero/home/bento-guaranteed-interviews.png',
     colSpan: 1,
   },
   {
@@ -40,7 +40,7 @@ const cards: FeatureCard[] = [
     title: 'Resume Optimization',
     description:
       'Professional resume optimization based on US and Canadian hiring standards.',
-    image: '/assets/hero/second.png',
+    image: '/assets/hero/home/bento-resume-optimization.png',
     colSpan: 1,
   },
   {
@@ -49,7 +49,7 @@ const cards: FeatureCard[] = [
     title: 'Employer Network',
     description:
       'Access our network of hiring companies across technology, finance, healthcare and operations.',
-    image: '/assets/hero/third.png',
+    image: '/assets/hero/home/bento-employer-network.png',
     colSpan: 2,
   },
   {
@@ -58,7 +58,7 @@ const cards: FeatureCard[] = [
     title: 'Interview Coaching',
     description:
       'Mock interview sessions with expert feedback to improve confidence and communication.',
-    image: '/assets/hero/fourth.png',
+    image: '/assets/hero/home/bento-interview-coaching.png',
     colSpan: 2,
   },
   {
@@ -67,7 +67,7 @@ const cards: FeatureCard[] = [
     title: 'Active Marketing',
     description:
       'We actively promote your profile directly to recruiters instead of waiting for job postings.',
-    image: '/assets/hero/fifth.png',
+    image: '/assets/hero/home/bento-active-marketing.png',
     colSpan: 1,
   },
 ]

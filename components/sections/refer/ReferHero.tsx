@@ -9,7 +9,7 @@ export function ReferHero() {
     >
       <div className="absolute inset-0" aria-hidden="true">
         <Image
-          src="/assets/hero/sixth.png"
+          src="/assets/hero/refer/refer-hero.png"
           alt=""
           fill
           className="object-cover object-center"

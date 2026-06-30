@@ -15,7 +15,7 @@ export function LegalDocument({
   return (
     <article className="section-padding pt-16">
       <div className="container-site">
-        <div className="mx-auto max-w-3xl">
+        <div className="legal-body mx-auto max-w-3xl xl:max-w-[960px]">
           <header className="mb-10 border-b border-white/8 pb-8">
             <h1 className="text-balance">{title}</h1>
             <p className="mt-3 text-sm text-white/40">Last updated: {lastUpdated}</p>

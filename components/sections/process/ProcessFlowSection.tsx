@@ -1,5 +1,5 @@
 import { RevealSection } from '@/components/motion/RevealSection'
-import { ProcessFlow } from '@/features/process/ProcessFlow'
+import { ProcessFlowClient } from './ProcessFlowClient'
 
 export function ProcessFlowSection() {
   return (
@@ -19,7 +19,7 @@ export function ProcessFlowSection() {
           </div>
         </RevealSection>
 
-        <ProcessFlow />
+        <ProcessFlowClient />
       </div>
     </section>
   )

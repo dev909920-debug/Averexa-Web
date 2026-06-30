@@ -17,6 +17,9 @@ const statVariant = {
   },
 }
 
+const HEADING = 'var(--font-heading)' // Plus Jakarta Sans
+const MONO    = 'var(--font-jetbrains-mono)' // DM Mono
+
 export function StatisticsSection() {
   return (
     <AuroraBackground>
@@ -29,12 +32,11 @@ export function StatisticsSection() {
               <h2
                 className="text-white"
                 style={{
-                  fontFamily: 'var(--font-condensed)',
-                  fontSize: 'clamp(3rem, 6vw, 6rem)',
-                  fontWeight: 400,
-                  letterSpacing: '0.04em',
+                  fontFamily: HEADING,
+                  fontSize: 'clamp(2.25rem, 5vw, 5rem)',
+                  fontWeight: 800,
+                  letterSpacing: '-0.03em',
                   lineHeight: 1.0,
-                  textTransform: 'uppercase',
                 }}
               >
                 Results That{' '}
@@ -83,10 +85,10 @@ export function StatisticsSection() {
                     <span
                       className="text-emerald-400"
                       style={{
-                        fontFamily: 'var(--font-condensed)',
-                        fontSize: 'clamp(1.5rem, 2.5vw, 2rem)',
-                        fontWeight: 400,
-                        letterSpacing: '0.04em',
+                        fontFamily: HEADING,
+                        fontSize: 'clamp(1.125rem, 1.75vw, 1.5rem)',
+                        fontWeight: 700,
+                        letterSpacing: '-0.02em',
                       }}
                     >
                       {stat.prefix}
@@ -95,11 +97,11 @@ export function StatisticsSection() {
                   <span
                     className="text-white"
                     style={{
-                      fontFamily: 'var(--font-condensed)',
-                      fontSize: 'clamp(3.5rem, 5.5vw, 5.5rem)',
-                      fontWeight: 400,
+                      fontFamily: HEADING,
+                      fontSize: 'clamp(3rem, 4.5vw, 4.75rem)',
+                      fontWeight: 800,
                       lineHeight: 1,
-                      letterSpacing: '0.02em',
+                      letterSpacing: '-0.04em',
                     }}
                   >
                     <CountUp value={stat.value} />
@@ -108,10 +110,10 @@ export function StatisticsSection() {
                     <span
                       className="text-emerald-400"
                       style={{
-                        fontFamily: 'var(--font-condensed)',
-                        fontSize: 'clamp(1.5rem, 2.5vw, 2.25rem)',
-                        fontWeight: 400,
-                        letterSpacing: '0.04em',
+                        fontFamily: HEADING,
+                        fontSize: 'clamp(1.125rem, 1.75vw, 1.75rem)',
+                        fontWeight: 700,
+                        letterSpacing: '-0.025em',
                       }}
                     >
                       {stat.suffix}
@@ -123,8 +125,8 @@ export function StatisticsSection() {
                 <p
                   className="text-white/45 leading-snug"
                   style={{
-                    fontFamily: 'var(--font-jetbrains-mono)',
-                    fontSize: '0.62rem',
+                    fontFamily: MONO,
+                    fontSize: '0.625rem',
                     letterSpacing: '0.14em',
                     textTransform: 'uppercase',
                   }}

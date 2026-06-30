@@ -22,6 +22,10 @@ const containerVariants = {
   },
 }
 
+// Font families surfaced as constants so the intent is readable at a glance.
+const SERIF = 'var(--font-display)'   // Instrument Serif — editorial, italic display
+const SANS  = 'var(--font-heading)'   // Plus Jakarta Sans — confident geometric headings
+
 export function HeroTextOverlay() {
   return (
     <motion.div
@@ -30,22 +34,54 @@ export function HeroTextOverlay() {
       animate="visible"
       className="absolute inset-0"
     >
-      {/* Title — top center */}
+      {/* ── Headline — top center ──────────────────────────────────────────
+          Typographic split: "Your Next" and "Move Starts Here." are set
+          in Plus Jakarta Sans 700 (modern, authoritative). "Career" breaks
+          into Instrument Serif 400 italic — the editorial serif contrast
+          signals the word that matters most, like a luxury brand masthead.
+          ─────────────────────────────────────────────────────────────── */}
       <div className="absolute top-[14%] left-0 right-0 flex flex-col items-center text-center px-5 pointer-events-none">
         <motion.h1
           variants={staggerItem}
           className="text-center"
-          style={{ fontFamily: 'var(--font-display)' }}
         >
+          {/* Line 1: "Your Next Career" — sans/serif contrast */}
           <span
-            className="block italic font-normal text-5xl sm:text-7xl md:text-8xl leading-[0.95] text-white"
-            style={{ letterSpacing: '-0.05em' }}
+            className="block text-white"
+            style={{
+              fontSize: 'clamp(2.75rem, 6.5vw + 0.25rem, 7rem)',
+              lineHeight: 1.0,
+              letterSpacing: '-0.025em',
+            }}
           >
-            Your Next Career
+            {/* "Your Next" — Plus Jakarta Sans bold */}
+            <span style={{ fontFamily: SANS, fontWeight: 700 }}>
+              Your Next{' '}
+            </span>
+            {/* "Career" — Instrument Serif italic: the typographic signature */}
+            <span
+              style={{
+                fontFamily: SERIF,
+                fontWeight: 400,
+                fontStyle: 'italic',
+                letterSpacing: '-0.01em',
+              }}
+            >
+              Career
+            </span>
           </span>
+
+          {/* Line 2: "Move Starts Here." — all Plus Jakarta Sans */}
           <span
-            className="block font-normal text-5xl sm:text-7xl md:text-8xl leading-[0.95] -mt-1 text-white"
-            style={{ letterSpacing: '-0.08em' }}
+            className="block text-white"
+            style={{
+              fontFamily: SANS,
+              fontWeight: 700,
+              fontSize: 'clamp(2.75rem, 6.5vw + 0.25rem, 7rem)',
+              lineHeight: 1.0,
+              letterSpacing: '-0.032em',
+              marginTop: '-0.04em',
+            }}
           >
             Move{' '}
             <span
@@ -62,19 +98,26 @@ export function HeroTextOverlay() {
         </motion.h1>
       </div>
 
-      {/* Description — bottom left */}
+      {/* ── Description — bottom left ─────────────────────────────────── */}
       <motion.div
         variants={staggerItem}
         className="hidden sm:block absolute bottom-14 left-10 md:left-14 max-w-[260px]"
       >
-        <p className="text-sm text-white/80 leading-relaxed">
+        <p
+          className="text-white/80 leading-relaxed"
+          style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: '0.875rem',
+            lineHeight: 1.7,
+          }}
+        >
           We help ambitious professionals land full-time roles with leading employers across the US and
           Canada — with guaranteed interviews, expert preparation, and a dedicated recruiter at every
           step.
         </p>
       </motion.div>
 
-      {/* CTA — bottom right */}
+      {/* ── CTA — bottom right ───────────────────────────────────────────── */}
       <motion.div
         variants={staggerItem}
         className="absolute bottom-10 sm:bottom-24 right-10 md:right-14 max-w-[260px] flex flex-col items-start gap-5"
@@ -85,13 +128,21 @@ export function HeroTextOverlay() {
         </div>
       </motion.div>
 
-      {/* Trust strip — bottom center */}
+      {/* ── Trust strip — bottom center ──────────────────────────────────── */}
       <motion.div
         variants={staggerItem}
         className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-x-5 gap-y-2"
       >
         {trustItems.map((item) => (
-          <span key={item} className="flex items-center gap-1.5 text-sm text-white/60">
+          <span
+            key={item}
+            className="flex items-center gap-1.5 text-white/60"
+            style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '0.8125rem',
+              letterSpacing: '0.01em',
+            }}
+          >
             <motion.span
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}

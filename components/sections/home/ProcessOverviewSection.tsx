@@ -16,22 +16,26 @@ export function ProcessOverviewSection() {
     offset: ['start 80%', 'end 50%'],
   })
 
-  const lineProgress = useTransform(scrollYProgress, [0.0, 0.80], [0, 1])
-  const dotTop = useTransform(scrollYProgress, [0.0, 0.80], ['0%', '100%'])
+  const lineProgress = useTransform(scrollYProgress, [0.0, 0.85], [0, 1])
+  const dotTop = useTransform(scrollYProgress, [0.0, 0.85], ['0%', '100%'])
 
-  const s0o = useTransform(scrollYProgress, [0.02, 0.14], [0, 1])
-  const s0y = useTransform(scrollYProgress, [0.02, 0.16], [32, 0])
-  const s1o = useTransform(scrollYProgress, [0.18, 0.30], [0, 1])
-  const s1y = useTransform(scrollYProgress, [0.18, 0.32], [32, 0])
-  const s2o = useTransform(scrollYProgress, [0.34, 0.46], [0, 1])
-  const s2y = useTransform(scrollYProgress, [0.34, 0.48], [32, 0])
-  const s3o = useTransform(scrollYProgress, [0.50, 0.62], [0, 1])
-  const s3y = useTransform(scrollYProgress, [0.50, 0.64], [32, 0])
-  const s4o = useTransform(scrollYProgress, [0.66, 0.78], [0, 1])
-  const s4y = useTransform(scrollYProgress, [0.66, 0.80], [32, 0])
+  // Six staggered reveal windows (~0.14 apart) spanning the journey —
+  // one per candidate-journey step, Profile Review → Offer & Onboarding.
+  const s0o = useTransform(scrollYProgress, [0.02, 0.13], [0, 1])
+  const s0y = useTransform(scrollYProgress, [0.02, 0.15], [32, 0])
+  const s1o = useTransform(scrollYProgress, [0.16, 0.27], [0, 1])
+  const s1y = useTransform(scrollYProgress, [0.16, 0.29], [32, 0])
+  const s2o = useTransform(scrollYProgress, [0.30, 0.41], [0, 1])
+  const s2y = useTransform(scrollYProgress, [0.30, 0.43], [32, 0])
+  const s3o = useTransform(scrollYProgress, [0.44, 0.55], [0, 1])
+  const s3y = useTransform(scrollYProgress, [0.44, 0.57], [32, 0])
+  const s4o = useTransform(scrollYProgress, [0.58, 0.69], [0, 1])
+  const s4y = useTransform(scrollYProgress, [0.58, 0.71], [32, 0])
+  const s5o = useTransform(scrollYProgress, [0.72, 0.83], [0, 1])
+  const s5y = useTransform(scrollYProgress, [0.72, 0.85], [32, 0])
 
-  const stepOpacities = [s0o, s1o, s2o, s3o, s4o]
-  const stepYs = [s0y, s1y, s2y, s3y, s4y]
+  const stepOpacities = [s0o, s1o, s2o, s3o, s4o, s5o]
+  const stepYs = [s0y, s1y, s2y, s3y, s4y, s5y]
 
   return (
     <section id="process" ref={containerRef} className="section-padding bg-ink-900 relative overflow-hidden">

@@ -61,6 +61,7 @@ import {
   Settings,
   LogOut,
   Home,
+  Navigation,
 } from 'lucide-react'
 
 export const Icons = {
@@ -126,6 +127,7 @@ export const Icons = {
   Settings,
   LogOut,
   Home,
+  Navigation,
 } as const
 
 export type IconName = keyof typeof Icons

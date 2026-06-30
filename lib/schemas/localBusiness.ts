@@ -10,7 +10,10 @@ export function buildLocalBusinessSchema() {
     email: site.email,
     address: {
       '@type': 'PostalAddress',
+      streetAddress: site.address.street,
       addressLocality: site.address.city,
+      addressRegion: site.address.state,
+      postalCode: site.address.zip,
       addressCountry: site.address.country,
     },
     areaServed: ['United States', 'Canada'],

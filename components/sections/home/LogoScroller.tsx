@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { partnerCompanies } from '@/content/partner-companies'
 
 const mid = Math.ceil(partnerCompanies.length / 2)
@@ -16,13 +17,14 @@ function CompanyPill({ name, domain }: { name: string; domain: string }) {
       }}
     >
       <div className="flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white/[0.06]">
-        <img
+        <Image
           src={`https://www.google.com/s2/favicons?domain=${domain}&sz=64`}
           alt={`${name} logo`}
+          width={20}
+          height={20}
           className="size-5 object-contain"
-          loading="lazy"
           onError={(e) => {
-            (e.currentTarget as HTMLImageElement).style.display = 'none'
+            e.currentTarget.style.display = 'none'
           }}
         />
       </div>

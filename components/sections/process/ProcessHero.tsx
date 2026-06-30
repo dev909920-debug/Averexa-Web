@@ -9,7 +9,7 @@ export function ProcessHero() {
     >
       <div className="absolute inset-0" aria-hidden="true">
         <Image
-          src="/assets/hero/fourth.png"
+          src="/assets/hero/process/process-hero.png"
           alt=""
           fill
           className="object-cover object-center"

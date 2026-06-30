@@ -4,12 +4,23 @@ description: "Technical interviews reward preparation more than raw talent. This
 publishedAt: "2026-01-20"
 author: "Averexa Team"
 category: "Interview Prep"
-coverImage: "/assets/hero/fifth.png"
+coverImage: "/assets/hero/blog/acing-technical-interview.png"
 coverImageAlt: "Candidate preparing for a technical interview"
 tags: ["interview", "technical-interview", "preparation", "career"]
 ---
 
 The candidates who consistently pass technical interviews are rarely the most brilliant in the room. They are the most **prepared**. Preparation is a process you can run deliberately — here is the framework we coach our candidates through.
+
+## Know what to expect
+
+"Technical interview" covers several distinct formats. Knowing which ones you will face shapes your prep:
+
+- **Coding rounds** — live or asynchronous algorithmic problem-solving, usually in a shared editor. Data structures, dynamic programming, graphs.
+- **System design rounds** — open-ended architecture discussions. "Design a URL shortener" or "How would you build a notifications service at scale?"
+- **Behavioral rounds** — structured questions about how you handle real situations. STAR format (Situation, Task, Action, Result) is the standard.
+- **Take-home assignments** — a small project or technical exercise completed offline, followed by a code review or walkthrough discussion.
+
+Most roles at mid-to-senior level involve all four. Early-career roles lean heavily on coding and behavioral. Knowing the mix in advance lets you weight your preparation accordingly.
 
 ## Phase 1 — Map the surface area
 
@@ -19,6 +30,8 @@ Before touching a single practice problem, understand what the interview actuall
 - **Research the company's stack and interview format** — many publish it, and past candidates often share details.
 - **Group the topics** into "strong," "rusty," and "weak." Your study time goes mostly to "rusty."
 
+For coding rounds, the topics that appear most frequently in US tech interviews are: arrays and strings, hash maps, trees and graphs, sliding window, binary search, dynamic programming, and recursion. Stack and queue problems appear regularly in certain domains. You do not need to master every corner — you need to be consistently solid on the high-frequency patterns.
+
 ## Phase 2 — Practice deliberately
 
 Volume alone does not work. Deliberate practice does.
@@ -26,6 +39,10 @@ Volume alone does not work. Deliberate practice does.
 1. **Solve, then review the optimal solution** — even when you got it right.
 2. **Time yourself.** Interviews are timed; your practice should be too.
 3. **Explain out loud.** Interviewers score communication, not just correctness.
+
+Work problems at the level above where you are comfortable. If easy problems feel smooth, spend time on mediums. If mediums feel smooth, practice articulating your approach on hards rather than grinding for solutions.
+
+After each practice session, note one thing you did well and one thing to tighten. Vague review ("I need to get better at DP") produces less improvement than specific review ("I set up the recurrence relation correctly but coded the base case wrong — review that pattern tomorrow").
 
 > An interviewer is not asking "can this person solve the problem?" They are asking "do I want to work with this person on hard problems?"
 
@@ -37,11 +54,45 @@ The interview is a performance, and performances are rehearsed.
 - **Practice thinking aloud** — narrate your assumptions, trade-offs, and decisions.
 - **Prepare for the stumble.** Everyone gets stuck. What you do *when* stuck is the real test: stay calm, restate the problem, propose a brute-force baseline, then optimize.
 
+Thinking aloud is a skill that feels unnatural at first. Most engineers solve problems internally and announce results. Interviewers need to see the process. Practice narrating the *why* behind every decision, even when it feels obvious to you.
+
+## Handling system design rounds
+
+System design rounds assess how you think about trade-offs at scale. There is no single correct answer — the interviewer is watching your reasoning process.
+
+A useful structure:
+
+1. **Clarify requirements.** Functional ("what does the system do?") and non-functional ("what scale, what latency, what availability?"). Do not skip this — it defines the whole design.
+2. **Estimate scale.** Back-of-the-envelope numbers (requests per second, storage, bandwidth) anchor your choices.
+3. **Sketch the high-level architecture.** APIs, services, data stores — drawn simply.
+4. **Dive into the hard parts.** Database choice and schema, caching strategy, handling failures, consistency model.
+5. **Identify trade-offs.** Every choice you make has a downside. Naming it shows maturity.
+
+Avoid jumping straight to the solution. Interviewers in system design rounds reward candidates who establish context before drawing boxes.
+
+## Mastering the behavioral round
+
+Behavioral questions are often under-prepared for, and they carry significant weight — particularly for senior roles, where cultural fit and leadership instincts matter as much as technical ability.
+
+The STAR format works:
+- **Situation**: set the context briefly
+- **Task**: what was your specific responsibility?
+- **Action**: what did *you* do, specifically?
+- **Result**: what was the measurable outcome?
+
+Prepare four to six STAR stories that cover: a technical challenge you navigated, a time you disagreed with a decision, a project that went wrong and how you handled it, an example of leadership or mentorship, and a time you prioritized under pressure. These stories flex across the majority of behavioral questions you will encounter.
+
 ## Phase 4 — Manage the day
 
 - Sleep matters more than one last practice problem.
 - Clarify the question before coding. Confirm constraints and edge cases.
 - Leave time to test your solution out loud.
+
+If you finish a coding problem, do not just stop. Walk through a test case — including an edge case — before declaring it done. Catching your own bugs in the interview is a strong signal.
+
+## Following up
+
+A short, specific thank-you note the same day reinforces your candidacy. Reference something specific from the conversation — a technical point you found interesting, a problem you enjoyed thinking through. Generic thank-you notes are forgettable. Specific ones are not.
 
 ## How Averexa prepares you
 

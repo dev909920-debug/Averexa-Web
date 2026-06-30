@@ -12,7 +12,6 @@ export function HeroVideo({ style }: { style: MotionStyle }) {
       loop
       playsInline
       preload="metadata"
-      poster="/assets/hero/first.png"
       aria-hidden="true"
       style={style}
     >

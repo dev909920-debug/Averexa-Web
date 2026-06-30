@@ -1,15 +1,12 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { TestimonialsDesktop } from './TestimonialsDesktop'
 import { TestimonialsMobile } from './TestimonialsMobile'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
 export function TestimonialsSection() {
-  const isDesktop = useMediaQuery('(min-width: 768px)')
-
   return (
     <section id="testimonials" className="section-padding bg-ink-900/95">
       <div className="container-site">
@@ -149,7 +146,12 @@ export function TestimonialsSection() {
 
         </div>
 
-        {isDesktop ? <TestimonialsDesktop /> : <TestimonialsMobile />}
+        <div className="hidden md:block">
+          <TestimonialsDesktop />
+        </div>
+        <div className="md:hidden">
+          <TestimonialsMobile />
+        </div>
       </div>
     </section>
   )

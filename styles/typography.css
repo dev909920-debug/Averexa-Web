@@ -1,105 +1,117 @@
 /* ─────────────────────────────────────────────────────────────────────────
-   AVEREXA TYPOGRAPHY SCALE
-   Fonts: Syne (display/headings) · DM Sans (body) · JetBrains Mono (labels)
+   AVEREXA TYPOGRAPHY SCALE — v2
+   System: Instrument Serif (display) · Plus Jakarta Sans (headings)
+           DM Sans (body) · DM Mono (labels)
+
+   Philosophy: premium executive consulting, not startup SaaS.
+   Instrument Serif creates editorial authority at display sizes.
+   Plus Jakarta Sans provides confident, geometric hierarchy.
+   DM Mono reads as precise data annotation, not developer tooling.
+
+   All responsive sizes use clamp() for smooth fluid scaling.
    Loaded via next/font/google in lib/fonts.ts.
-   CSS variables --font-display, --font-body, --font-jetbrains-mono
-   are set by Next.js font classes on <html> in app/layout.tsx.
-   These selectors reference those variables DIRECTLY — no @theme chain.
+   CSS variables injected on <html> by Next.js font classes.
    ───────────────────────────────────────────────────────────────────────── */
 
 /* ── H1 — Hero / page-level impact ────────────────────────────────────────
-   Syne 800 — very tight tracking, cinematic scale
+   Instrument Serif 400 — editorial display serif.
+   At hero scale the ink traps read as considered refinement.
+   Used only for primary hero headline; "Career" mix-in uses this italic.
    ─────────────────────────────────────────────────────────────────────── */
 
 h1, .h1 {
-  font-family: var(--font-display, 'Syne', system-ui, sans-serif);
-  font-size: clamp(2.75rem, 6vw + 0.5rem, 6rem); /* 44px → 96px */
-  font-weight: 800;
-  line-height: 1.02;
-  letter-spacing: -0.04em;
+  font-family: var(--font-display, 'Instrument Serif', Georgia, serif);
+  font-size: clamp(2.75rem, 6.5vw + 0.25rem, 7rem); /* 44px → 112px */
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.015em;
   color: inherit;
 }
 
 /* ── H2 — Section headings ─────────────────────────────────────────────────
-   Syne 700 — strong, reads clearly at any background
+   Plus Jakarta Sans 700 — confident geometric authority.
+   Tighter tracking than body signals editorial intent.
    ─────────────────────────────────────────────────────────────────────── */
 
 h2, .h2 {
-  font-family: var(--font-display, 'Syne', system-ui, sans-serif);
-  font-size: clamp(2.25rem, 4vw + 0.25rem, 4rem); /* 36px → 64px */
+  font-family: var(--font-heading, 'Plus Jakarta Sans', system-ui, sans-serif);
+  font-size: clamp(2rem, 4vw + 0.25rem, 4.25rem); /* 32px → 68px */
   font-weight: 700;
   line-height: 1.06;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.028em;
   color: inherit;
 }
 
 /* ── H3 — Card / sub-section titles ───────────────────────────────────────
-   Syne 600 — clearly different from h2 in weight and scale
+   Plus Jakarta Sans 600 — clearly subordinate to h2 in weight and scale.
    ─────────────────────────────────────────────────────────────────────── */
 
 h3, .h3 {
-  font-family: var(--font-display, 'Syne', system-ui, sans-serif);
-  font-size: clamp(1.375rem, 2vw + 0.25rem, 2rem); /* 22px → 32px */
+  font-family: var(--font-heading, 'Plus Jakarta Sans', system-ui, sans-serif);
+  font-size: clamp(1.25rem, 1.75vw + 0.25rem, 1.875rem); /* 20px → 30px */
   font-weight: 600;
-  line-height: 1.18;
-  letter-spacing: -0.02em;
+  line-height: 1.2;
+  letter-spacing: -0.018em;
   color: inherit;
 }
 
 /* ── H4 — Small titles / labels ────────────────────────────────────────────
-   Syne 500 — readable at small sizes
+   Plus Jakarta Sans 600 — functional, readable at tight sizes.
    ─────────────────────────────────────────────────────────────────────── */
 
 h4, .h4 {
-  font-family: var(--font-display, 'Syne', system-ui, sans-serif);
-  font-size: clamp(1.125rem, 1.5vw, 1.5rem); /* 18px → 24px */
+  font-family: var(--font-heading, 'Plus Jakarta Sans', system-ui, sans-serif);
+  font-size: clamp(1rem, 1.25vw, 1.25rem); /* 16px → 20px */
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.3;
   letter-spacing: -0.01em;
   color: inherit;
 }
 
 /* ── Body copy ─────────────────────────────────────────────────────────────
-   DM Sans — humanist, highly legible, contrast against Syne display face
+   DM Sans — humanist sans, warm and highly legible at all sizes.
+   1.7 line-height is the premium publishing sweet spot.
    ─────────────────────────────────────────────────────────────────────── */
 
 body, .body {
   font-family: var(--font-body, 'DM Sans', system-ui, sans-serif);
-  font-size: 1rem;
+  font-size: 1rem; /* 16px */
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.7;
   color: inherit;
 }
 
 .body-lg {
   font-family: var(--font-body, 'DM Sans', system-ui, sans-serif);
-  font-size: clamp(1rem, 1.25vw, 1.125rem); /* 16px → 18px */
+  font-size: clamp(1rem, 1.2vw, 1.125rem); /* 16px → 18px */
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 .body-sm {
   font-family: var(--font-body, 'DM Sans', system-ui, sans-serif);
-  font-size: 0.875rem;
+  font-size: 0.875rem; /* 14px */
   font-weight: 400;
   line-height: 1.65;
 }
 
 .caption {
   font-family: var(--font-body, 'DM Sans', system-ui, sans-serif);
-  font-size: 0.75rem;
+  font-size: 0.75rem; /* 12px */
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 /* ── Eyebrow / Labels ──────────────────────────────────────────────────────
-   JetBrains Mono — technical precision, distinctive from both display & body
+   DM Mono — refined mono precision for category labels and data annotations.
+   At 0.6875rem (11px) with 0.14em tracking, reads as deliberate taxonomy
+   rather than developer tooling. Emerald color ties to brand accent.
    ─────────────────────────────────────────────────────────────────────── */
 
 .eyebrow,
 .label {
-  font-family: var(--font-jetbrains-mono, 'JetBrains Mono', ui-monospace, monospace);
-  font-size: 0.7rem;
+  font-family: var(--font-jetbrains-mono, 'DM Mono', ui-monospace, monospace);
+  font-size: 0.6875rem; /* 11px */
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.14em;
@@ -107,39 +119,59 @@ body, .body {
 }
 
 /* ── Stat / impact numbers ─────────────────────────────────────────────────
-   Syne 800 — maximum visual punch for key figures
+   Plus Jakarta Sans 800 — maximum geometric authority for key figures.
+   Negative tracking at this scale reads as precision, not compression.
    ─────────────────────────────────────────────────────────────────────── */
 
 .stat-number {
-  font-family: var(--font-display, 'Syne', system-ui, sans-serif);
-  font-size: clamp(2.75rem, 4.5vw, 4.5rem);
+  font-family: var(--font-heading, 'Plus Jakarta Sans', system-ui, sans-serif);
+  font-size: clamp(2.75rem, 4vw, 4.5rem); /* 44px → 72px */
   font-weight: 800;
   line-height: 1;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.04em;
+}
+
+/* ── Display accent (the "Career" serif italic treatment) ──────────────────
+   Instrument Serif 400 italic at display scale. Used inline within headlines
+   to create a serif/sans contrast that signals editorial sophistication.
+   ─────────────────────────────────────────────────────────────────────── */
+
+.display-accent {
+  font-family: var(--font-display, 'Instrument Serif', Georgia, serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
 /* ── Blog / Long-form prose ────────────────────────────────────────────────
-   DM Sans optimised for comfortable long reading sessions
+   DM Sans optimised for comfortable extended reading.
+   68ch max-width ensures comfortable reading line length.
    ─────────────────────────────────────────────────────────────────────── */
 
 .prose-averexa {
   font-family: var(--font-body, 'DM Sans', system-ui, sans-serif);
-  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
   line-height: 1.85;
   color: #1C2623;
   max-width: 68ch;
 }
 
 .prose-averexa h2 {
-  font-family: var(--font-display, 'Syne', system-ui, sans-serif);
+  font-family: var(--font-heading, 'Plus Jakarta Sans', system-ui, sans-serif);
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
   font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
   margin-top: 2.5em;
   margin-bottom: 0.75em;
 }
 
 .prose-averexa h3 {
-  font-family: var(--font-display, 'Syne', system-ui, sans-serif);
+  font-family: var(--font-heading, 'Plus Jakarta Sans', system-ui, sans-serif);
+  font-size: clamp(1.125rem, 1.75vw, 1.5rem);
   font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
   margin-top: 2em;
   margin-bottom: 0.5em;
 }
@@ -156,6 +188,47 @@ body, .body {
 
 .prose-averexa a:hover {
   color: #23A88A;
+}
+
+/* ── Legal pages — desktop-only heading scale ────────────────────────────── */
+/* Scoped to .legal-body wrapper in LegalDocument.tsx.
+   Specificity (0,1,1) beats the unlayered h1/h2 element rules above (0,0,1).
+   @media guard ensures mobile/tablet are never affected.              */
+
+@media (min-width: 1280px) {
+  .legal-body h1 {
+    font-size: 2.75rem;
+    line-height: 1.15;
+  }
+  .legal-body h2 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+  }
+}
+
+/* ── Blog article — desktop-only heading scale ───────────────────────────── */
+/* Scoped to .blog-article-body wrapper in BlogArticleLayout.tsx.
+   Covers both the article <h1> title and MDX body <h2> section headings. */
+
+@media (min-width: 1280px) {
+  .blog-article-body h1 {
+    font-size: 3rem;
+    line-height: 1.1;
+  }
+  .blog-article-body h2 {
+    font-size: 1.5rem;
+    line-height: 1.35;
+  }
+}
+
+/* ── Blog listing page — desktop-only h1 cap ─────────────────────────────── */
+/* Scoped to .blog-listing-header wrapper in app/blog/page.tsx. */
+
+@media (min-width: 1280px) {
+  .blog-listing-header h1 {
+    font-size: 3.5rem;
+    line-height: 1.08;
+  }
 }
 
 /* ── Global resets ─────────────────────────────────────────────────────── */

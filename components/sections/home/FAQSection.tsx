@@ -9,7 +9,7 @@ export function FAQSection() {
       {/* Background */}
       <div className="absolute inset-0" aria-hidden="true">
         <Image
-          src="/assets/hero/fourth.png"
+          src="/assets/hero/home/faq-ambient-bg.png"
           alt=""
           fill
           className="object-cover object-center"

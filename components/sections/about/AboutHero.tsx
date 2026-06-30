@@ -9,7 +9,7 @@ export function AboutHero() {
     >
       <div className="absolute inset-0" aria-hidden="true">
         <Image
-          src="/assets/hero/about-bg.png"
+          src="/assets/hero/about/about-hero.png"
           alt=""
           fill
           className="object-cover object-center"

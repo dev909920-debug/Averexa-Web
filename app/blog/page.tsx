@@ -19,7 +19,7 @@ export default function BlogPage() {
       <section className="section-padding pt-32 bg-ink-900">
         <div className="container-site">
           <FadeUp>
-            <div className="mb-14 flex flex-col gap-4 max-w-2xl">
+            <div className="blog-listing-header mb-14 flex flex-col gap-4 max-w-2xl xl:max-w-3xl">
               <span className="eyebrow">Insights</span>
               <h1 className="text-balance">
                 Career Resources &{' '}

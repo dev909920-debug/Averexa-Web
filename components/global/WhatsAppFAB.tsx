@@ -2,8 +2,9 @@
 
 import { motion } from 'motion/react'
 import { useReducedMotionContext } from '@/hooks/useReducedMotionContext'
+import { site } from '@/config/site'
 
-const WHATSAPP_NUMBER = '1234567890' // placeholder — client to provide
+const WHATSAPP_NUMBER = site.whatsapp
 
 export function WhatsAppFAB() {
   const { shouldReduceMotion } = useReducedMotionContext()

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import Link from 'next/link'
 import { updateAnalyticsConsent } from '@/features/analytics/events'
@@ -8,13 +8,9 @@ import { updateAnalyticsConsent } from '@/features/analytics/events'
 const CONSENT_KEY = 'consent_status'
 
 export function CookieConsent() {
-  const [visible, setVisible] = useState(false)
-
-  useEffect(() => {
-    if (!localStorage.getItem(CONSENT_KEY)) {
-      setVisible(true)
-    }
-  }, [])
+  const [visible, setVisible] = useState(
+    () => typeof window !== 'undefined' && !localStorage.getItem(CONSENT_KEY)
+  )
 
   function accept() {
     localStorage.setItem(CONSENT_KEY, 'accepted')

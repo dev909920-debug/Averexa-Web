@@ -9,7 +9,7 @@ export function ContactHero() {
     >
       <div className="absolute inset-0" aria-hidden="true">
         <Image
-          src="/assets/hero/about-bg.png"
+          src="/assets/hero/contact/contact-hero.png"
           alt=""
           fill
           className="object-cover object-center"

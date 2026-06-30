@@ -11,7 +11,7 @@ export function BlogArticleLayout({ post }: BlogArticleLayoutProps) {
   return (
     <article className="section-padding pt-32">
       <div className="container-site">
-        <div className="mx-auto max-w-2xl">
+        <div className="blog-article-body mx-auto max-w-2xl xl:max-w-[960px]">
           <BlogArticleHeader post={post} />
 
           <div className="mt-12">

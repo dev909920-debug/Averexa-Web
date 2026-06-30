@@ -2,15 +2,12 @@
 
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'motion/react'
-import { useMediaQuery } from '@/hooks/useMediaQuery'
-import { HeroPosterImage } from './HeroPosterImage'
 import { HeroVideo } from './HeroVideo'
 import { HeroTextOverlay } from './HeroTextOverlay'
 import { HeroScrollCue } from './HeroScrollCue'
 
 export function HeroSection() {
   const ref = useRef<HTMLDivElement>(null)
-  const isDesktop = useMediaQuery('(min-width: 768px)')
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -29,9 +26,9 @@ export function HeroSection() {
       aria-label="Hero"
       className="relative flex min-h-screen items-center justify-center overflow-hidden"
     >
-      {/* Background media — video on desktop, poster image on mobile */}
+      {/* Background media — video on all breakpoints */}
       <div className="absolute inset-0" aria-hidden="true">
-        {isDesktop ? <HeroVideo style={{ scale: videoScale }} /> : <HeroPosterImage />}
+        <HeroVideo style={{ scale: videoScale }} />
       </div>
 
       {/* Scroll darkness overlay — matches New Website */}
