@@ -13,9 +13,6 @@ export const metadata: Metadata = pageMetadata({
     'Meet the team behind Averexa — a dedicated cross-border placement partner helping ambitious professionals land full-time roles in the US and Canada.',
 })
 
-const EMPLOYER_DISCLAIMER =
-  'The imagery above is used for illustrative purposes only. Averexa Placement does not claim verified partnerships or endorsements with any employer or company depicted. Actual employer relationships and placements are described in our Terms of Service.'
-
 export default function AboutPage() {
   return (
     <main id="main-content">
@@ -23,7 +20,7 @@ export default function AboutPage() {
       <AboutMissionSection />
       <CoreValuesSection />
       <MilestoneTimeline />
-      <EmployerNetworkSection disclaimer={EMPLOYER_DISCLAIMER} />
+      <EmployerNetworkSection />
       <CTASection />
     </main>
   )

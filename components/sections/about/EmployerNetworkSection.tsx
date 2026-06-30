@@ -1,17 +1,7 @@
 import Image from 'next/image'
 import { RevealSection } from '@/components/motion/RevealSection'
 
-type EmployerNetworkSectionProps = {
-  /**
-   * MANDATORY: Legal disclaimer text displayed beneath the image.
-   * This section uses third.png which shows employer-associated imagery.
-   * A disclaimer is required to clarify that these are not verified partnerships.
-   * TypeScript will error if this prop is omitted.
-   */
-  disclaimer: string
-}
-
-export function EmployerNetworkSection({ disclaimer }: EmployerNetworkSectionProps) {
+export function EmployerNetworkSection() {
   return (
     <section id="employer-network" className="section-padding bg-ink-900/95">
       <div className="container-site">
@@ -47,11 +37,6 @@ export function EmployerNetworkSection({ disclaimer }: EmployerNetworkSectionPro
                 }}
                 aria-hidden="true"
               />
-            </div>
-
-            {/* Disclaimer — always visible, below the image */}
-            <div className="border-t border-white/8 bg-ink-900/80 px-6 py-4 backdrop-blur-sm">
-              <p className="text-xs text-white/40 leading-relaxed">{disclaimer}</p>
             </div>
           </div>
         </RevealSection>
