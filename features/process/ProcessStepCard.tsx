@@ -47,7 +47,7 @@ export function ProcessStepCard({ step, index, cardRef }: ProcessStepCardProps) 
         style={{
           fontSize: 'clamp(220px, 30vw, 460px)',
           lineHeight: 0.72,
-          bottom: '-2%',
+          bottom: '-3rem',
           ...(isLeft ? { right: '-1%' } : { left: '-1%' }),
           color: 'transparent',
           WebkitTextStroke: '1px rgba(26,138,113,0.09)',
@@ -103,7 +103,7 @@ export function ProcessStepCard({ step, index, cardRef }: ProcessStepCardProps) 
                   className="text-[9px] tracking-[0.24em] uppercase text-emerald-500/40"
                   style={{ fontFamily: 'var(--font-mono, ui-monospace, monospace)' }}
                 >
-                  Step {step.id} of 06
+                  Step {step.id} of 07
                 </div>
               </div>
             </motion.div>

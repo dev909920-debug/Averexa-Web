@@ -19,7 +19,7 @@ const ContentSecurityPolicy = `
     https://www.google-analytics.com
     https://analytics.google.com
     https://www.googletagmanager.com;
-  media-src 'self';
+  media-src 'self' https://files.catbox.moe;
   object-src 'none';
   base-uri 'self';
   form-action 'self';

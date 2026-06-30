@@ -15,7 +15,7 @@ export function HeroVideo({ style }: { style: MotionStyle }) {
       aria-hidden="true"
       style={style}
     >
-      <source src="/assets/hero/hero-video.mp4" type="video/mp4" />
+      <source src="https://files.catbox.moe/dq66me.mp4" type="video/mp4" />
     </motion.video>
   )
 }

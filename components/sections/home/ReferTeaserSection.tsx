@@ -1,23 +1,24 @@
 import { RevealSection } from '@/components/motion/RevealSection'
 import { CTAButton } from '@/components/ui/CTAButton'
 import { Icon } from '@/components/ui/Icon'
+import { ReferRewardGraphic } from './ReferRewardGraphic'
 
-const HEADING = 'var(--font-heading)' // Plus Jakarta Sans
-const BODY    = 'var(--font-body)'    // DM Sans
+const HEADING = 'var(--font-heading)'
+const BODY    = 'var(--font-body)'
 
 export function ReferTeaserSection() {
   return (
     <section
       id="refer-teaser"
       aria-label="Refer & Earn"
-      className="bg-snow-50"
     >
-      <div className="container-site py-10 md:py-14 lg:py-16">
-        <RevealSection>
-          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between md:gap-12">
+      <div className="bg-snow-50 mt-16 md:mt-20 lg:mt-24">
+        <div className="container-site py-16 md:py-20 lg:py-24">
+          <RevealSection>
+          <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between md:gap-16">
 
             {/* Copy column */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-4 md:max-w-lg">
               <div className="flex items-center gap-2">
                 <Icon name="Share2" size="xs" className="text-emerald-500" aria-hidden="true" />
                 <span className="eyebrow">Refer &amp; Earn</span>
@@ -27,9 +28,9 @@ export function ReferTeaserSection() {
                 className="max-w-lg text-balance"
                 style={{
                   fontFamily: HEADING,
-                  fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
+                  fontSize: 'clamp(1.75rem, 3.5vw, 3rem)',
                   fontWeight: 700,
-                  lineHeight: 1.15,
+                  lineHeight: 1.1,
                   letterSpacing: '-0.02em',
                   color: 'var(--color-charcoal-800)',
                 }}
@@ -48,20 +49,25 @@ export function ReferTeaserSection() {
                 Refer a friend or colleague — when they&apos;re successfully placed, you&apos;re
                 rewarded. Reach out to learn how.
               </p>
+
+              <div className="mt-2">
+                <CTAButton
+                  label="Know More"
+                  href="/refer"
+                  size="md"
+                  analyticsLocation="refer-teaser"
+                />
+              </div>
             </div>
 
-            {/* CTA */}
-            <div className="flex-shrink-0">
-              <CTAButton
-                label="Know More"
-                href="/refer"
-                size="md"
-                analyticsLocation="refer-teaser"
-              />
+            {/* SVG illustration column */}
+            <div className="flex-shrink-0 hidden md:block">
+              <ReferRewardGraphic />
             </div>
 
-          </div>
-        </RevealSection>
+            </div>
+          </RevealSection>
+        </div>
       </div>
     </section>
   )
