@@ -1,15 +1,12 @@
 type LegalDocumentProps = {
   title: string
   lastUpdated: string
-  /** When true, shows a banner noting the content is placeholder pending legal review. */
-  isPlaceholder?: boolean
   children: React.ReactNode
 }
 
 export function LegalDocument({
   title,
   lastUpdated,
-  isPlaceholder = false,
   children,
 }: LegalDocumentProps) {
   return (
@@ -20,17 +17,6 @@ export function LegalDocument({
             <h1 className="text-balance">{title}</h1>
             <p className="mt-3 text-sm text-white/40">Last updated: {lastUpdated}</p>
           </header>
-
-          {isPlaceholder && (
-            <div
-              role="note"
-              className="mb-10 rounded-lg border border-amber-400/30 bg-amber-400/5 px-5 py-4 text-sm text-amber-200/80"
-            >
-              <strong className="font-semibold">Draft notice:</strong> This is placeholder content
-              provided for development. Final legal text must be reviewed and approved by the client
-              before launch.
-            </div>
-          )}
 
           <div className="legal-prose flex flex-col gap-8">{children}</div>
         </div>

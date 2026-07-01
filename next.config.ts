@@ -13,23 +13,30 @@ const ContentSecurityPolicy = `
     https://challenges.cloudflare.com
     https://www.google.com
     https://maps.googleapis.com
-    https://maps.gstatic.com;
+    https://maps.gstatic.com
+    https://www.youtube.com
+    https://www.youtube-nocookie.com;
   connect-src 'self'
     https://challenges.cloudflare.com
     https://www.google-analytics.com
     https://analytics.google.com
     https://www.googletagmanager.com;
-  media-src 'self' https://files.catbox.moe;
+  media-src 'self' blob:;
   object-src 'none';
   base-uri 'self';
   form-action 'self';
   frame-ancestors 'none';
+  upgrade-insecure-requests;
 `.replace(/\s{2,}/g, ' ').trim()
 
 const securityHeaders = [
   {
     key: 'Content-Security-Policy',
     value: ContentSecurityPolicy,
+  },
+  {
+    key: 'Strict-Transport-Security',
+    value: 'max-age=63072000; includeSubDomains; preload',
   },
   {
     key: 'X-Frame-Options',
@@ -45,11 +52,19 @@ const securityHeaders = [
   },
   {
     key: 'Permissions-Policy',
-    value: 'camera=(), microphone=(), geolocation=()',
+    value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
   },
   {
     key: 'X-DNS-Prefetch-Control',
     value: 'on',
+  },
+  {
+    key: 'Cross-Origin-Opener-Policy',
+    value: 'same-origin-allow-popups',
+  },
+  {
+    key: 'Cross-Origin-Resource-Policy',
+    value: 'same-site',
   },
 ]
 

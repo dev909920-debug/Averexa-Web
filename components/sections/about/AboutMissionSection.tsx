@@ -33,7 +33,7 @@ export function AboutMissionSection() {
           {/* Mission & Vision */}
           <RevealSection direction="right" delay={0.15}>
             <div className="flex flex-col gap-10">
-              <div className="flex flex-col gap-4 rounded-xl border border-white/8 p-8 glass">
+              <div className="flex flex-col gap-4 rounded-xl border border-white/8 p-6 md:p-8 glass">
                 <span className="eyebrow text-xs">Mission</span>
                 <h3 className="text-xl font-semibold text-white">
                   Connect Talent With Opportunity
@@ -45,7 +45,7 @@ export function AboutMissionSection() {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-4 rounded-xl border border-white/8 p-8 glass">
+              <div className="flex flex-col gap-4 rounded-xl border border-white/8 p-6 md:p-8 glass">
                 <span className="eyebrow text-xs">Vision</span>
                 <h3 className="text-xl font-semibold text-white">
                   A Trusted Global Career Partner

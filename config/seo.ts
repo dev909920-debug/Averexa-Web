@@ -13,14 +13,24 @@ export const defaultMetadata: Metadata = {
     'Canada job placement',
     'career placement consultancy',
     'US visa jobs',
-    'interview preparation',
-    'resume optimization',
+    'H1B job placement',
+    'work authorization jobs USA',
+    'interview preparation USA',
+    'resume optimization ATS',
     'full-time placement US Canada',
     'cross-border careers',
+    'job placement agency',
+    'IT staffing USA',
+    'tech job placement',
+    'guaranteed interviews',
+    'career coaching USA Canada',
   ],
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
   publisher: site.name,
+  alternates: {
+    canonical: site.url,
+  },
   robots: {
     index: true,
     follow: true,
@@ -66,9 +76,14 @@ export const defaultMetadata: Metadata = {
   manifest: '/site.webmanifest',
 }
 
-export function pageMetadata(overrides: Partial<Metadata>): Metadata {
+export function pageMetadata(
+  overrides: Partial<Metadata> & { keywords?: string[]; canonical?: string },
+): Metadata {
+  const { canonical, keywords, ...rest } = overrides
   return {
     ...defaultMetadata,
-    ...overrides,
+    ...rest,
+    ...(keywords && { keywords }),
+    ...(canonical && { alternates: { canonical } }),
   }
 }

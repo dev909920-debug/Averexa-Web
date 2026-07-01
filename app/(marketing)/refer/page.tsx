@@ -9,6 +9,14 @@ export const metadata: Metadata = pageMetadata({
   title: 'Refer & Earn',
   description:
     'Know someone exceptional? Refer them to Averexa and earn a reward when they are successfully placed in a full-time role across the US and Canada.',
+  canonical: '/refer',
+  keywords: [
+    'refer and earn jobs',
+    'referral program career placement',
+    'earn money referring friends USA',
+    'job referral bonus',
+    'placement referral program',
+  ],
 })
 
 export default function ReferPage() {

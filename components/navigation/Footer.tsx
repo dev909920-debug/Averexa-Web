@@ -4,7 +4,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'motion/react'
 import { Icon } from '@/components/ui/Icon'
-import { CTAButton } from '@/components/ui/CTAButton'
 import type { IconName } from '@/config/icons'
 
 const NAVIGATE_LINKS = [
@@ -56,77 +55,6 @@ export function Footer() {
             'linear-gradient(to right, transparent 0%, rgba(26,138,113,0.45) 30%, rgba(181,234,204,0.6) 50%, rgba(26,138,113,0.45) 70%, transparent 100%)',
         }}
       />
-
-      {/* ── Pre-footer editorial statement ───────────────────── */}
-      <div className="border-b border-white/[0.05]">
-        <div className="container-site py-20 md:py-28">
-          <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between md:gap-16">
-
-            {/* Left — big editorial statement */}
-            <motion.div
-              className="min-w-0"
-              initial={{ opacity: 0, y: 36 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.75, ease }}
-            >
-              {/* "Let's talk" label */}
-              <div className="flex items-center gap-3 mb-5">
-                <span
-                  className="block h-px w-8 shrink-0"
-                  style={{ background: '#1A8A71' }}
-                />
-                <span
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.6rem',
-                    letterSpacing: '0.26em',
-                    textTransform: 'uppercase',
-                    color: 'rgba(26,138,113,0.8)',
-                  }}
-                >
-                  Let&rsquo;s talk
-                </span>
-              </div>
-
-              {/* Big editorial headline */}
-              <h2
-                style={{
-                  fontFamily: 'var(--font-editorial)',
-                  fontSize: 'clamp(2.6rem, 5.5vw, 6.4rem)',
-                  fontWeight: 700,
-                  lineHeight: 0.9,
-                  letterSpacing: '-0.02em',
-                }}
-              >
-                <span className="block text-white">Your next chapter</span>
-                <span
-                  className="block"
-                  style={{
-                    background: 'linear-gradient(135deg, #B5EACC 0%, #1A8A71 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
-                >
-                  starts here.
-                </span>
-              </h2>
-            </motion.div>
-
-            {/* Right — CTA */}
-            <motion.div
-              className="shrink-0"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.65, delay: 0.2, ease }}
-            >
-              <CTAButton label="Book a Free Consultation" href="/contact" size="lg" />
-            </motion.div>
-          </div>
-        </div>
-      </div>
 
       {/* ── 4-column link grid ────────────────────────────────── */}
       <div className="relative z-10 border-b border-white/[0.05]">

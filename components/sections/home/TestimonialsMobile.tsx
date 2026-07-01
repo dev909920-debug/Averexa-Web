@@ -44,7 +44,7 @@ export function TestimonialsMobile() {
         <button
           onClick={prev}
           aria-label="Previous testimonial"
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-emerald-500/50 hover:text-emerald-400"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-emerald-500/50 hover:text-emerald-400"
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -67,7 +67,7 @@ export function TestimonialsMobile() {
         <button
           onClick={next}
           aria-label="Next testimonial"
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-emerald-500/50 hover:text-emerald-400"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-emerald-500/50 hover:text-emerald-400"
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

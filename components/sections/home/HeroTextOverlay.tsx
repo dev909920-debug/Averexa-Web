@@ -131,7 +131,7 @@ export function HeroTextOverlay() {
       {/* ── Trust strip — bottom center ──────────────────────────────────── */}
       <motion.div
         variants={staggerItem}
-        className="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-x-5 gap-y-2"
+        className="absolute bottom-5 left-1/2 -translate-x-1/2 hidden md:flex items-center justify-center gap-x-3 gap-y-2 flex-wrap md:flex-nowrap md:gap-x-5"
       >
         {trustItems.map((item) => (
           <span

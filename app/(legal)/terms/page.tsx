@@ -10,7 +10,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function TermsPage() {
   return (
-    <LegalDocument title="Terms of Service" lastUpdated="27 June 2026" isPlaceholder>
+    <LegalDocument title="Terms of Service" lastUpdated="27 June 2026">
       <LegalSection heading="1. Acceptance of Terms">
         <p>
           By accessing or using the Averexa Placement website and services, you agree to be bound by

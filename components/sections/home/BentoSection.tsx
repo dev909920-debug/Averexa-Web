@@ -195,26 +195,41 @@ function FeatureCard({ id, icon, title, description, image, colSpan, isHovered, 
               {title}
             </h3>
 
-            <AnimatePresence>
-              {isHovered && (
-                <motion.p
-                  key={`desc-${id}`}
-                  initial={{ opacity: 0, y: 14, height: 0, marginTop: 0 }}
-                  animate={{ opacity: 1, y: 0, height: 'auto', marginTop: 10 }}
-                  exit={{ opacity: 0, y: 8, height: 0, marginTop: 0 }}
-                  transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '0.875rem',
-                    color: 'rgba(255,255,255,0.68)',
-                    lineHeight: 1.65,
-                    overflow: 'hidden',
-                  }}
-                >
-                  {description}
-                </motion.p>
-              )}
-            </AnimatePresence>
+            <p
+              className="md:hidden"
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.875rem',
+                color: 'rgba(255,255,255,0.68)',
+                lineHeight: 1.65,
+                marginTop: 10,
+              }}
+            >
+              {description}
+            </p>
+
+            <div className="hidden md:block">
+              <AnimatePresence>
+                {isHovered && (
+                  <motion.p
+                    key={`desc-${id}`}
+                    initial={{ opacity: 0, y: 14, height: 0, marginTop: 0 }}
+                    animate={{ opacity: 1, y: 0, height: 'auto', marginTop: 10 }}
+                    exit={{ opacity: 0, y: 8, height: 0, marginTop: 0 }}
+                    transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+                    style={{
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '0.875rem',
+                      color: 'rgba(255,255,255,0.68)',
+                      lineHeight: 1.65,
+                      overflow: 'hidden',
+                    }}
+                  >
+                    {description}
+                  </motion.p>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>

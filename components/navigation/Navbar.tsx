@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { useNavScroll } from '@/hooks/useNavScroll'
 import { NavPill } from './NavPill'
-import { MobileMenuButton } from './MobileMenuButton'
 import { MobileNavDrawer } from './MobileNavDrawer'
 import { cn } from '@/lib/utils'
 
@@ -20,17 +19,11 @@ export function Navbar() {
         )}
         role="banner"
       >
-        <div className="flex items-center justify-between px-4 md:px-0">
-          <NavPill isScrolled={isScrolled} className="flex-1" />
-
-          {/* Mobile hamburger — outside the pill */}
-          <div className="md:hidden ml-2">
-            <MobileMenuButton
-              isOpen={mobileOpen}
-              onClick={() => setMobileOpen((prev) => !prev)}
-            />
-          </div>
-        </div>
+        <NavPill
+          isScrolled={isScrolled}
+          mobileOpen={mobileOpen}
+          onMobileToggle={() => setMobileOpen((prev) => !prev)}
+        />
       </header>
 
       <MobileNavDrawer isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />

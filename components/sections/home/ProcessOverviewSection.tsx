@@ -8,6 +8,8 @@ import { Icon } from '@/components/ui/Icon'
 import { CTAButton } from '@/components/ui/CTAButton'
 import type { IconName } from '@/config/icons'
 
+const ease = [0.16, 1, 0.3, 1] as const
+
 export function ProcessOverviewSection() {
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -151,8 +153,129 @@ export function ProcessOverviewSection() {
               }}
             />
 
-            {/* Steps */}
-            <div className="flex flex-col gap-10 md:gap-0">
+            {/* ── Mobile: icon rail + title index ──────────────────── */}
+            <div className="relative flex flex-col md:hidden">
+
+              {/* Static rail */}
+              <div
+                className="absolute"
+                style={{
+                  left: '2rem',
+                  marginLeft: '-0.75px',
+                  top: '2rem',
+                  bottom: '2rem',
+                  width: '1.5px',
+                  background: 'rgba(255,255,255,0.06)',
+                }}
+              />
+
+              {/* Animated fill rail — draws down as the section scrolls */}
+              <motion.div
+                className="absolute origin-top"
+                style={{
+                  left: '2rem',
+                  marginLeft: '-0.75px',
+                  top: '2rem',
+                  width: '1.5px',
+                  scaleY: lineProgress,
+                  background: 'linear-gradient(to bottom, rgba(26,138,113,0.4) 0%, #1A8A71 50%, #B5EACC 100%)',
+                  filter: 'drop-shadow(0 0 3px rgba(26,138,113,0.5))',
+                }}
+              />
+
+              {/* Traveling glow dot */}
+              <motion.div
+                className="absolute -translate-x-1/2"
+                style={{
+                  left: '2rem',
+                  top: dotTop,
+                  width: '7px',
+                  height: '7px',
+                  borderRadius: '50%',
+                  background: '#B5EACC',
+                  boxShadow: '0 0 0 3px rgba(181,234,204,0.2), 0 0 10px rgba(181,234,204,0.7), 0 0 20px rgba(26,138,113,0.5)',
+                }}
+              />
+
+              {homepageProcessSteps.map((step, i) => (
+                <motion.div
+                  key={step.id}
+                  className="group relative flex items-center gap-5 py-7"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.6 }}
+                  transition={{ duration: 0.6, delay: i * 0.05, ease }}
+                >
+                  {/* Big icon — sits on the rail */}
+                  <motion.div
+                    className="relative z-10 flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full border"
+                    initial={{
+                      scale: 0.75,
+                      background: '#001413',
+                      borderColor: 'rgba(26,138,113,0.22)',
+                      boxShadow: '0 0 0 5px #001413',
+                    }}
+                    whileInView={{
+                      scale: 1,
+                      background: '#001413',
+                      borderColor: 'rgba(26,138,113,0.55)',
+                      boxShadow: '0 0 0 5px #001413, 0 0 18px rgba(26,138,113,0.4)',
+                    }}
+                    viewport={{ once: true, amount: 0.6 }}
+                    transition={{ duration: 0.6, delay: i * 0.05, ease }}
+                  >
+                    <Icon name={step.icon as IconName} size="xl" className="text-emerald-300" aria-hidden="true" />
+                  </motion.div>
+
+                  {/* Text */}
+                  <motion.div
+                    className="relative z-10 min-w-0 flex-1"
+                    initial={{ opacity: 0, x: 16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.6 }}
+                    transition={{ duration: 0.6, delay: i * 0.05 + 0.12, ease }}
+                  >
+                    <span
+                      className="block tracking-widest mb-1"
+                      style={{
+                        fontFamily: 'var(--font-jetbrains-mono)',
+                        fontSize: '0.6rem',
+                        letterSpacing: '0.22em',
+                        textTransform: 'uppercase',
+                        color: 'rgba(26,138,113,0.55)',
+                      }}
+                    >
+                      {String(step.number).padStart(2, '0')}
+                    </span>
+                    <h3
+                      className="text-white text-balance"
+                      style={{
+                        fontFamily: 'var(--font-editorial)',
+                        fontSize: 'clamp(1.25rem, 5.5vw, 1.625rem)',
+                        fontWeight: 700,
+                        letterSpacing: '-0.02em',
+                        lineHeight: 1.1,
+                      }}
+                    >
+                      {step.title}
+                    </h3>
+                    <span
+                      className="block mt-1 truncate"
+                      style={{
+                        fontFamily: 'var(--font-body)',
+                        fontSize: '0.75rem',
+                        color: 'rgba(255,255,255,0.35)',
+                      }}
+                    >
+                      {step.subtitle}
+                    </span>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* ── Desktop: centered vertical timeline ──────────────── */}
+            <div className="hidden md:flex md:flex-col md:gap-0">
               {homepageProcessSteps.map((step, i) => {
                 const isLeft = i % 2 === 0
 
@@ -160,10 +283,10 @@ export function ProcessOverviewSection() {
                   <motion.div
                     key={step.id}
                     style={{ opacity: stepOpacities[i], y: stepYs[i] }}
-                    className={`relative flex items-start gap-5 md:py-8 ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                    className={`relative flex items-start gap-5 py-8 ${isLeft ? 'flex-row' : 'flex-row-reverse'}`}
                   >
                     {/* Content */}
-                    <div className={`flex-1 min-w-0 ${isLeft ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'}`}>
+                    <div className={`flex-1 min-w-0 block ${isLeft ? 'text-right pr-12' : 'text-left pl-12'}`}>
                       <div
                         className="relative inline-block text-left rounded-2xl border p-5 transition-all duration-400 group hover:border-emerald-500/20"
                         style={{
@@ -180,17 +303,6 @@ export function ProcessOverviewSection() {
                               'radial-gradient(ellipse at 50% 50%, rgba(26,138,113,0.06) 0%, transparent 70%)',
                           }}
                         />
-
-                        {/* Mobile icon */}
-                        <div
-                          className="md:hidden flex h-9 w-9 items-center justify-center rounded-lg border mb-3"
-                          style={{
-                            borderColor: 'rgba(26,138,113,0.2)',
-                            background: 'rgba(26,138,113,0.06)',
-                          }}
-                        >
-                          <Icon name={step.icon as IconName} size="xs" className="text-emerald-400" aria-hidden="true" />
-                        </div>
 
                         <div className="relative z-10">
                           <span
@@ -220,7 +332,7 @@ export function ProcessOverviewSection() {
                     </div>
 
                     {/* Icon circle on the line */}
-                    <div className="relative z-10 hidden md:flex flex-shrink-0 items-start pt-2">
+                    <div className="relative z-10 flex flex-shrink-0 items-start pt-2">
                       <motion.div
                         className="flex h-[2.75rem] w-[2.75rem] items-center justify-center rounded-full border"
                         initial={{
@@ -241,7 +353,7 @@ export function ProcessOverviewSection() {
                     </div>
 
                     {/* Empty spacer for opposite side */}
-                    <div className="hidden md:block flex-1 min-w-0" />
+                    <div className="flex-1 min-w-0" />
                   </motion.div>
                 )
               })}

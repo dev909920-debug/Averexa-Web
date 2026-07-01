@@ -15,7 +15,7 @@ export function TextLinkButton({ label, href, onClick, className }: TextLinkButt
   const { shouldReduceMotion } = useReducedMotionContext()
 
   const classes = cn(
-    'relative inline-flex items-center text-emerald-500 font-medium text-sm',
+    'relative inline-flex items-center text-emerald-500 font-medium text-sm py-2',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded',
     // underline draw-in from left
     'after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:bg-emerald-500',

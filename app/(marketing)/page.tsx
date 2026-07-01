@@ -20,6 +20,20 @@ export const metadata: Metadata = pageMetadata({
   title: 'Averexa Placement — Your Next Career Move Starts Here',
   description:
     'We help ambitious professionals land full-time roles in the US and Canada with guaranteed interviews, expert preparation, and a dedicated recruiter at every step.',
+  canonical: '/',
+  keywords: [
+    'US job placement agency',
+    'Canada job placement agency',
+    'guaranteed interviews USA',
+    'career placement consultancy',
+    'full-time job placement US Canada',
+    'IT job placement USA',
+    'immigration job placement',
+    'work in USA from India',
+    'work in Canada placement',
+    'recruiter for US jobs',
+    'professional placement service',
+  ],
 })
 
 export default function HomePage() {

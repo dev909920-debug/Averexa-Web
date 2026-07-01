@@ -21,7 +21,7 @@ export function EmployerNetworkSection() {
 
         <RevealSection direction="left" delay={0.1}>
           <div className="relative overflow-hidden rounded-2xl border border-white/8">
-            <div className="relative h-72 sm:h-96">
+            <div className="relative h-56 md:h-72">
               <Image
                 src="/assets/hero/about/employer-network.png"
                 alt="Professional networking and employer connections"

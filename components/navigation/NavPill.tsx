@@ -3,16 +3,19 @@
 import { motion, AnimatePresence } from 'motion/react'
 import { NavLinks } from './NavLinks'
 import { NavCTA } from './NavCTA'
+import { MobileMenuButton } from './MobileMenuButton'
 import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
 type NavPillProps = {
   isScrolled: boolean
+  mobileOpen: boolean
+  onMobileToggle: () => void
   className?: string
 }
 
-export function NavPill({ isScrolled, className }: NavPillProps) {
+export function NavPill({ isScrolled, mobileOpen, onMobileToggle, className }: NavPillProps) {
   return (
     <motion.div
       initial={false}
@@ -51,19 +54,24 @@ export function NavPill({ isScrolled, className }: NavPillProps) {
             className="h-16 w-auto"
             priority
           />
-          <AnimatePresence>
-            {!isScrolled && (
-              <motion.span
-                initial={{ opacity: 0, width: 0 }}
-                animate={{ opacity: 1, width: 'auto' }}
-                exit={{ opacity: 0, width: 0 }}
-                transition={{ duration: 0.2 }}
-                className="text-white font-semibold text-base overflow-hidden whitespace-nowrap"
-              >
-                Averexa Placement
-              </motion.span>
-            )}
-          </AnimatePresence>
+          <span className="md:hidden text-white font-semibold text-base whitespace-nowrap">
+            Averexa Placements
+          </span>
+          <div className="hidden md:block">
+            <AnimatePresence>
+              {!isScrolled && (
+                <motion.span
+                  initial={{ opacity: 0, width: 0 }}
+                  animate={{ opacity: 1, width: 'auto' }}
+                  exit={{ opacity: 0, width: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="text-white font-semibold text-base overflow-hidden whitespace-nowrap"
+                >
+                  Averexa Placement
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </div>
         </Link>
 
         {/* Desktop nav links */}
@@ -74,6 +82,11 @@ export function NavPill({ isScrolled, className }: NavPillProps) {
         {/* CTA */}
         <div className="hidden md:block">
           <NavCTA />
+        </div>
+
+        {/* Mobile hamburger */}
+        <div className="md:hidden">
+          <MobileMenuButton isOpen={mobileOpen} onClick={onMobileToggle} />
         </div>
       </div>
     </motion.div>

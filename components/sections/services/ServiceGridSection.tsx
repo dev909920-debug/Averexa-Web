@@ -1,40 +1,57 @@
+'use client'
+
+import { motion } from 'motion/react'
 import { services } from '@/content/services'
 import { ServiceCard } from '@/components/cards/ServiceCard'
-import { StaggerContainer } from '@/components/motion/StaggerContainer'
-import { RevealSection } from '@/components/motion/RevealSection'
+
+const EASE = [0.16, 1, 0.3, 1] as const
 
 export function ServiceGridSection() {
   return (
     <section id="services-grid" className="section-padding bg-ink-900">
       <div className="container-site">
-        <RevealSection direction="left">
-          <div className="mb-14 flex flex-col items-center gap-4 text-center">
-            <span className="eyebrow">Our Expertise</span>
-            <h2 className="text-balance max-w-2xl">
-              Everything You Need to{' '}
-              <span className="text-gradient">Land Your Role.</span>
-            </h2>
-            <p className="body-lg max-w-xl text-white/60">
-              From your first profile review to your first day on the job — a complete placement
-              service built around your career goals.
-            </p>
-          </div>
-        </RevealSection>
-
-        <StaggerContainer
-          className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
-          staggerDelay={0.07}
-          delayChildren={0.1}
+        {/* Header */}
+        <motion.div
+          className="mb-14 flex flex-col items-center gap-4 text-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.7, ease: EASE }}
         >
-          {services.map((service) => (
-            <ServiceCard
+          <span className="eyebrow">Our Expertise</span>
+          <h2 className="text-balance max-w-2xl">
+            Everything You Need to{' '}
+            <span className="text-gradient">Land Your Role.</span>
+          </h2>
+          <p className="body-lg max-w-xl text-white/60">
+            From your first profile review to your first day on the job — a complete placement
+            service built around your career goals.
+          </p>
+        </motion.div>
+
+        {/* Cards grid — staggered scroll entrance per card */}
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {services.map((service, i) => (
+            <motion.div
               key={service.id}
-              icon={service.icon}
-              title={service.title}
-              description={service.description}
-            />
+              initial={{ opacity: 0, y: 60, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{
+                duration: 0.72,
+                delay: i * 0.07,
+                ease: EASE,
+              }}
+            >
+              <ServiceCard
+                icon={service.icon}
+                title={service.title}
+                description={service.description}
+                href="/contact"
+              />
+            </motion.div>
           ))}
-        </StaggerContainer>
+        </div>
       </div>
     </section>
   )

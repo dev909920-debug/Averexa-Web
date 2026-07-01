@@ -12,6 +12,20 @@ export const metadata: Metadata = pageMetadata({
   title: 'Our Services',
   description:
     'IT placement, non-IT placement, executive search, resume optimization, interview preparation, and career guidance — end-to-end support for your US & Canada career move.',
+  canonical: '/services',
+  keywords: [
+    'IT staffing services USA',
+    'non-IT job placement USA',
+    'executive search US Canada',
+    'resume optimization ATS',
+    'ATS resume writing service',
+    'mock interview coaching',
+    'career guidance USA',
+    'interview preparation service',
+    'employer network US Canada',
+    'profile marketing for jobs',
+    'job placement services',
+  ],
 })
 
 export default function ServicesPage() {

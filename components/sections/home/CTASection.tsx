@@ -130,6 +130,26 @@ export function CTASection() {
                 Your next opportunity is closer than you think.
               </p>
 
+              {/* Divider */}
+              <div
+                className="h-px w-16"
+                style={{ background: 'rgba(26,138,113,0.25)' }}
+                aria-hidden="true"
+              />
+
+              {/* Sign-off line */}
+              <p
+                className="text-balance text-white/50"
+                style={{
+                  fontFamily: 'var(--font-editorial)',
+                  fontSize: 'clamp(1.05rem, 1.6vw, 1.375rem)',
+                  fontStyle: 'italic',
+                  letterSpacing: '-0.01em',
+                }}
+              >
+                Let&rsquo;s talk — your next chapter starts here.
+              </p>
+
               <div className="flex flex-col items-center gap-4 sm:flex-row">
                 <CTAButton label="Book a Free Consultation" href="/contact" size="lg" />
                 <OutlineButton label="View Our Process" href="/process" />

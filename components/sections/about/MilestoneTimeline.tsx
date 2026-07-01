@@ -72,8 +72,8 @@ export function MilestoneTimeline() {
                   viewport={{ once: true, margin: '-60px' }}
                   transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full border border-emerald-500/40 bg-emerald-500/10">
-                    <div className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
+                  <div className="flex h-10 w-10 md:h-14 md:w-14 items-center justify-center rounded-full border border-emerald-500/40 bg-emerald-500/10">
+                    <div className="h-2 w-2 md:h-2.5 md:w-2.5 rounded-full bg-emerald-500" />
                   </div>
                 </motion.div>
 

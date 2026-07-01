@@ -116,7 +116,9 @@ export function ProcessStepCard({ step, index, cardRef }: ProcessStepCardProps) 
                 className="absolute top-[2px] left-[2px] select-none pointer-events-none font-bold leading-[0.9] tracking-[-0.03em]"
                 style={{
                   fontFamily: 'var(--font-clash, system-ui, sans-serif)',
-                  fontSize: 'clamp(40px, 4.5vw, 80px)',
+                  fontSize: 'clamp(36px, 3.8vw, 72px)',
+                  overflowWrap: 'break-word',
+                  wordBreak: 'break-word',
                   color: 'transparent',
                   WebkitTextStroke: '1px rgba(26,138,113,0.22)',
                 }}
@@ -128,7 +130,9 @@ export function ProcessStepCard({ step, index, cardRef }: ProcessStepCardProps) 
                   className="relative font-bold leading-[0.9] tracking-[-0.03em]"
                   style={{
                     fontFamily: 'var(--font-clash, system-ui, sans-serif)',
-                    fontSize: 'clamp(40px, 4.5vw, 80px)',
+                    fontSize: 'clamp(36px, 3.8vw, 72px)',
+                    overflowWrap: 'break-word',
+                    wordBreak: 'break-word',
                     background:
                       'linear-gradient(158deg, #ffffff 0%, #f2faf7 35%, #B5EACC 63%, #1A8A71 100%)',
                     WebkitBackgroundClip: 'text',
@@ -175,22 +179,32 @@ export function ProcessStepCard({ step, index, cardRef }: ProcessStepCardProps) 
               {step.description}
             </motion.p>
 
-            {/* Tags — staggered scale-in */}
-            <div className="flex flex-wrap gap-2">
+            {/* Focus areas — tick-mark manifest, reads like a spec sheet */}
+            <div className="flex flex-col gap-3">
               {step.tags.map((tag, ti) => (
-                <motion.span
+                <motion.div
                   key={tag}
-                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/10 bg-emerald-500/5 text-[11px] tracking-widest uppercase text-white/35"
-                  initial={{ opacity: 0, scale: 0.85 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.85 }}
-                  transition={{ duration: 0.45, delay: 0.36 + ti * 0.07, ease }}
+                  className="group flex items-center gap-4"
+                  initial={{ opacity: 0, x: -14 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -14 }}
+                  transition={{ duration: 0.5, delay: 0.4 + ti * 0.09, ease }}
                 >
+                  <span className="relative block h-px w-6 shrink-0 overflow-hidden" aria-hidden="true">
+                    <motion.span
+                      className="absolute inset-0 origin-left"
+                      style={{ background: 'linear-gradient(to right, #1A8A71, #B5EACC)' }}
+                      initial={{ scaleX: 0 }}
+                      animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+                      transition={{ duration: 0.55, delay: 0.46 + ti * 0.09, ease }}
+                    />
+                  </span>
                   <span
-                    className="w-1 h-1 rounded-full bg-emerald-500 shrink-0"
-                    style={{ boxShadow: '0 0 5px rgba(26,138,113,0.8)' }}
-                  />
-                  {tag}
-                </motion.span>
+                    className="text-[11px] font-medium tracking-[0.24em] uppercase text-white/40 transition-all duration-300 group-hover:tracking-[0.3em] group-hover:text-emerald-300"
+                    style={{ fontFamily: 'var(--font-mono, ui-monospace, monospace)' }}
+                  >
+                    {tag}
+                  </span>
+                </motion.div>
               ))}
             </div>
           </div>

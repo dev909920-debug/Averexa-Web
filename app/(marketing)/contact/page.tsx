@@ -10,6 +10,16 @@ export const metadata: Metadata = pageMetadata({
   title: 'Contact Us',
   description:
     'Get in touch with Averexa — whether you are hiring or looking for your next opportunity, we would love to hear from you.',
+  canonical: '/contact',
+  keywords: [
+    'contact career placement agency',
+    'book free career consultation',
+    'speak to a recruiter',
+    'US Canada job inquiry',
+    'career consultation booking',
+    'placement agency contact',
+    'free career advice USA',
+  ],
 })
 
 export default function ContactPage() {

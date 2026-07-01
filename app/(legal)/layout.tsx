@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import { Navbar } from '@/components/navigation/Navbar'
 
 export default function LegalLayout({
   children,
@@ -8,21 +8,9 @@ export default function LegalLayout({
 }) {
   return (
     <div className="flex min-h-screen flex-col bg-ink-900">
-      {/* Minimal logo-only header */}
-      <header className="border-b border-white/8">
-        <div className="container-site flex h-20 items-center">
-          <Link
-            href="/"
-            aria-label="Averexa Placement — Home"
-            className="inline-flex items-center gap-2 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
-          >
-            <Image src="/brand/logo.svg" alt="Averexa Placement" width={96} height={96} className="h-24 w-auto" />
-            <span className="text-base font-semibold text-white">Averexa Placement</span>
-          </Link>
-        </div>
-      </header>
+      <Navbar />
 
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="flex-1 pt-20 md:pt-32">
         {children}
       </main>
 

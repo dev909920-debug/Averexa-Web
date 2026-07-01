@@ -47,13 +47,13 @@ export function CookieConsent() {
           <div className="flex gap-2">
             <button
               onClick={accept}
-              className="flex-1 h-9 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+              className="flex-1 h-11 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
             >
               Accept
             </button>
             <button
               onClick={decline}
-              className="flex-1 h-9 rounded-lg border border-white/20 text-white/70 hover:text-white text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
+              className="flex-1 h-11 rounded-lg border border-white/20 text-white/70 hover:text-white text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
             >
               Decline
             </button>

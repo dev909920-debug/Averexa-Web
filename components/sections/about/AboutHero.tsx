@@ -4,7 +4,7 @@ import { FadeUp } from '@/components/motion/FadeUp'
 export function AboutHero() {
   return (
     <section
-      className="relative flex min-h-[45vh] items-center overflow-hidden section-padding pt-32"
+      className="relative flex min-h-[35vh] md:min-h-[45vh] items-center overflow-hidden section-padding pt-20 md:pt-32"
       aria-label="About hero"
     >
       <div className="absolute inset-0" aria-hidden="true">

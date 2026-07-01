@@ -10,7 +10,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function PrivacyPage() {
   return (
-    <LegalDocument title="Privacy Policy" lastUpdated="27 June 2026" isPlaceholder>
+    <LegalDocument title="Privacy Policy" lastUpdated="27 June 2026">
       <LegalSection heading="1. Introduction">
         <p>
           Averexa Placement (&ldquo;Averexa,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or

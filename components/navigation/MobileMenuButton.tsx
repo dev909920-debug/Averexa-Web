@@ -17,7 +17,7 @@ export function MobileMenuButton({ isOpen, onClick }: MobileMenuButtonProps) {
       aria-controls="mobile-menu"
       onClick={onClick}
       className={cn(
-        'relative h-10 w-10 inline-flex items-center justify-center rounded-md',
+        'relative h-11 w-11 inline-flex items-center justify-center rounded-md',
         'text-white/70 hover:text-white hover:bg-white/10',
         'transition-colors duration-150',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500',

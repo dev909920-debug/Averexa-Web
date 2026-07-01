@@ -6,7 +6,7 @@ export function ProcessFlowSection() {
     <section id="process-flow" className="section-padding bg-ink-900">
       <div className="container-site">
         <RevealSection direction="left">
-          <div className="mb-16 flex flex-col items-center gap-4 text-center">
+          <div className="mb-10 md:mb-16 flex flex-col items-center gap-4 text-center">
             <span className="eyebrow">The Candidate Journey</span>
             <h2 className="text-balance max-w-2xl">
               Six Steps to Your{' '}
