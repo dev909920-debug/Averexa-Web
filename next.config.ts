@@ -21,7 +21,7 @@ const ContentSecurityPolicy = `
     https://www.google-analytics.com
     https://analytics.google.com
     https://www.googletagmanager.com;
-  media-src 'self' blob:;
+  media-src 'self' blob: https://res.cloudinary.com;
   object-src 'none';
   base-uri 'self';
   form-action 'self';
