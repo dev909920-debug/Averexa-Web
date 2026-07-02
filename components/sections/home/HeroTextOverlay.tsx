@@ -120,9 +120,9 @@ export function HeroTextOverlay() {
       {/* ── CTA — bottom right ───────────────────────────────────────────── */}
       <motion.div
         variants={staggerItem}
-        className="absolute bottom-20 sm:bottom-24 right-10 md:right-14 max-w-[260px] flex flex-col items-start gap-5"
+        className="absolute bottom-20 sm:bottom-24 right-5 sm:right-10 md:right-14 max-w-[260px] flex flex-col items-end sm:items-start gap-5"
       >
-        <div className="flex flex-col items-start gap-3">
+        <div className="flex flex-col items-end sm:items-start gap-3">
           <CTAButton label="Book a Free Consultation" href="/contact" size="md" />
           <OutlineButton label="Start Your Journey" href="/process" />
         </div>
