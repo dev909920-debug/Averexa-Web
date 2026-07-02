@@ -32,7 +32,7 @@ export function ProcessPathMobile() {
               key={step.id}
               initial={{ opacity: 0, x: fromLeft ? -20 : 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
+              viewport={{ once: false, margin: '-50px' }}
               transition={{ duration: 0.55, ease }}
               className="relative flex gap-3 items-start"
             >
@@ -48,7 +48,7 @@ export function ProcessPathMobile() {
                 }}
                 initial={{ scale: 0, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.38, delay: 0.08, ease }}
                 whileTap={{ scale: 0.9 }}
               >
@@ -168,7 +168,7 @@ export function ProcessPathMobile() {
                         className="flex items-center gap-3"
                         initial={{ opacity: 0, x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false }}
                         transition={{ duration: 0.4, delay: 0.1 + ti * 0.08, ease }}
                       >
                         <span className="relative block h-px w-4 shrink-0 overflow-hidden" aria-hidden="true">
@@ -177,7 +177,7 @@ export function ProcessPathMobile() {
                             style={{ background: 'linear-gradient(to right, #1A8A71, #B5EACC)' }}
                             initial={{ scaleX: 0 }}
                             whileInView={{ scaleX: 1 }}
-                            viewport={{ once: true }}
+                            viewport={{ once: false }}
                             transition={{ duration: 0.45, delay: 0.16 + ti * 0.08, ease }}
                           />
                         </span>
@@ -207,7 +207,7 @@ export function ProcessPathMobile() {
         className="mt-10 pb-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-60px' }}
+        viewport={{ once: false, margin: '-60px' }}
         transition={{ duration: 0.45, ease: MOTION.ease.brand }}
       >
         <div

@@ -240,7 +240,7 @@ function FeatureCard({ id, icon, title, description, image, colSpan, isHovered, 
 export function BentoSection() {
   const [hoveredId, setHoveredId] = useState<string | null>(null)
   const sectionRef = useRef<HTMLElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
+  const isInView = useInView(sectionRef, { once: false, margin: '-80px' })
 
   return (
     <section

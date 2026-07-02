@@ -2,7 +2,7 @@ import { RevealSection } from '@/components/motion/RevealSection'
 
 export function AboutMissionSection() {
   return (
-    <section id="about-mission" className="section-padding bg-ink-900">
+    <section id="about-mission" className="section-padding bg-ink-900 overflow-x-hidden">
       <div className="container-site">
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
           {/* Story */}

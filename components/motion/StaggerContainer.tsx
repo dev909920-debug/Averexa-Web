@@ -49,7 +49,7 @@ export function StaggerContainer({
       }}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-80px' }}
+      viewport={{ once: false, margin: '-80px' }}
     >
       {children}
     </MotionTag>

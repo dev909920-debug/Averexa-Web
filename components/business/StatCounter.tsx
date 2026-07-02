@@ -23,12 +23,13 @@ export function StatCounter({
   className,
 }: StatCounterProps) {
   const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
-  const { displayValue, trigger } = useCounterAnimation(value, 0.8, decimals)
+  const isInView = useInView(ref, { once: false, margin: '-80px' })
+  const { displayValue, trigger, reset } = useCounterAnimation(value, 0.8, decimals)
 
   useEffect(() => {
     if (isInView) trigger()
-  }, [isInView, trigger])
+    else reset()
+  }, [isInView, trigger, reset])
 
   const staticLabel = `${prefix}${value.toFixed(decimals)}${suffix} — ${label}`
 

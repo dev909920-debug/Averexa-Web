@@ -113,7 +113,7 @@ export function CTASection() {
                     className="inline-block"
                     initial={{ opacity: 0, y: 40, rotateX: -30 }}
                     whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false }}
                     transition={{ duration: 0.6, delay: i * 0.1, ease }}
                   >
                     {word === 'Your' || word === 'Journey?' ? (

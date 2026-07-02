@@ -33,7 +33,7 @@ const contactInfo = [
 
 export function ContactFormSection() {
   return (
-    <section id="contact-form" className="section-padding bg-ink-900">
+    <section id="contact-form" className="section-padding bg-ink-900 overflow-x-hidden">
       <div className="container-site">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:items-start">
           {/* Left column — contact info */}

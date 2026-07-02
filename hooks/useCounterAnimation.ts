@@ -11,7 +11,6 @@ export function useCounterAnimation(finalValue: number, duration = 0.8, decimals
   const [displayValue, setDisplayValue] = useState(
     shouldReduceMotion ? format(finalValue) : format(0),
   )
-  const [hasTriggered, setHasTriggered] = useState(false)
 
   useEffect(() => {
     const unsubscribe = motionValue.on('change', (v) => {
@@ -23,9 +22,6 @@ export function useCounterAnimation(finalValue: number, duration = 0.8, decimals
   }, [motionValue])
 
   const trigger = useCallback(() => {
-    if (hasTriggered) return
-    setHasTriggered(true)
-
     if (shouldReduceMotion) {
       setDisplayValue(format(finalValue))
       return
@@ -36,7 +32,12 @@ export function useCounterAnimation(finalValue: number, duration = 0.8, decimals
       ease: 'easeOut',
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasTriggered, shouldReduceMotion, finalValue, duration, motionValue])
+  }, [shouldReduceMotion, finalValue, duration, motionValue])
 
-  return { displayValue, trigger }
+  // Instantly rewinds to 0 so the count-up can replay next time it scrolls into view.
+  const reset = useCallback(() => {
+    motionValue.set(0)
+  }, [motionValue])
+
+  return { displayValue, trigger, reset }
 }

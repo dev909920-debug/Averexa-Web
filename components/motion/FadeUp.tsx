@@ -24,7 +24,7 @@ export function FadeUp({ children, delay = 0, className }: FadeUpProps) {
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: 0.45, ease: BRAND_EASE, delay },
+          transition: { duration: 0.6, ease: BRAND_EASE, delay },
         },
       }
 
@@ -34,7 +34,7 @@ export function FadeUp({ children, delay = 0, className }: FadeUpProps) {
       variants={variants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-80px' }}
+      viewport={{ once: false, margin: '-80px' }}
     >
       {children}
     </motion.div>

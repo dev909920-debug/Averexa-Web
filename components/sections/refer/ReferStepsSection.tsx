@@ -25,7 +25,7 @@ const steps: { icon: IconName; title: string; description: string }[] = [
 
 export function ReferStepsSection() {
   return (
-    <section id="refer-steps" className="section-padding bg-ink-900">
+    <section id="refer-steps" className="section-padding bg-ink-900 overflow-x-hidden">
       <div className="container-site">
         <RevealSection direction="left">
           <div className="mb-14 flex flex-col items-center gap-4 text-center">

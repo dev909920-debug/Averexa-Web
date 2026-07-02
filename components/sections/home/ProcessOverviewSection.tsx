@@ -203,7 +203,7 @@ export function ProcessOverviewSection() {
                   className="group relative flex items-center gap-5 py-7"
                   initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.6 }}
+                  viewport={{ once: false, amount: 0.6 }}
                   transition={{ duration: 0.6, delay: i * 0.05, ease }}
                 >
                   {/* Big icon — sits on the rail */}
@@ -221,7 +221,7 @@ export function ProcessOverviewSection() {
                       borderColor: 'rgba(26,138,113,0.55)',
                       boxShadow: '0 0 0 5px #001413, 0 0 18px rgba(26,138,113,0.4)',
                     }}
-                    viewport={{ once: true, amount: 0.6 }}
+                    viewport={{ once: false, amount: 0.6 }}
                     transition={{ duration: 0.6, delay: i * 0.05, ease }}
                   >
                     <Icon name={step.icon as IconName} size="xl" className="text-emerald-300" aria-hidden="true" />
@@ -232,7 +232,7 @@ export function ProcessOverviewSection() {
                     className="relative z-10 min-w-0 flex-1"
                     initial={{ opacity: 0, x: 16 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.6 }}
+                    viewport={{ once: false, amount: 0.6 }}
                     transition={{ duration: 0.6, delay: i * 0.05 + 0.12, ease }}
                   >
                     <span
@@ -345,7 +345,7 @@ export function ProcessOverviewSection() {
                           borderColor: 'rgba(26,138,113,0.5)',
                           boxShadow: '0 0 0 5px #001413, 0 0 14px rgba(26,138,113,0.35)',
                         }}
-                        viewport={{ once: true }}
+                        viewport={{ once: false }}
                         transition={{ duration: 0.6, delay: i * 0.14 + 0.15 }}
                       >
                         <Icon name={step.icon as IconName} size="sm" className="text-emerald-400" aria-hidden="true" />

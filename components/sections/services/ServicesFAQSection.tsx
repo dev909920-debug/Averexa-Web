@@ -5,7 +5,7 @@ import { servicesFaqItems } from '@/content/faq'
 
 export function ServicesFAQSection() {
   return (
-    <section id="services-faq" className="section-padding bg-ink-900/95">
+    <section id="services-faq" className="section-padding bg-ink-900/95 overflow-x-hidden">
       <div className="container-site">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <RevealSection direction="left">

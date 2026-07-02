@@ -3,7 +3,7 @@ import { RevealSection } from '@/components/motion/RevealSection'
 
 export function EmployerNetworkSection() {
   return (
-    <section id="employer-network" className="section-padding bg-ink-900/95">
+    <section id="employer-network" className="section-padding bg-ink-900/95 overflow-x-hidden">
       <div className="container-site">
         <RevealSection direction="right">
           <div className="mb-10 flex flex-col items-center gap-4 text-center">

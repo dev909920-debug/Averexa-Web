@@ -23,7 +23,7 @@ export function StaggerItem({ children, className }: StaggerItemProps) {
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration: 0.45, ease: BRAND_EASE },
+          transition: { duration: 0.55, ease: BRAND_EASE },
         },
       }
 

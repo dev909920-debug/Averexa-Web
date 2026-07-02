@@ -40,7 +40,7 @@ export function RevealSection({
         visible: {
           ...visible,
           transition: {
-            duration: direction === 'up' ? 0.65 : 0.55,
+            duration: direction === 'up' ? 0.8 : 0.7,
             ease: BRAND_EASE,
             delay,
           },
@@ -53,7 +53,7 @@ export function RevealSection({
       variants={variants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-70px' }}
+      viewport={{ once: false, margin: '-70px' }}
     >
       {children}
     </motion.div>

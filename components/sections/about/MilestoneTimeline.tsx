@@ -38,7 +38,7 @@ const milestones = [
 
 export function MilestoneTimeline() {
   return (
-    <section id="journey" className="section-padding bg-ink-900">
+    <section id="journey" className="section-padding bg-ink-900 overflow-x-hidden">
       <div className="container-site">
         <RevealSection direction="left">
           <div className="mb-14 flex flex-col items-center gap-4 text-center">
@@ -69,7 +69,7 @@ export function MilestoneTimeline() {
                   className="relative z-10 flex-shrink-0"
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true, margin: '-60px' }}
+                  viewport={{ once: false, margin: '-60px' }}
                   transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <div className="flex h-10 w-10 md:h-14 md:w-14 items-center justify-center rounded-full border border-emerald-500/40 bg-emerald-500/10">

@@ -81,7 +81,7 @@ export function AboutSummarySection() {
     <section id="about" className="bg-ink-900">
 
       {/* ─── PART 1 · Editorial Split Header ─────────────────────── */}
-      <div className="section-padding border-b border-white/[0.06]">
+      <div className="section-padding border-b border-white/[0.06] overflow-x-hidden">
         <div className="container-site">
 
           <RevealSection>

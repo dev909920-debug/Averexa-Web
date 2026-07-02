@@ -15,7 +15,7 @@ export function CoreValuesSection() {
           className="mb-14 flex flex-col items-center gap-4 text-center"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: false, margin: '-80px' }}
           transition={{ duration: 0.7, ease: EASE }}
         >
           <span className="eyebrow">What Drives Us</span>
@@ -36,7 +36,7 @@ export function CoreValuesSection() {
               key={value.id}
               initial={{ opacity: 0, y: 60, scale: 0.9 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: '-60px' }}
+              viewport={{ once: false, margin: '-60px' }}
               transition={{
                 duration: 0.72,
                 delay: i * 0.09,

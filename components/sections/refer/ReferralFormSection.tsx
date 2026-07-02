@@ -4,7 +4,7 @@ import { RevealSection } from '@/components/motion/RevealSection'
 
 export function ReferralFormSection() {
   return (
-    <section id="referral-form" className="section-padding bg-ink-900/95">
+    <section id="referral-form" className="section-padding bg-ink-900/95 overflow-x-hidden">
       <div className="container-site">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:items-start">
           <FadeUp delay={0.1}>

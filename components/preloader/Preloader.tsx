@@ -17,11 +17,8 @@ const STAR_STYLE   = { transformBox: 'fill-box' as const, transformOrigin: 'cent
 // ─── Module-level flags: survive React Strict Mode double-invocation ─────────
 // React 18 Strict Mode fires every effect twice (mount → cleanup → mount).
 // useState/useRef reset on the synthetic remount; module-scope vars do not.
-// _sessionChecked: prevents the session-storage read from running twice —
-//   the second run sees the key we just wrote and would wrongly set show=false.
-// _timerStarted:   prevents duplicate timer creation on the second effect run.
-let _sessionChecked = false
-let _timerStarted   = false
+// _timerStarted: prevents duplicate timer creation on the second effect run.
+let _timerStarted = false
 
 type Phase = 'animate' | 'exit' | 'done'
 // Merges the former `ready` + `show` booleans into one state to avoid
@@ -35,22 +32,13 @@ export function Preloader() {
   const ready = initState !== 'pending'
   const show  = initState === 'visible'
 
-  // Effect 1 — session gate, runs once per page load
+  // Effect 1 — runs once per full page load/refresh. The Preloader is mounted
+  // at the app root (providers/Providers.tsx) so this only re-runs on an
+  // actual browser refresh, never on client-side route navigation — meaning
+  // the intro plays every time the user reloads the site, by design.
   useEffect(() => {
-    if (_sessionChecked) return
-    _sessionChecked = true
-
-    const key = 'ap-pl-v1'
-    const seen = (() => {
-      try { return !!sessionStorage.getItem(key) } catch { return false }
-    })()
-
-    if (!seen) {
-      try { sessionStorage.setItem(key, '1') } catch { /* storage disabled */ }
-    }
-
     startTransition(() => {
-      setInitState(seen ? 'hidden' : 'visible')
+      setInitState('visible')
     })
   }, [])
 

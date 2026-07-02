@@ -74,7 +74,7 @@ export function StatisticsSection() {
                   className="mb-2 h-px"
                   initial={{ width: 0 }}
                   whileInView={{ width: '2rem' }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   transition={{ duration: 0.6, delay: i * 0.1 + 0.3, ease: [0.16, 1, 0.3, 1] }}
                   style={{ background: 'rgba(26,138,113,0.7)' }}
                 />

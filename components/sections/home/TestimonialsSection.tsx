@@ -8,7 +8,7 @@ const ease = [0.16, 1, 0.3, 1] as const
 
 export function TestimonialsSection() {
   return (
-    <section id="testimonials" className="section-padding bg-ink-900/95">
+    <section id="testimonials" className="section-padding bg-ink-900/95 overflow-x-hidden">
       <div className="container-site">
 
         {/* Editorial split header — matches the About section's asymmetric style */}
@@ -19,7 +19,7 @@ export function TestimonialsSection() {
             <motion.div
               initial={{ opacity: 0, x: -28 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
+              viewport={{ once: false, margin: '-60px' }}
               transition={{ duration: 0.6, ease }}
               className="flex items-center gap-3 mb-6"
             >
@@ -39,7 +39,7 @@ export function TestimonialsSection() {
                 style={{ background: 'linear-gradient(to right, rgba(26,138,113,0.6), transparent)' }}
                 initial={{ width: 0 }}
                 whileInView={{ width: 40 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.7, delay: 0.15, ease }}
               />
             </motion.div>
@@ -47,7 +47,7 @@ export function TestimonialsSection() {
             <motion.h2
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
+              viewport={{ once: false, margin: '-60px' }}
               transition={{ duration: 0.75, delay: 0.05, ease }}
               style={{
                 fontFamily: 'var(--font-editorial)',
@@ -77,7 +77,7 @@ export function TestimonialsSection() {
             className="flex-shrink-0 lg:max-w-[360px] flex flex-col gap-8 lg:pb-3"
             initial={{ opacity: 0, x: 28 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={{ once: false, margin: '-60px' }}
             transition={{ duration: 0.65, delay: 0.15, ease }}
           >
             <p

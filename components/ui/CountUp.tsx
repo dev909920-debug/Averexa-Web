@@ -11,7 +11,7 @@ type CountUpProps = {
 
 export function CountUp({ value, decimals = 0, duration = 1.5 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null)
-  const inView = useInView(ref, { once: true })
+  const inView = useInView(ref, { once: false })
   const [display, setDisplay] = useState('0')
 
   useEffect(() => {
