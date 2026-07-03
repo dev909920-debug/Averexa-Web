@@ -13,7 +13,7 @@ export const services: Service[] = [
     icon: 'Globe',
     title: 'IT Placement',
     description:
-      'Roles across software development, cloud, cybersecurity, data, DevOps, and project management — matched to your skills and ambitions.',
+      'Roles across software development, cloud, cybersecurity, data, DevOps, and project management matched to your skills and ambitions.',
   },
   {
     id: 'non-it-placement',
@@ -34,7 +34,7 @@ export const services: Service[] = [
     icon: 'RefreshCw',
     title: 'Contract & Contract-to-Hire',
     description:
-      'Flexible engagements — short-term, long-term, and contract-to-hire pathways into top companies.',
+      'Flexible engagements short-term, long-term, and contract-to-hire pathways into top companies.',
   },
   {
     id: 'executive-search',

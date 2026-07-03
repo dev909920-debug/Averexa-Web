@@ -24,12 +24,12 @@ export function ServiceGridSection() {
             <span className="text-gradient">Land Your Role.</span>
           </h2>
           <p className="body-lg max-w-xl text-white/60">
-            From your first profile review to your first day on the job — a complete placement
+            From your first profile review to your first day on the job a complete placement
             service built around your career goals.
           </p>
         </motion.div>
 
-        {/* Cards grid — staggered scroll entrance per card */}
+        {/* Cards grid staggered scroll entrance per card */}
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, i) => (
             <motion.div

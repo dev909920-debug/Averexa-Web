@@ -30,7 +30,7 @@ export function ProcessStepCard({ step, index, cardRef }: ProcessStepCardProps) 
       }}
       className="relative min-h-screen flex items-center py-24"
     >
-      {/* Step divider line — connects steps visually */}
+      {/* Step divider line connects steps visually */}
       {index > 0 && (
         <div
           className="absolute top-0 inset-x-0 h-px"
@@ -41,7 +41,7 @@ export function ProcessStepCard({ step, index, cardRef }: ProcessStepCardProps) 
         />
       )}
 
-      {/* Giant architectural watermark — outline, bottom corner, bleeds into next step */}
+      {/* Giant architectural watermark outline, bottom corner, bleeds into next step */}
       <div
         className="absolute select-none pointer-events-none z-0"
         style={{
@@ -108,7 +108,7 @@ export function ProcessStepCard({ step, index, cardRef }: ProcessStepCardProps) 
               </div>
             </motion.div>
 
-            {/* Title — gradient fill + outline echo for 3-D depth */}
+            {/* Title gradient fill + outline echo for 3-D depth */}
             <div className="relative mb-4">
               {/* Outline ghost shifted 2px for depth illusion */}
               <span
@@ -179,7 +179,7 @@ export function ProcessStepCard({ step, index, cardRef }: ProcessStepCardProps) 
               {step.description}
             </motion.p>
 
-            {/* Focus areas — tick-mark manifest, reads like a spec sheet */}
+            {/* Focus areas tick-mark manifest, reads like a spec sheet */}
             <div className="flex flex-col gap-3">
               {step.tags.map((tag, ti) => (
                 <motion.div
@@ -219,7 +219,7 @@ export function ProcessStepCard({ step, index, cardRef }: ProcessStepCardProps) 
           >
             <div className="relative w-full max-w-[800px] mx-auto">
 
-              {/* Ambient bloom — radial glow behind the image */}
+              {/* Ambient bloom radial glow behind the image */}
               <div
                 className="absolute -inset-[18%] -z-10 rounded-full"
                 style={{
@@ -239,7 +239,7 @@ export function ProcessStepCard({ step, index, cardRef }: ProcessStepCardProps) 
                 }}
               />
 
-              {/* Image with directional clip-path wipe — no box, no border */}
+              {/* Image with directional clip-path wipe no box, no border */}
               <motion.div
                 data-step-image
                 className="relative w-full aspect-square"

@@ -29,7 +29,7 @@ export function CoreValueCard({ icon, title, description, className }: CoreValue
   const rotX = useSpring(rawX, SPRING)
   const rotY = useSpring(rawY, SPRING)
 
-  // Icon floats counter to tilt — creates depth illusion
+  // Icon floats counter to tilt creates depth illusion
   const iconDX = useTransform(rotY, [-10, 10], [-7, 7])
   const iconDY = useTransform(rotX, [-10, 10], [7, -7])
 
@@ -60,7 +60,7 @@ export function CoreValueCard({ icon, title, description, className }: CoreValue
   const variant = isHovered ? 'hover' : 'rest'
 
   return (
-    // Perspective wrapper — keeps perspective off the transforming element
+    // Perspective wrapper keeps perspective off the transforming element
     <div style={{ perspective: '900px' }}>
       <motion.div
         ref={cardRef}
@@ -145,7 +145,7 @@ export function CoreValueCard({ icon, title, description, className }: CoreValue
           }}
         />
 
-        {/* ── Icon — floats counter to tilt ── */}
+        {/* ── Icon floats counter to tilt ── */}
         <motion.div
           className="relative mb-4 flex h-11 w-11 items-center justify-center rounded-lg"
           style={{

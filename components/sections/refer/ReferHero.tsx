@@ -35,7 +35,7 @@ export function ReferHero() {
               <span className="text-gradient">Their Next Move?</span>
             </h1>
             <p className="body-lg text-white/70 max-w-lg">
-              Refer a friend or colleague to Averexa Placement — when they succeed, you&apos;re
+              Refer a friend or colleague to Averexa Placement when they succeed, you&apos;re
               rewarded. Reach out to learn about our referral program.
             </p>
           </div>

@@ -20,7 +20,7 @@ export const coreValues: CoreValue[] = [
     icon: 'Trophy',
     title: 'Excellence',
     description:
-      'We strive to exceed expectations in every placement and every preparation session — average is not in our vocabulary.',
+      'We strive to exceed expectations in every placement and every preparation session average is not in our vocabulary.',
   },
   {
     id: 'commitment',

@@ -7,7 +7,7 @@ import { CTASection } from '@/components/sections/home/CTASection'
 export const metadata: Metadata = pageMetadata({
   title: 'Our Process',
   description:
-    'Six steps from profile review to signed offer letter — a transparent, proven candidate journey built for confidence at every stage of your US & Canada career move.',
+    'Six steps from profile review to signed offer letter a transparent, proven candidate journey built for confidence at every stage of your US & Canada career move.',
   canonical: '/process',
   keywords: [
     'job placement process steps',

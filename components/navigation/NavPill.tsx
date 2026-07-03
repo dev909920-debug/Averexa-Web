@@ -44,7 +44,7 @@ export function NavPill({ isScrolled, mobileOpen, onMobileToggle, className }: N
         <Link
           href="/"
           className="flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-md"
-          aria-label="Averexa Placement — Home"
+          aria-label="Averexa Placement Home"
         >
           <Image
             src="/brand/logo-nav.svg"

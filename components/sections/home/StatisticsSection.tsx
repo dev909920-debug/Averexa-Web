@@ -54,7 +54,7 @@ export function StatisticsSection() {
             </div>
           </RevealSection>
 
-          {/* Stats — clip-wipe reveal with stagger */}
+          {/* Stats clip-wipe reveal with stagger */}
           <StaggerContainer
             className="grid grid-cols-2 gap-0 sm:grid-cols-3 lg:grid-cols-5"
             staggerDelay={0.1}
@@ -69,7 +69,7 @@ export function StatisticsSection() {
                   borderLeft: i !== 0 ? '1px solid rgba(255,255,255,0.07)' : 'none',
                 }}
               >
-                {/* Accent top rule — animates in with a width wipe */}
+                {/* Accent top rule animates in with a width wipe */}
                 <motion.div
                   className="mb-2 h-px"
                   initial={{ width: 0 }}
@@ -148,7 +148,7 @@ export function StatisticsSection() {
                 fontStyle: 'italic',
               }}
             >
-              Real outcomes for real professionals — built through trust, expertise, and relentless advocacy.
+              Real outcomes for real professionals built through trust, expertise, and relentless advocacy.
             </p>
           </RevealSection>
         </div>

@@ -10,7 +10,7 @@ const SPRING_STAR = { type: 'spring' as const, stiffness: 400, damping: 18, mass
 
 // ─── SVG transform styles ─────────────────────────────────────────────────────
 // transform-box: fill-box + transform-origin: bottom enables scaleY(0→1) to
-// grow each shape upward from its base — the "career ascent" visual effect.
+// grow each shape upward from its base the "career ascent" visual effect.
 const ASCEND_STYLE = { transformBox: 'fill-box' as const, transformOrigin: 'bottom' as const }
 const STAR_STYLE   = { transformBox: 'fill-box' as const, transformOrigin: 'center' as const }
 
@@ -32,9 +32,9 @@ export function Preloader() {
   const ready = initState !== 'pending'
   const show  = initState === 'visible'
 
-  // Effect 1 — runs once per full page load/refresh. The Preloader is mounted
+  // Effect 1 runs once per full page load/refresh. The Preloader is mounted
   // at the app root (providers/Providers.tsx) so this only re-runs on an
-  // actual browser refresh, never on client-side route navigation — meaning
+  // actual browser refresh, never on client-side route navigation meaning
   // the intro plays every time the user reloads the site, by design.
   useEffect(() => {
     startTransition(() => {
@@ -42,7 +42,7 @@ export function Preloader() {
     })
   }, [])
 
-  // Effect 2 — animation timers, only when show=true
+  // Effect 2 animation timers, only when show=true
   useEffect(() => {
     if (!show || _timerStarted) return
     _timerStarted = true
@@ -145,40 +145,40 @@ export function Preloader() {
               </filter>
             </defs>
 
-            {/* L1: Foundation — base anchors + bottom triangles */}
+            {/* L1: Foundation base anchors + bottom triangles */}
             <motion.g initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.55, ease: EASE }}>
               <path d="M891.666 1685.35L970.557 1528.84C1027.64 1554.88 1086.65 1580.82 1165.24 1569.56L1105.44 1682.81L891.666 1685.35Z" fill="#094A3B"/>
               <path d="M1624.59 1372.33L1823.09 1685.35H2051.03L1624.59 1372.33Z" fill="#0A4337"/>
               <path d="M1755.65 1259.08L2051.03 1685.35L1624.59 1372.33C1681.83 1331.76 1707.07 1311.67 1755.65 1259.08Z" fill="#07332A"/>
             </motion.g>
 
-            {/* L2: Left arm — grows upward from base (scaleY 0→1, origin=bottom) */}
+            {/* L2: Left arm grows upward from base (scaleY 0→1, origin=bottom) */}
             <motion.g style={ASCEND_STYLE} initial={{ scaleY: 0, opacity: 0 }} animate={{ scaleY: 1, opacity: 1 }} transition={{ delay: 0.32, duration: 0.78, ease: EASE }}>
               <path d="M1387.91 657.222L1415.91 1054.22L1520.25 1214.55L1642.4 1082.22L1387.91 657.222Z" fill="#0F5E48"/>
             </motion.g>
 
-            {/* L3: Right arm — staggered 0.1s behind left arm */}
+            {/* L3: Right arm staggered 0.1s behind left arm */}
             <motion.g style={ASCEND_STYLE} initial={{ scaleY: 0, opacity: 0 }} animate={{ scaleY: 1, opacity: 1 }} transition={{ delay: 0.42, duration: 0.78, ease: EASE }}>
               <path d="M993.461 1481.76L1387.92 657.222L1415.91 1054.22L1247.95 1400.32C1159.59 1442.14 1075.43 1466.52 993.461 1481.76Z" fill="#2A8867"/>
             </motion.g>
 
-            {/* L4: Mint gradient sweep — the luminous bridge of opportunity */}
+            {/* L4: Mint gradient sweep the luminous bridge of opportunity */}
             <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.68, duration: 0.65, ease: 'easeOut' }}>
               <path d="M978.191 1509.75C1091.44 1494.66 1210.23 1459.21 1339.56 1385.06C1548.83 1264.38 1711.04 1064.61 1856.17 822.638C1826.47 803.603 1800.39 788.563 1777.28 776.831C1856.58 737.309 1970.82 684.732 2092.85 629.228C1996.65 785.305 1969.42 849.36 1787.46 1082.22C1605.5 1315.07 1465.59 1385.54 1339.56 1444.86C1197.05 1526.02 1092.21 1536.32 973.102 1519.93L978.191 1509.75Z" fill="url(#pl-g0)"/>
               <path d="M2064.85 975.331C2038.36 950.111 2022.2 931.253 1996.14 912.981C1880.76 1084.45 1734.02 1241.27 1637.31 1318.89C1540.61 1396.51 1441.36 1456.31 1359.92 1490.67C1278.49 1525.02 1214.86 1539.02 1172.87 1545.38C1130.88 1551.74 1029.9 1550.24 973.102 1519.93C1102.36 1530.15 1205.11 1526.26 1419.24 1400.58C1633.38 1274.9 1712.65 1166.2 1791.28 1074.58C1894.83 934.256 1996.04 786.756 2090.33 630.374C2083.38 756.854 2075.26 874.478 2064.85 975.331Z" fill="url(#pl-g1)"/>
             </motion.g>
 
-            {/* L5: White bridge — precision architecture, grows from base */}
+            {/* L5: White bridge precision architecture, grows from base */}
             <motion.g filter="url(#pl-f1)" style={ASCEND_STYLE} initial={{ scaleY: 0, opacity: 0 }} animate={{ scaleY: 1, opacity: 1 }} transition={{ delay: 0.92, duration: 0.55, ease: EASE }}>
               <path d="M1209.78 1084.76H1265.76V1125.48C1324.07 1188.44 1405.07 1219.41 1502.44 1227.27L1484.62 1242.54L1454.08 1240V1270.54L1446.45 1275.63L1443.91 1240L1410.82 1232.36L1415.91 1301.07L1405.73 1306.16L1400.64 1229.82L1373.92 1219.64L1377.74 1323.98L1365.01 1334.16L1358.65 1214.55C1349.84 1209.99 1333.03 1203.02 1326.84 1199.31L1337.02 1352L1321.75 1362.18L1309.03 1189.13C1294.75 1179.12 1281.08 1168.97 1268.31 1158.59L1291.21 1377.45L1236.01 1405.9L1217.41 1186.58L1176.69 1260.38L1189.62 1425.75L1171.6 1432.72L1161.42 1278.2L1123.25 1321.46L1131.52 1446.79L1113.22 1452.6L1105.41 1336.73L1064.69 1367.27L1069.2 1465.02L1050.21 1469.75L1046.85 1377.45L1021.79 1422.47L1058.51 1345.71C1125.57 1301.76 1178.98 1237.86 1209.73 1140.77V1084.79L1209.78 1084.76Z" fill="white"/>
             </motion.g>
 
-            {/* L6: Star — springs to life at the apex */}
+            {/* L6: Star springs to life at the apex */}
             <motion.g filter="url(#pl-f0)" style={STAR_STYLE} initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ delay: 1.28, ...SPRING_STAR }}>
               <path d="M1634.77 720.844L1655.13 659.767L1674.09 720.844H1739.11L1686.94 758.635L1706.03 820.094L1655.13 781.921L1602.17 820.094L1622.05 759.017L1571.15 720.844H1634.77Z" fill="#56B09F"/>
             </motion.g>
 
-            {/* L7: AVEREXA wordmark — rises from below */}
+            {/* L7: AVEREXA wordmark rises from below */}
             <motion.g initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.45, duration: 0.55, ease: EASE }}>
               <path d="M362.332 2105.25H414.197L522.659 1914.39L629.493 2105.25H683.851L522.659 1807.5L362.332 2105.25Z" fill="white"/>
               <path d="M482.527 2105.25H562.462L522.507 2033.23L482.527 2105.25Z" fill="#1A8A71"/>
@@ -204,7 +204,7 @@ export function Preloader() {
             </motion.g>
           </svg>
 
-          {/* Diagonal shimmer sweep — single pass at logo completion */}
+          {/* Diagonal shimmer sweep single pass at logo completion */}
           {!reducedMotion && (
             <motion.div
               className="pointer-events-none absolute inset-0 overflow-hidden"

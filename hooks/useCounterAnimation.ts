@@ -17,7 +17,7 @@ export function useCounterAnimation(finalValue: number, duration = 0.8, decimals
       setDisplayValue(format(v))
     })
     return unsubscribe
-    // format is stable — decimals doesn't change after mount
+    // format is stable decimals doesn't change after mount
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [motionValue])
 

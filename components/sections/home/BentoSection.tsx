@@ -106,7 +106,7 @@ function FeatureCard({ id, icon, title, description, image, colSpan, isHovered, 
           transition: `all ${DUR} ${EASE}`,
         }}
       >
-        {/* ── Background image — always visible ────────────── */}
+        {/* ── Background image always visible ────────────── */}
         <div className="absolute inset-0">
           {/* Image with subtle zoom on hover */}
           <div
@@ -125,7 +125,7 @@ function FeatureCard({ id, icon, title, description, image, colSpan, isHovered, 
             />
           </div>
 
-          {/* Bottom gradient — always on for text readability */}
+          {/* Bottom gradient always on for text readability */}
           <div
             className="absolute inset-0"
             style={{
@@ -135,7 +135,7 @@ function FeatureCard({ id, icon, title, description, image, colSpan, isHovered, 
             aria-hidden="true"
           />
 
-          {/* Flat top overlay — fades out on hover revealing image */}
+          {/* Flat top overlay fades out on hover revealing image */}
           <div
             className="absolute inset-0"
             style={{
@@ -252,7 +252,7 @@ export function BentoSection() {
         {/* Editorial split header */}
         <div className="mb-16 flex flex-col gap-10 lg:flex-row lg:items-end lg:gap-20">
 
-          {/* Left — title */}
+          {/* Left title */}
           <motion.div
             className="flex-1 min-w-0"
             initial={{ opacity: 0, x: -24 }}
@@ -301,7 +301,7 @@ export function BentoSection() {
             </h2>
           </motion.div>
 
-          {/* Right — description */}
+          {/* Right description */}
           <motion.p
             className="flex-shrink-0 lg:max-w-[340px] text-white/50 leading-relaxed lg:pb-2"
             style={{ fontSize: 'clamp(0.875rem, 1.05vw, 1rem)' }}
@@ -309,7 +309,7 @@ export function BentoSection() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 24 }}
             transition={{ duration: 0.65, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
           >
-            A complete career placement service — from first contact to your first day on the job.
+            A complete career placement service from first contact to your first day on the job.
             Every tool, every step, one dedicated team.
           </motion.p>
 

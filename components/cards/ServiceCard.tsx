@@ -175,7 +175,7 @@ export function ServiceCard({ icon, title, description, href, className }: Servi
           }}
         />
 
-        {/* ── Icon — counter-parallax ── */}
+        {/* ── Icon counter-parallax ── */}
         <motion.div
           className="relative mb-4 flex h-11 w-11 items-center justify-center rounded-lg"
           style={{

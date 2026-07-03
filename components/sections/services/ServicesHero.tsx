@@ -34,7 +34,7 @@ export function ServicesHero() {
               <span className="text-gradient">Your Success.</span>
             </h1>
             <p className="body-lg text-white/65 max-w-lg">
-              End-to-end support from your first conversation to your first day on the job — across
+              End-to-end support from your first conversation to your first day on the job across
               the US and Canada.
             </p>
           </div>

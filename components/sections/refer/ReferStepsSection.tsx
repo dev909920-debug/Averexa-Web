@@ -64,7 +64,7 @@ export function ReferStepsSection() {
         <RevealSection direction="right" delay={0.1}>
           <p className="mx-auto mt-12 max-w-2xl text-center body-md text-white/50">
             Refer a friend or colleague and earn a reward. Contact us directly to learn about our
-            referral compensation — we&apos;ll walk you through the details personally.
+            referral compensation we&apos;ll walk you through the details personally.
           </p>
         </RevealSection>
       </div>

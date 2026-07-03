@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { motion } from 'motion/react'
 import { Icon } from '@/components/ui/Icon'
 import type { IconName } from '@/config/icons'
+import { site } from '@/config/site'
 
 const NAVIGATE_LINKS = [
   { label: 'Home', href: '/' },
@@ -63,7 +64,7 @@ export function Footer() {
 
             {/* Brand */}
             <div className="col-span-2 flex flex-col gap-5 lg:col-span-1">
-              <Link href="/" aria-label="Averexa Placement — Home" className="inline-flex">
+              <Link href="/" aria-label="Averexa Placement Home" className="inline-flex">
                 <Image
                   src="/brand/logo.svg"
                   alt="Averexa Placement"
@@ -83,6 +84,19 @@ export function Footer() {
               >
                 Full-time US &amp; Canada placements for ambitious professionals worldwide.
               </p>
+              <a
+                href={`https://maps.google.com/?q=${encodeURIComponent(`${site.address.street}, ${site.address.city}, ${site.address.state} ${site.address.zip}`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-white/45 transition-colors duration-200 hover:text-white"
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.825rem',
+                }}
+              >
+                <Icon name="MapPin" size="sm" aria-hidden="true" />
+                <span>{`${site.address.city}, ${site.address.state} ${site.address.zip}`}</span>
+              </a>
             </div>
 
             {/* Navigate */}
@@ -182,7 +196,7 @@ export function Footer() {
         </div>
       </div>
 
-      {/* AVEREXA giant watermark — architectural background element */}
+      {/* AVEREXA giant watermark architectural background element */}
       <div className="pt-6 pb-8 md:pt-10 md:pb-12">
         <p
           className="select-none text-center whitespace-nowrap cursor-default"

@@ -32,7 +32,7 @@ async function sendReferralEmails(data: ReferralData): Promise<void> {
     <h2 style="color:#1A8A71">Hi ${data.referrerName},</h2>
     <p>Thank you for referring ${data.candidateName} to Averexa. We've received your referral and will reach out to them shortly.</p>
     <p>A member of our team will also contact you to walk through our referral reward details personally.</p>
-    <p style="margin-top:24px">— The Averexa Team</p>
+    <p style="margin-top:24px">- The Averexa Team</p>
   `
 
   await Promise.all([
@@ -45,7 +45,7 @@ async function sendReferralEmails(data: ReferralData): Promise<void> {
     resend.emails.send({
       from: 'Averexa <noreply@averexa.com>',
       to: [data.referrerEmail],
-      subject: 'We received your referral — Averexa',
+      subject: 'We received your referral Averexa',
       html: confirmationHtml,
     }),
   ])

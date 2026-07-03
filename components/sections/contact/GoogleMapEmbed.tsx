@@ -8,7 +8,7 @@ const { street, city, state, zip } = site.address
 const FULL_ADDRESS = `${street}, ${city}, ${state} ${zip}, United States`
 const ENCODED_ADDRESS = encodeURIComponent(FULL_ADDRESS)
 
-// Embed URL — pb-format (standard iframe embed, no API key required).
+// Embed URL pb-format (standard iframe embed, no API key required).
 // Coordinates: 35.6489, -88.8069 (Jackson, TN 38305 area).
 // The !2s query param pinpoints the address even if the place-ID changes.
 const MAP_SRC =
@@ -40,7 +40,7 @@ export function GoogleMapEmbed() {
   return (
     <section aria-label="Office location map" className="relative">
 
-      {/* Address bar — sits above the map */}
+      {/* Address bar sits above the map */}
       <div className="flex flex-col gap-3 bg-charcoal-800/60 px-6 py-4 sm:flex-row sm:items-center sm:justify-between backdrop-blur-sm border-t border-white/[0.06]">
         <div className="flex items-start gap-3">
           <Icon name="MapPin" size="sm" className="mt-0.5 shrink-0 text-emerald-400" aria-hidden="true" />
@@ -73,7 +73,7 @@ export function GoogleMapEmbed() {
         </a>
       </div>
 
-      {/* Map iframe — lazy-loads on scroll into view */}
+      {/* Map iframe lazy-loads on scroll into view */}
       <div ref={containerRef} className="relative h-80 sm:h-96">
         {isVisible ? (
           <iframe

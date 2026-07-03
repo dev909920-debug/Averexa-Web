@@ -58,7 +58,7 @@ export function getPostBySlug(slug: string): BlogPostWithContent | null {
   return parseFile(fileName)
 }
 
-/** All slugs — used by generateStaticParams. */
+/** All slugs used by generateStaticParams. */
 export function getAllSlugs(): string[] {
   return readBlogDir().map((f) => f.replace(/\.mdx?$/, ''))
 }

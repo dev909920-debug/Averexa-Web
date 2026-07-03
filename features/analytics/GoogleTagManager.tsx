@@ -14,7 +14,7 @@ export function GoogleTagManager() {
 
   return (
     <>
-      {/* Consent Mode defaults — denied until the user accepts. Plain inline
+      {/* Consent Mode defaults denied until the user accepts. Plain inline
           script so it runs before the GTM container loads. */}
       <script
         dangerouslySetInnerHTML={{
@@ -44,7 +44,7 @@ export function GoogleTagManager() {
   )
 }
 
-/** GTM <noscript> fallback — render inside <body>. */
+/** GTM <noscript> fallback render inside <body>. */
 export function GoogleTagManagerNoScript() {
   if (!GTM_ID) return null
 

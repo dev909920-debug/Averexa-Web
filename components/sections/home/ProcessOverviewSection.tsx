@@ -21,7 +21,7 @@ export function ProcessOverviewSection() {
   const lineProgress = useTransform(scrollYProgress, [0.0, 0.85], [0, 1])
   const dotTop = useTransform(scrollYProgress, [0.0, 0.85], ['0%', '100%'])
 
-  // Seven staggered reveal windows (~0.12 apart) spanning the journey —
+  // Seven staggered reveal windows (~0.12 apart) spanning the journey 
   // one per candidate-journey step, Career Counseling → Onboarding.
   const s0o = useTransform(scrollYProgress, [0.02, 0.11], [0, 1])
   const s0y = useTransform(scrollYProgress, [0.02, 0.13], [32, 0])
@@ -103,7 +103,7 @@ export function ProcessOverviewSection() {
                   maxWidth: '36ch',
                 }}
               >
-                A structured, transparent process — with you in control at every stage.
+                A structured, transparent process with you in control at every stage.
               </p>
             </RevealSection>
           </div>
@@ -111,7 +111,7 @@ export function ProcessOverviewSection() {
           {/* ── Right: Centered vertical timeline ─────────────── */}
           <div className="lg:w-7/12 relative">
 
-            {/* Connector line — centered */}
+            {/* Connector line centered */}
             <div
               className="absolute hidden md:block"
               style={{
@@ -169,7 +169,7 @@ export function ProcessOverviewSection() {
                 }}
               />
 
-              {/* Animated fill rail — draws down as the section scrolls */}
+              {/* Animated fill rail draws down as the section scrolls */}
               <motion.div
                 className="absolute origin-top"
                 style={{
@@ -206,7 +206,7 @@ export function ProcessOverviewSection() {
                   viewport={{ once: false, amount: 0.6 }}
                   transition={{ duration: 0.6, delay: i * 0.05, ease }}
                 >
-                  {/* Big icon — sits on the rail */}
+                  {/* Big icon sits on the rail */}
                   <motion.div
                     className="relative z-10 flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full border"
                     initial={{

@@ -51,7 +51,7 @@ export function BlogCard({
           />
         )}
 
-        {/* Dark gradient overlay — heaviest at the bottom for content legibility */}
+        {/* Dark gradient overlay heaviest at the bottom for content legibility */}
         <div className="blog-card-overlay" aria-hidden="true" />
 
         {/* Top-left: date badge */}
@@ -76,7 +76,7 @@ export function BlogCard({
           </span>
         </div>
 
-        {/* Bottom content — title + Read More always visible; excerpt slides up on hover/focus */}
+        {/* Bottom content title + Read More always visible; excerpt slides up on hover/focus */}
         <div className="blog-card-content">
           <h3 className="text-base font-semibold text-white leading-snug line-clamp-2 mb-2">
             {title}
@@ -96,7 +96,7 @@ export function BlogCard({
               />
             </svg>
           </span>
-          {/* Excerpt — always visible on touch; reveals on hover/focus on pointer devices */}
+          {/* Excerpt always visible on touch; reveals on hover/focus on pointer devices */}
           <p className="body-sm text-white/65 leading-relaxed line-clamp-3 mt-3">
             {excerpt}
           </p>

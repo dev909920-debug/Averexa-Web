@@ -17,7 +17,7 @@ export function ServicesFAQSection() {
               </h2>
               <p className="body-lg text-white/60 leading-relaxed">
                 Still have questions about how our services work? We are always happy to walk you
-                through the details — no pressure.
+                through the details no pressure.
               </p>
               <CTAButton label="Contact Us" href="/contact" />
             </div>

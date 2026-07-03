@@ -4,7 +4,7 @@ import { site } from './site'
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.tagline}`,
+    default: `${site.name} ${site.tagline}`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -47,14 +47,14 @@ export const defaultMetadata: Metadata = {
     locale: 'en_US',
     url: site.url,
     siteName: site.name,
-    title: `${site.name} — ${site.tagline}`,
+    title: `${site.name} ${site.tagline}`,
     description: site.description,
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: `${site.name} — ${site.tagline}`,
+        alt: `${site.name} ${site.tagline}`,
       },
     ],
   },
@@ -62,7 +62,7 @@ export const defaultMetadata: Metadata = {
     card: 'summary_large_image',
     site: '@averexa',
     creator: '@averexa',
-    title: `${site.name} — ${site.tagline}`,
+    title: `${site.name} ${site.tagline}`,
     description: site.description,
     images: ['/og-image.jpg'],
   },

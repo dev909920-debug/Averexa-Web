@@ -16,7 +16,7 @@ export function AboutHero() {
           sizes="100vw"
           priority
         />
-        {/* Dark-left overlay — text positioned left of logo zones in the image */}
+        {/* Dark-left overlay text positioned left of logo zones in the image */}
         <div
           className="absolute inset-0"
           style={{

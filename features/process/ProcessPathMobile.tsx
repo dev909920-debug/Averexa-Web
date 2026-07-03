@@ -132,7 +132,7 @@ export function ProcessPathMobile() {
 
                 {/* Text content */}
                 <div className="p-4">
-                  {/* Title with gradient text — mirrors desktop */}
+                  {/* Title with gradient text mirrors desktop */}
                   <h3
                     className="font-bold leading-tight mb-1"
                     style={{
@@ -160,7 +160,7 @@ export function ProcessPathMobile() {
                     {step.description}
                   </p>
 
-                  {/* Focus areas — tick-mark manifest, reads like a spec sheet */}
+                  {/* Focus areas tick-mark manifest, reads like a spec sheet */}
                   <div className="flex flex-col gap-2">
                     {step.tags.map((tag, ti) => (
                       <motion.div

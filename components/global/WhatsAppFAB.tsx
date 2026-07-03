@@ -4,11 +4,9 @@ import { motion, useTransform } from 'motion/react'
 import { useLenisScroll } from '@/hooks/useLenisScroll'
 import { useReducedMotionContext } from '@/hooks/useReducedMotionContext'
 import { site } from '@/config/site'
-import { Icon } from '@/components/ui/Icon'
 import { useEffect, useRef } from 'react'
 
 const WHATSAPP_NUMBER = site.whatsapp
-const LINKEDIN_URL = site.social.linkedin
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -30,7 +28,7 @@ function FabButton({ href, label, color, ringClassName, delay, shouldReduceMotio
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.5, delay, ease }}
     >
-      {/* Tooltip — desktop only */}
+      {/* Tooltip desktop only */}
       <span
         className="pointer-events-none absolute right-full mr-3 hidden whitespace-nowrap rounded-lg bg-ink-900/95 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg shadow-black/30 ring-1 ring-white/10 transition-opacity duration-200 group-hover:opacity-100 sm:block"
         aria-hidden="true"
@@ -91,18 +89,6 @@ export function WhatsAppFAB() {
       role="complementary"
       aria-label="Contact Averexa"
     >
-      {/* LinkedIn */}
-      <FabButton
-        href={LINKEDIN_URL}
-        label="Connect on LinkedIn"
-        color="#0A66C2"
-        ringClassName="focus-visible:ring-[#0A66C2]"
-        delay={0.28}
-        shouldReduceMotion={shouldReduceMotion}
-      >
-        <Icon name="Linkedin" className="h-7 w-7 text-white" aria-hidden="true" strokeWidth={1.75} />
-      </FabButton>
-
       {/* WhatsApp */}
       <FabButton
         href={`https://wa.me/${WHATSAPP_NUMBER}`}

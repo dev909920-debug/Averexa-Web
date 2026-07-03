@@ -36,7 +36,7 @@ export function ContactFormSection() {
     <section id="contact-form" className="section-padding bg-ink-900 overflow-x-hidden">
       <div className="container-site">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.5fr] lg:items-start">
-          {/* Left column — contact info */}
+          {/* Left column contact info */}
           <FadeUp delay={0.1}>
             <div className="flex flex-col gap-8">
               <div className="flex flex-col gap-3">
@@ -85,7 +85,7 @@ export function ContactFormSection() {
             </div>
           </FadeUp>
 
-          {/* Right column — form */}
+          {/* Right column form */}
           <RevealSection direction="right">
             <div className="rounded-2xl border border-white/[0.06] bg-charcoal-800/40 p-6 sm:p-8 backdrop-blur-sm">
               <ContactForm />

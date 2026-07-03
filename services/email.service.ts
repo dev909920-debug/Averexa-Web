@@ -29,20 +29,20 @@ export async function sendContactEmails(data: ContactData): Promise<void> {
     <h2 style="color:#1A8A71">Hi ${data.fullName},</h2>
     <p>Thank you for reaching out to Averexa. We've received your enquiry and will be in touch within 1–2 business days.</p>
     <p>In the meantime, feel free to connect with us on <a href="https://wa.me/" style="color:#1A8A71">WhatsApp</a>.</p>
-    <p style="margin-top:24px">— The Averexa Team</p>
+    <p style="margin-top:24px">- The Averexa Team</p>
   `
 
   await Promise.all([
     resend.emails.send({
       from: 'Averexa <noreply@averexa.com>',
       to: ['info@averexa.com'],
-      subject: `New Lead: ${data.fullName} — ${data.targetJobTitle}`,
+      subject: `New Lead: ${data.fullName} ${data.targetJobTitle}`,
       html: notificationHtml,
     }),
     resend.emails.send({
       from: 'Averexa <noreply@averexa.com>',
       to: [data.email],
-      subject: 'We received your enquiry — Averexa',
+      subject: 'We received your enquiry Averexa',
       html: confirmationHtml,
     }),
   ])

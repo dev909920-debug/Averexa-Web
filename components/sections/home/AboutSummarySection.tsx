@@ -40,7 +40,7 @@ export function AboutSummarySection() {
     offset: ['start start', 'end end'],
   })
 
-  // Track moves 0 → -200vw over first 75% of scroll — leaves 25% as "hold" on slide 3
+  // Track moves 0 → -200vw over first 75% of scroll leaves 25% as "hold" on slide 3
   const x = useTransform(
     scrollYProgress,
     [0, 0.75],
@@ -55,7 +55,7 @@ export function AboutSummarySection() {
   const text1X = useTransform(scrollYProgress, [0.20, 0.36], [55, 0])
   const text1Opacity = useTransform(scrollYProgress, [0.18, 0.34], [0, 1])
 
-  // Slide 2: centered at sp=0.75, fades in before — stays visible for hold period
+  // Slide 2: centered at sp=0.75, fades in before stays visible for hold period
   const text2X = useTransform(scrollYProgress, [0.54, 0.70], [55, 0])
   const text2Opacity = useTransform(scrollYProgress, [0.52, 0.68], [0, 1])
 
@@ -90,7 +90,7 @@ export function AboutSummarySection() {
 
           <div className="flex flex-col gap-12 lg:flex-row lg:items-end lg:gap-20">
 
-            {/* LEFT — mega editorial heading */}
+            {/* LEFT mega editorial heading */}
             <RevealSection direction="left" className="min-w-0 flex-1">
               <h2
                 aria-label="Your Career, Our Mission."
@@ -137,7 +137,7 @@ export function AboutSummarySection() {
               </h2>
             </RevealSection>
 
-            {/* RIGHT — description paragraph + CTA */}
+            {/* RIGHT description paragraph + CTA */}
             <RevealSection direction="right" delay={0.2} className="flex-1 lg:max-w-[420px]">
               <div className="flex flex-col gap-6 lg:pb-6">
                 <p className="body-lg text-white/65 leading-relaxed">
@@ -147,7 +147,7 @@ export function AboutSummarySection() {
                   possible shot at landing the role you deserve.
                 </p>
                 <p className="body-lg text-white/65 leading-relaxed">
-                  We don&apos;t just find jobs — we build careers through transparency, preparation,
+                  We don&apos;t just find jobs we build careers through transparency, preparation,
                   and relentless advocacy on your behalf.
                 </p>
                 <div className="pt-2">
@@ -160,7 +160,7 @@ export function AboutSummarySection() {
         </div>
       </div>
 
-      {/* ─── PART 2 · Pinned Horizontal Scroll — desktop only ────── */}
+      {/* ─── PART 2 · Pinned Horizontal Scroll desktop only ────── */}
       <div
         ref={trackRef}
         style={{ height: `${SLIDE_COUNT * 100 + 100}vh` }}
@@ -185,7 +185,7 @@ export function AboutSummarySection() {
                   style={{ x: textXValues[i], opacity: textOpacityValues[i] }}
                   className="relative z-10 flex w-1/2 flex-col justify-center px-10 md:px-16 lg:px-24"
                 >
-                  {/* Ghost number — editorial background element */}
+                  {/* Ghost number editorial background element */}
                   <span
                     className="pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 select-none leading-none text-white"
                     style={{

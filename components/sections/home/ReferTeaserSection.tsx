@@ -46,7 +46,7 @@ export function ReferTeaserSection() {
                   lineHeight: 1.7,
                 }}
               >
-                Refer a friend or colleague — when they&apos;re successfully placed, you&apos;re
+                Refer a friend or colleague when they&apos;re successfully placed, you&apos;re
                 rewarded. Reach out to learn how.
               </p>
 

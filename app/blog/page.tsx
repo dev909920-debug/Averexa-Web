@@ -26,7 +26,7 @@ export default function BlogPage() {
                 <span className="text-gradient">Guidance.</span>
               </h1>
               <p className="body-lg text-white/65">
-                Practical advice for landing and thriving in US and Canada roles — from resume
+                Practical advice for landing and thriving in US and Canada roles from resume
                 optimization to relocation.
               </p>
             </div>

@@ -13,7 +13,7 @@ export function ProcessFlowSection() {
               <span className="text-gradient">Offer Letter.</span>
             </h2>
             <p className="body-lg max-w-xl text-white/60">
-              From your first conversation to your first day on the job — a clear, proven journey
+              From your first conversation to your first day on the job a clear, proven journey
               with you in control the whole way.
             </p>
           </div>

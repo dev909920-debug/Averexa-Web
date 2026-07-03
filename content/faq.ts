@@ -15,13 +15,13 @@ export const servicesFaqItems: FAQItem[] = [
     id: 'svc-faq-002',
     question: 'What types of positions do you recruit for?',
     answer:
-      'Full-time, contract, contract-to-hire, and consulting opportunities — from entry-level to executive roles.',
+      'Full-time, contract, contract-to-hire, and consulting opportunities from entry-level to executive roles.',
   },
   {
     id: 'svc-faq-003',
     question: 'Do you work on IT and Non-IT roles?',
     answer:
-      'Yes. We specialize in both IT and Non-IT recruitment — Software Engineering, Data Analytics, AI/ML, Supply Chain, Finance, Healthcare, Sales, Operations, and more.',
+      'Yes. We specialize in both IT and Non-IT recruitment Software Engineering, Data Analytics, AI/ML, Supply Chain, Finance, Healthcare, Sales, Operations, and more.',
   },
   {
     id: 'svc-faq-004',
@@ -48,7 +48,7 @@ export const faqItems: FAQItem[] = [
     id: 'faq-002',
     question: 'How does the placement process work?',
     answer:
-      'Our process includes profile review, resume optimization, active marketing, dedicated recruiter support, interview coordination, offer management, and onboarding assistance — guidance at every stage of your journey.',
+      'Our process includes profile review, resume optimization, active marketing, dedicated recruiter support, interview coordination, offer management, and onboarding assistance guidance at every stage of your journey.',
   },
   {
     id: 'faq-003',
@@ -60,13 +60,13 @@ export const faqItems: FAQItem[] = [
     id: 'faq-004',
     question: 'What types of positions do you recruit for?',
     answer:
-      'Full-time, contract, contract-to-hire, and consulting opportunities — from entry-level to executive roles.',
+      'Full-time, contract, contract-to-hire, and consulting opportunities from entry-level to executive roles.',
   },
   {
     id: 'faq-005',
     question: 'Do you work on IT and Non-IT roles?',
     answer:
-      'Yes. We specialize in both IT and Non-IT recruitment — Software Engineering, Data Analytics, AI/ML, Supply Chain, Finance, Healthcare, Sales, Operations, and more.',
+      'Yes. We specialize in both IT and Non-IT recruitment Software Engineering, Data Analytics, AI/ML, Supply Chain, Finance, Healthcare, Sales, Operations, and more.',
   },
   {
     id: 'faq-006',

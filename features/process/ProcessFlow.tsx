@@ -8,7 +8,7 @@ import { ProcessPathMobile } from './ProcessPathMobile'
 /**
  * Switches between the scroll-linked SVG path (desktop, motion enabled) and
  * the sequential card stack (mobile or reduced motion). The desktop component
- * unmounts entirely below 768px or under reduced motion — never CSS-hidden —
+ * unmounts entirely below 768px or under reduced motion never CSS-hidden 
  * so the SVG and scroll listeners do not run when they should not.
  */
 export function ProcessFlow() {

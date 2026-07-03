@@ -26,12 +26,12 @@ export function HeroSection() {
       aria-label="Hero"
       className="relative flex min-h-screen items-center justify-center overflow-hidden"
     >
-      {/* Background media — video on all breakpoints */}
+      {/* Background media video on all breakpoints */}
       <div className="absolute inset-0" aria-hidden="true">
         <HeroVideo style={{ scale: videoScale }} />
       </div>
 
-      {/* Scroll darkness overlay — matches New Website */}
+      {/* Scroll darkness overlay matches New Website */}
       <motion.div
         className="absolute inset-0 bg-black"
         aria-hidden="true"

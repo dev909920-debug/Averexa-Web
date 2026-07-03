@@ -64,7 +64,7 @@ export function ZigzagPath({ points, svgW, svgH, scrollYProgress }: ZigzagPathPr
       style={{ width: svgW, height: svgH, zIndex: 2, overflow: 'visible' }}
     >
       <defs>
-        {/* Stroke gradient — light mint at top fading to deep teal */}
+        {/* Stroke gradient light mint at top fading to deep teal */}
         <linearGradient id="zigzag-grad" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%"   stopColor="#B5EACC" stopOpacity="1" />
           <stop offset="38%"  stopColor="#1A8A71" stopOpacity="1" />
@@ -94,7 +94,7 @@ export function ZigzagPath({ points, svgW, svgH, scrollYProgress }: ZigzagPathPr
         </filter>
       </defs>
 
-      {/* Ghost path — full route shown as faint dashes so the user can see where the line will go */}
+      {/* Ghost path full route shown as faint dashes so the user can see where the line will go */}
       <path
         d={d}
         fill="none"
@@ -116,7 +116,7 @@ export function ZigzagPath({ points, svgW, svgH, scrollYProgress }: ZigzagPathPr
         style={{ pathLength }}
       />
 
-      {/* Glowing orb at the drawing tip — group moves together */}
+      {/* Glowing orb at the drawing tip group moves together */}
       <motion.g style={{ x: dotX, y: dotY, opacity: dotOpacity }}>
         {/* Outer pulse ring */}
         <motion.circle

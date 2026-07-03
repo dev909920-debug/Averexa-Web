@@ -14,7 +14,7 @@ export function EmployerNetworkSection() {
             </h2>
             <p className="body-lg max-w-xl text-white/60">
               We have built relationships with employers across technology, finance, healthcare, and
-              beyond — so your profile reaches the right people.
+              beyond so your profile reaches the right people.
             </p>
           </div>
         </RevealSection>

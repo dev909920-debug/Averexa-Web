@@ -52,7 +52,7 @@ export function MobileNavDrawer({ isOpen, onClose }: MobileNavDrawerProps) {
                   />
                 </div>
 
-                {/* Nav links — stagger in */}
+                {/* Nav links stagger in */}
                 <motion.div
                   initial="hidden"
                   animate="visible"

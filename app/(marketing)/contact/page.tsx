@@ -9,7 +9,7 @@ import { GoogleMapEmbed } from '@/components/sections/contact/GoogleMapEmbed'
 export const metadata: Metadata = pageMetadata({
   title: 'Contact Us',
   description:
-    'Get in touch with Averexa — whether you are hiring or looking for your next opportunity, we would love to hear from you.',
+    'Get in touch with Averexa whether you are hiring or looking for your next opportunity, we would love to hear from you.',
   canonical: '/contact',
   keywords: [
     'contact career placement agency',

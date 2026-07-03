@@ -17,7 +17,7 @@ export function ProcessNode({ state, number }: ProcessNodeProps) {
 
   return (
     <div className="relative flex items-center justify-center">
-      {/* Glow ring — visible once active or completed */}
+      {/* Glow ring visible once active or completed */}
       <motion.span
         aria-hidden="true"
         className="absolute inset-0 rounded-full"

@@ -64,7 +64,7 @@ export function useProcessPath(
 
   const smoothedPathLength = useSpring(rawProgress, MOTION.spring.process)
 
-  // Forward-only node activation — a node never deactivates on scroll-back.
+  // Forward-only node activation a node never deactivates on scroll-back.
   const [nodeStates, setNodeStates] = useState<boolean[]>(() =>
     PROCESS_SCROLL_THRESHOLDS.map(() => false),
   )

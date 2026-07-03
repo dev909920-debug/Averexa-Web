@@ -96,7 +96,7 @@ export function CTASection() {
                 />
               </div>
 
-              {/* Big editorial heading — per-word stagger */}
+              {/* Big editorial heading per-word stagger */}
               <h2
                 className="text-balance inline-flex flex-wrap items-baseline justify-center gap-x-[0.25em]"
                 style={{
@@ -147,7 +147,7 @@ export function CTASection() {
                   letterSpacing: '-0.01em',
                 }}
               >
-                Let&rsquo;s talk — your next chapter starts here.
+                Let&rsquo;s talk your next chapter starts here.
               </p>
 
               <div className="flex flex-col items-center gap-4 sm:flex-row">

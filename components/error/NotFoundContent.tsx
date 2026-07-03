@@ -5,7 +5,7 @@ import { CTAButton } from '@/components/ui/CTAButton'
 export function NotFoundContent() {
   return (
     <div className="min-h-screen bg-ink-900 flex flex-col items-center justify-center text-center px-6">
-      <Link href="/" aria-label="Averexa Placement — Home" className="mb-8 inline-block">
+      <Link href="/" aria-label="Averexa Placement Home" className="mb-8 inline-block">
         <Image
           src="/brand/logo.svg"
           alt="Averexa Placement"
@@ -15,7 +15,7 @@ export function NotFoundContent() {
         />
       </Link>
 
-      <p className="eyebrow mb-4">404 — Not Found</p>
+      <p className="eyebrow mb-4">404 Not Found</p>
       <h1 className="text-white font-bold mb-4" style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}>
         Page Not Found
       </h1>

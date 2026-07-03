@@ -18,14 +18,14 @@ export function AboutMissionSection() {
                 can change a person&apos;s life.</em>
               </p>
               <p className="body-lg text-white/65 leading-relaxed">
-                We saw talented professionals — skilled, driven, ready — held back not by ability,
+                We saw talented professionals skilled, driven, ready held back not by ability,
                 but by access. They didn&apos;t have a guide through the maze of cross-border hiring:
                 the resume standards, the interview expectations, the application systems, the
                 relentless follow-up required to break into the US and Canada job markets.
               </p>
               <p className="body-lg text-white/65 leading-relaxed">
                 So we built the partner we wished they had. Not a job board. Not a faceless agency.
-                A team that treats every candidate&apos;s career like it matters — because it does.
+                A team that treats every candidate&apos;s career like it matters because it does.
               </p>
             </div>
           </RevealSection>

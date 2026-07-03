@@ -21,7 +21,7 @@ const baseClasses = cn(
   'border border-mint-200/40 bg-transparent',
   'overflow-hidden select-none cursor-pointer',
   'transition-colors duration-200',
-  // shimmer sweep via pseudo-element — CSS only
+  // shimmer sweep via pseudo-element CSS only
   'before:absolute before:inset-0 before:translate-x-[-100%] before:bg-gradient-to-r before:from-transparent before:via-mint-200/8 before:to-transparent',
   'hover:before:translate-x-[100%] before:transition-transform before:duration-400',
   'focus-visible:outline-none',

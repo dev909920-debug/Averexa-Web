@@ -23,8 +23,8 @@ const containerVariants = {
 }
 
 // Font families surfaced as constants so the intent is readable at a glance.
-const SERIF = 'var(--font-display)'   // Instrument Serif — editorial, italic display
-const SANS  = 'var(--font-heading)'   // Plus Jakarta Sans — confident geometric headings
+const SERIF = 'var(--font-display)'   // Instrument Serif editorial, italic display
+const SANS  = 'var(--font-heading)'   // Plus Jakarta Sans confident geometric headings
 
 export function HeroTextOverlay() {
   return (
@@ -34,10 +34,10 @@ export function HeroTextOverlay() {
       animate="visible"
       className="absolute inset-0"
     >
-      {/* ── Headline — top center ──────────────────────────────────────────
+      {/* ── Headline top center ──────────────────────────────────────────
           Typographic split: "Your Next" and "Move Starts Here." are set
           in Plus Jakarta Sans 700 (modern, authoritative). "Career" breaks
-          into Instrument Serif 400 italic — the editorial serif contrast
+          into Instrument Serif 400 italic the editorial serif contrast
           signals the word that matters most, like a luxury brand masthead.
           ─────────────────────────────────────────────────────────────── */}
       <div className="absolute top-[14%] left-0 right-0 flex flex-col items-center text-center px-5 pointer-events-none">
@@ -45,7 +45,7 @@ export function HeroTextOverlay() {
           variants={staggerItem}
           className="text-center"
         >
-          {/* Line 1: "Your Next Career" — sans/serif contrast */}
+          {/* Line 1: "Your Next Career" sans/serif contrast */}
           <span
             className="block text-white"
             style={{
@@ -54,11 +54,11 @@ export function HeroTextOverlay() {
               letterSpacing: '-0.025em',
             }}
           >
-            {/* "Your Next" — Plus Jakarta Sans bold */}
+            {/* "Your Next" Plus Jakarta Sans bold */}
             <span style={{ fontFamily: SANS, fontWeight: 700 }}>
               Your Next{' '}
             </span>
-            {/* "Career" — Instrument Serif italic: the typographic signature */}
+            {/* "Career" Instrument Serif italic: the typographic signature */}
             <span
               style={{
                 fontFamily: SERIF,
@@ -71,7 +71,7 @@ export function HeroTextOverlay() {
             </span>
           </span>
 
-          {/* Line 2: "Move Starts Here." — all Plus Jakarta Sans */}
+          {/* Line 2: "Move Starts Here." all Plus Jakarta Sans */}
           <span
             className="block text-white"
             style={{
@@ -98,7 +98,7 @@ export function HeroTextOverlay() {
         </motion.h1>
       </div>
 
-      {/* ── Description — bottom left ─────────────────────────────────── */}
+      {/* ── Description bottom left ─────────────────────────────────── */}
       <motion.div
         variants={staggerItem}
         className="hidden sm:block absolute bottom-14 left-10 md:left-14 max-w-[260px]"
@@ -112,12 +112,12 @@ export function HeroTextOverlay() {
           }}
         >
           We help ambitious professionals land full-time roles with leading employers across the US and
-          Canada — with guaranteed interviews, expert preparation, and a dedicated recruiter at every
+          Canada with guaranteed interviews, expert preparation, and a dedicated recruiter at every
           step.
         </p>
       </motion.div>
 
-      {/* ── CTA — bottom right ───────────────────────────────────────────── */}
+      {/* ── CTA bottom right ───────────────────────────────────────────── */}
       <motion.div
         variants={staggerItem}
         className="absolute bottom-20 sm:bottom-24 right-5 sm:right-10 md:right-14 max-w-[260px] flex flex-col items-end sm:items-start gap-5"
@@ -128,7 +128,7 @@ export function HeroTextOverlay() {
         </div>
       </motion.div>
 
-      {/* ── Trust strip — bottom center ──────────────────────────────────── */}
+      {/* ── Trust strip bottom center ──────────────────────────────────── */}
       <motion.div
         variants={staggerItem}
         className="absolute bottom-5 left-1/2 -translate-x-1/2 hidden md:flex items-center justify-center gap-x-3 gap-y-2 flex-wrap md:flex-nowrap md:gap-x-5"

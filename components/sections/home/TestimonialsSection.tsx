@@ -11,10 +11,10 @@ export function TestimonialsSection() {
     <section id="testimonials" className="section-padding bg-ink-900/95 overflow-x-hidden">
       <div className="container-site">
 
-        {/* Editorial split header — matches the About section's asymmetric style */}
+        {/* Editorial split header matches the About section's asymmetric style */}
         <div className="mb-16 flex flex-col gap-10 lg:flex-row lg:items-end lg:gap-20">
 
-          {/* Left — large display title */}
+          {/* Left large display title */}
           <div className="flex-1 min-w-0">
             <motion.div
               initial={{ opacity: 0, x: -28 }}
@@ -72,7 +72,7 @@ export function TestimonialsSection() {
             </motion.h2>
           </div>
 
-          {/* Right — description + stat pair */}
+          {/* Right description + stat pair */}
           <motion.div
             className="flex-shrink-0 lg:max-w-[360px] flex flex-col gap-8 lg:pb-3"
             initial={{ opacity: 0, x: 28 }}
@@ -84,7 +84,7 @@ export function TestimonialsSection() {
               className="text-white/55 leading-relaxed"
               style={{ fontSize: 'clamp(0.9rem, 1.1vw, 1.05rem)' }}
             >
-              Hear directly from professionals who trusted Averexa with their career move —
+              Hear directly from professionals who trusted Averexa with their career move 
               and landed the roles they deserved.
             </p>
 

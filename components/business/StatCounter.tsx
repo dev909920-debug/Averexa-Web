@@ -31,7 +31,7 @@ export function StatCounter({
     else reset()
   }, [isInView, trigger, reset])
 
-  const staticLabel = `${prefix}${value.toFixed(decimals)}${suffix} — ${label}`
+  const staticLabel = `${prefix}${value.toFixed(decimals)}${suffix} ${label}`
 
   return (
     <div

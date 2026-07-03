@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-// Blank .env.local values arrive as '' — treat them the same as absent (undefined)
+// Blank .env.local values arrive as '' treat them the same as absent (undefined)
 const e = (schema: z.ZodTypeAny) =>
   z.preprocess((v) => (v === '' ? undefined : v), schema)
 
@@ -27,10 +27,10 @@ function parseEnv() {
   const errors: string[] = []
 
   if (!serverResult.success) {
-    errors.push(...serverResult.error.issues.map(i => `  Server: ${i.path.join('.')} — ${i.message}`))
+    errors.push(...serverResult.error.issues.map(i => `  Server: ${i.path.join('.')} ${i.message}`))
   }
   if (!clientResult.success) {
-    errors.push(...clientResult.error.issues.map(i => `  Client: ${i.path.join('.')} — ${i.message}`))
+    errors.push(...clientResult.error.issues.map(i => `  Client: ${i.path.join('.')} ${i.message}`))
   }
 
   if (errors.length > 0) {

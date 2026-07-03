@@ -79,7 +79,7 @@ export const processSteps: ProcessStep[] = [
     title: 'Interview Assistance',
     subtitle: 'One-on-One Interview Support',
     description:
-      'We support you through every interview stage — from scheduling and prep to real-time guidance and follow-up.',
+      'We support you through every interview stage from scheduling and prep to real-time guidance and follow-up.',
     tags: ['Interview scheduling', 'Pre-interview prep', 'Real-time guidance'],
     icon: 'UserPlus',
     image: '/assets/hero/process/process-6.png',
