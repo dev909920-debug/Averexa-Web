@@ -46,6 +46,7 @@ export function ChatbotWidget() {
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  const [entryDir] = useState<'left' | 'right'>(() => Math.random() > 0.5 ? 'left' : 'right')
 
   const maxScrollRef = useRef(0)
   const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -137,13 +138,13 @@ export function ChatbotWidget() {
         {hasAppeared && !isOpen && (
           <motion.div
             key="chatbot-fab"
-            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: -280, scale: 0.6 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: entryDir === 'left' ? -320 : 320, scale: 0.5, rotate: entryDir === 'left' ? -12 : 12 }}
+            animate={{ opacity: 1, x: 0, scale: 1, rotate: 0 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={
               shouldReduceMotion
                 ? { duration: 0.2 }
-                : { type: 'spring', stiffness: 140, damping: 18, mass: 0.9 }
+                : { type: 'spring', stiffness: 160, damping: 16, mass: 0.8 }
             }
             className="floating-safe-bottom-stacked group fixed right-4 z-[10000] sm:right-6"
           >
@@ -182,10 +183,10 @@ export function ChatbotWidget() {
         {isOpen && (
           <motion.div
             key="chatbot-panel"
-            initial={{ opacity: 0, y: 24, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 16, scale: 0.96 }}
-            transition={{ duration: 0.3, ease }}
+            initial={{ opacity: 0, x: entryDir === 'left' ? -40 : 40, scale: 0.94 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.94 }}
+            transition={{ duration: 0.28, ease }}
             role="dialog"
             aria-modal="true"
             aria-label={`${CHATBOT_NAME} chat`}
