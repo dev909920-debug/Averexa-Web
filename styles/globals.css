@@ -308,6 +308,19 @@
       transform: translateY(calc(-100% - 1.5rem));
     }
   }
+
+  /* Same fix as .floating-safe-bottom, offset up to stack above it (e.g. chatbot FAB above the WhatsApp FAB). */
+  .floating-safe-bottom-stacked {
+    bottom: 5.75rem;
+  }
+
+  @supports (height: 100dvh) {
+    .floating-safe-bottom-stacked {
+      bottom: auto;
+      top: 100dvh;
+      transform: translateY(calc(-100% - 5.75rem));
+    }
+  }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
