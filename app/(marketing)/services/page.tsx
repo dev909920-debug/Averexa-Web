@@ -11,7 +11,7 @@ import { CTASection } from '@/components/sections/home/CTASection'
 export const metadata: Metadata = pageMetadata({
   title: 'Our Services',
   description:
-    'IT placement, non-IT placement, executive search, resume optimization, interview preparation, and career guidance end-to-end support for your US & Canada career move.',
+    'IT placement, non-IT placement, executive search, resume optimization, interview prep, and career guidance end-to-end support for your US and Canada career move.',
   canonical: '/services',
   keywords: [
     'IT staffing services USA',

@@ -10,7 +10,7 @@ import { CTASection } from '@/components/sections/home/CTASection'
 export const metadata: Metadata = pageMetadata({
   title: 'About Us',
   description:
-    'Meet the team behind Averexa a dedicated cross-border placement partner helping ambitious professionals land full-time roles in the US and Canada.',
+    'Meet Averexa Placement your dedicated cross-border career partner helping professionals land full-time jobs in the US and Canada with guaranteed interviews.',
   canonical: '/about',
   keywords: [
     'about Averexa Placement',
@@ -21,6 +21,8 @@ export const metadata: Metadata = pageMetadata({
     'placement firm for immigrants',
     'professional recruiting company',
     'career success story',
+    'best placement agency US Canada',
+    'how placement agencies work USA',
   ],
 })
 
