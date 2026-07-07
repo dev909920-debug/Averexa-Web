@@ -17,7 +17,7 @@ import { BlogPreviewSection } from '@/components/sections/home/BlogPreviewSectio
 import { CTASection } from '@/components/sections/home/CTASection'
 
 export const metadata: Metadata = pageMetadata({
-  title: 'Averexa Placement Your Next Career Move Starts Here',
+  title: 'Your Next Career Move Starts Here',
   description:
     'We help ambitious professionals land full-time roles in the US and Canada with guaranteed interviews, expert preparation, and a dedicated recruiter at every step.',
   canonical: '/',
