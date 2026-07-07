@@ -26,17 +26,21 @@ const SCROLL_STOP_DELAY = 400
 const MIN_SCROLL_TO_TRIGGER = 60
 const FALLBACK_APPEAR_DELAY = 1800
 
-const sectionSides: { id: string; side: 'left' | 'right' }[] = [
-  { id: 'hero', side: 'right' },
-  { id: 'about', side: 'left' },
-  { id: 'services', side: 'right' },
-  { id: 'process', side: 'left' },
-  { id: 'stats', side: 'right' },
-  { id: 'refer-teaser', side: 'left' },
-  { id: 'testimonials', side: 'right' },
-  { id: 'faq', side: 'left' },
-  { id: 'cta', side: 'right' },
+type SectionSide = { id: string; side: 'left' | 'right'; top: number }
+
+const sectionSides: SectionSide[] = [
+  { id: 'hero', side: 'right', top: 75 },
+  { id: 'about', side: 'left', top: 40 },
+  { id: 'services', side: 'right', top: 35 },
+  { id: 'process', side: 'left', top: 50 },
+  { id: 'stats', side: 'right', top: 25 },
+  { id: 'refer-teaser', side: 'left', top: 45 },
+  { id: 'testimonials', side: 'right', top: 60 },
+  { id: 'faq', side: 'left', top: 40 },
+  { id: 'cta', side: 'right', top: 50 },
 ]
+
+const defaultSection = sectionSides[0]
 
 type Message = {
   id: string
@@ -58,13 +62,13 @@ export function ChatbotWidget() {
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
-  const [side, setSide] = useState<'left' | 'right'>('right')
+  const [section, setSection] = useState<SectionSide>(defaultSection)
 
   const maxScrollRef = useRef(0)
   const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const listRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
-  const prevSideRef = useRef<'left' | 'right'>('right')
+  const prevSectionIdRef = useRef(defaultSection.id)
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     if (!hasAppeared) {
@@ -75,14 +79,14 @@ export function ChatbotWidget() {
       }, SCROLL_STOP_DELAY)
       return
     }
-    for (const { id, side: sectionSide } of sectionSides) {
-      const el = document.getElementById(id)
+    for (const sec of sectionSides) {
+      const el = document.getElementById(sec.id)
       if (!el) continue
       const rect = el.getBoundingClientRect()
       if (rect.top < window.innerHeight * 0.4 && rect.bottom > window.innerHeight * 0.15) {
-        if (sectionSide !== prevSideRef.current) {
-          prevSideRef.current = sectionSide
-          setSide(sectionSide)
+        if (sec.id !== prevSectionIdRef.current) {
+          prevSectionIdRef.current = sec.id
+          setSection(sec)
         }
         break
       }
@@ -164,27 +168,28 @@ export function ChatbotWidget() {
       <AnimatePresence mode="wait">
         {hasAppeared && !isOpen && (
           <motion.div
-            key={`fab-${side}`}
+            key={`fab-${section.id}`}
             initial={
               shouldReduceMotion
                 ? { opacity: 0 }
-                : { opacity: 0, x: side === 'left' ? -280 : 280, scale: 0.5, rotate: side === 'left' ? -15 : 15 }
+                : { opacity: 0, x: section.side === 'left' ? -280 : 280, scale: 0.5, rotate: section.side === 'left' ? -15 : 15 }
             }
             animate={{ opacity: 1, x: 0, scale: 1, rotate: 0 }}
             exit={
               shouldReduceMotion
                 ? { opacity: 0 }
-                : { opacity: 0, x: side === 'left' ? -200 : 200, scale: 0.5 }
+                : { opacity: 0, x: section.side === 'left' ? -200 : 200, scale: 0.5 }
             }
             transition={
               shouldReduceMotion
                 ? { duration: 0.2 }
                 : { type: 'spring', stiffness: 180, damping: 17, mass: 0.85 }
             }
-            className={`floating-safe-bottom-stacked group fixed z-[10000] ${side === 'left' ? 'left-4 sm:left-6' : 'right-4 sm:right-6'}`}
+            style={{ top: `${section.top}%` }}
+            className={`group fixed z-[10000] ${section.side === 'left' ? 'left-6 sm:left-8' : 'right-6 sm:right-8'}`}
           >
             <span
-              className={`pointer-events-none absolute top-1/2 hidden -translate-y-1/2 whitespace-nowrap rounded-lg bg-ink-900/95 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg shadow-black/30 ring-1 ring-white/10 transition-opacity duration-200 group-hover:opacity-100 sm:block ${side === 'left' ? 'left-full ml-3' : 'right-full mr-3'}`}
+              className={`pointer-events-none absolute top-1/2 hidden -translate-y-1/2 whitespace-nowrap rounded-lg bg-ink-900/95 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg shadow-black/30 ring-1 ring-white/10 transition-opacity duration-200 group-hover:opacity-100 sm:block ${section.side === 'left' ? 'left-full ml-3' : 'right-full mr-3'}`}
               aria-hidden="true"
             >
               Ask a question
