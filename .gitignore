@@ -45,3 +45,6 @@ lighthouse-report-*.html
 
 # Development reference files
 DEPLOYMENT_PLAN.md
+
+# Claude / AI session files
+.claude/
