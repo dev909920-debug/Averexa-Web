@@ -26,6 +26,18 @@ const SCROLL_STOP_DELAY = 400
 const MIN_SCROLL_TO_TRIGGER = 60
 const FALLBACK_APPEAR_DELAY = 1800
 
+const sectionSides: { id: string; side: 'left' | 'right' }[] = [
+  { id: 'hero', side: 'right' },
+  { id: 'about', side: 'left' },
+  { id: 'services', side: 'right' },
+  { id: 'process', side: 'left' },
+  { id: 'stats', side: 'right' },
+  { id: 'refer-teaser', side: 'left' },
+  { id: 'testimonials', side: 'right' },
+  { id: 'faq', side: 'left' },
+  { id: 'cta', side: 'right' },
+]
+
 type Message = {
   id: string
   role: 'bot' | 'user'
@@ -46,20 +58,35 @@ export function ChatbotWidget() {
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
-  const [entryDir] = useState<'left' | 'right'>(() => Math.random() > 0.5 ? 'left' : 'right')
+  const [side, setSide] = useState<'left' | 'right'>('right')
 
   const maxScrollRef = useRef(0)
   const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const listRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  const prevSideRef = useRef<'left' | 'right'>('right')
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    if (hasAppeared) return
-    maxScrollRef.current = Math.max(maxScrollRef.current, latest)
-    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current)
-    scrollTimeoutRef.current = setTimeout(() => {
-      if (maxScrollRef.current > MIN_SCROLL_TO_TRIGGER) setHasAppeared(true)
-    }, SCROLL_STOP_DELAY)
+    if (!hasAppeared) {
+      maxScrollRef.current = Math.max(maxScrollRef.current, latest)
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current)
+      scrollTimeoutRef.current = setTimeout(() => {
+        if (maxScrollRef.current > MIN_SCROLL_TO_TRIGGER) setHasAppeared(true)
+      }, SCROLL_STOP_DELAY)
+      return
+    }
+    for (const { id, side: sectionSide } of sectionSides) {
+      const el = document.getElementById(id)
+      if (!el) continue
+      const rect = el.getBoundingClientRect()
+      if (rect.top < window.innerHeight * 0.4 && rect.bottom > window.innerHeight * 0.15) {
+        if (sectionSide !== prevSideRef.current) {
+          prevSideRef.current = sectionSide
+          setSide(sectionSide)
+        }
+        break
+      }
+    }
   })
 
   useEffect(() => {
@@ -134,22 +161,30 @@ export function ChatbotWidget() {
 
   return (
     <>
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {hasAppeared && !isOpen && (
           <motion.div
-            key="chatbot-fab"
-            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: entryDir === 'left' ? -320 : 320, scale: 0.5, rotate: entryDir === 'left' ? -12 : 12 }}
+            key={`fab-${side}`}
+            initial={
+              shouldReduceMotion
+                ? { opacity: 0 }
+                : { opacity: 0, x: side === 'left' ? -280 : 280, scale: 0.5, rotate: side === 'left' ? -15 : 15 }
+            }
             animate={{ opacity: 1, x: 0, scale: 1, rotate: 0 }}
-            exit={{ opacity: 0, scale: 0.8 }}
+            exit={
+              shouldReduceMotion
+                ? { opacity: 0 }
+                : { opacity: 0, x: side === 'left' ? -200 : 200, scale: 0.5 }
+            }
             transition={
               shouldReduceMotion
                 ? { duration: 0.2 }
-                : { type: 'spring', stiffness: 160, damping: 16, mass: 0.8 }
+                : { type: 'spring', stiffness: 180, damping: 17, mass: 0.85 }
             }
-            className="floating-safe-bottom-stacked group fixed right-4 z-[10000] sm:right-6"
+            className={`floating-safe-bottom-stacked group fixed z-[10000] ${side === 'left' ? 'left-4 sm:left-6' : 'right-4 sm:right-6'}`}
           >
             <span
-              className="pointer-events-none absolute right-full mr-3 top-1/2 hidden -translate-y-1/2 whitespace-nowrap rounded-lg bg-ink-900/95 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg shadow-black/30 ring-1 ring-white/10 transition-opacity duration-200 group-hover:opacity-100 sm:block"
+              className={`pointer-events-none absolute top-1/2 hidden -translate-y-1/2 whitespace-nowrap rounded-lg bg-ink-900/95 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg shadow-black/30 ring-1 ring-white/10 transition-opacity duration-200 group-hover:opacity-100 sm:block ${side === 'left' ? 'left-full ml-3' : 'right-full mr-3'}`}
               aria-hidden="true"
             >
               Ask a question
@@ -163,17 +198,22 @@ export function ChatbotWidget() {
                   aria-hidden="true"
                 />
               )}
-              <motion.button
-                type="button"
-                aria-label="Open chat assistant"
-                onClick={openChat}
-                whileHover={shouldReduceMotion ? {} : { scale: 1.1 }}
-                whileTap={{ scale: 0.92 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full shadow-lg shadow-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-900"
+              <motion.div
+                animate={shouldReduceMotion ? {} : { y: [0, -3, 0] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <Image src={BOT_AVATAR} alt="" fill sizes="56px" className="object-cover" priority />
-              </motion.button>
+                <motion.button
+                  type="button"
+                  aria-label="Open chat assistant"
+                  onClick={openChat}
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.1 }}
+                  whileTap={{ scale: 0.92 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                  className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full shadow-lg shadow-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-900"
+                >
+                  <Image src={BOT_AVATAR} alt="" fill sizes="56px" className="object-cover" priority />
+                </motion.button>
+              </motion.div>
             </div>
           </motion.div>
         )}
@@ -183,10 +223,10 @@ export function ChatbotWidget() {
         {isOpen && (
           <motion.div
             key="chatbot-panel"
-            initial={{ opacity: 0, x: entryDir === 'left' ? -40 : 40, scale: 0.94 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.94 }}
-            transition={{ duration: 0.28, ease }}
+            initial={{ opacity: 0, y: 24, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.96 }}
+            transition={{ duration: 0.3, ease }}
             role="dialog"
             aria-modal="true"
             aria-label={`${CHATBOT_NAME} chat`}
