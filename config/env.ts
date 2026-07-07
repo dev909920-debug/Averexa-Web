@@ -12,6 +12,7 @@ const serverEnvSchema = z.object({
 
 const clientEnvSchema = z.object({
   NEXT_PUBLIC_APPS_SCRIPT_URL: e(z.string().url().optional()),
+  NEXT_PUBLIC_REFERRAL_APPS_SCRIPT_URL: e(z.string().url().optional()),
   NEXT_PUBLIC_GA_MEASUREMENT_ID: e(z.string().optional()),
   NEXT_PUBLIC_GTM_ID: e(z.string().optional()),
   NEXT_PUBLIC_SITE_URL: e(z.string().url().default('https://averexa.com')),

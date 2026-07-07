@@ -201,8 +201,11 @@ export function ChatbotWidget() {
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <div
             key="chatbot-panel"
+            className="floating-safe-bottom fixed right-4 z-[10001] w-[calc(100vw-2rem)] max-w-[380px] sm:right-6"
+          >
+          <motion.div
             initial={{ opacity: 0, y: 24, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.96 }}
@@ -210,7 +213,7 @@ export function ChatbotWidget() {
             role="dialog"
             aria-modal="true"
             aria-label={`${CHATBOT_NAME} chat`}
-            className="floating-safe-bottom fixed right-4 z-[10001] flex h-[min(560px,calc(100dvh-6rem))] w-[calc(100vw-2rem)] max-w-[380px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-charcoal-800 shadow-2xl shadow-black/50 sm:right-6"
+            className="flex h-[min(560px,calc(100dvh-6rem))] w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-charcoal-800 shadow-2xl shadow-black/50"
           >
             <div className="flex items-center justify-between gap-3 border-b border-white/10 bg-ink-900/60 px-4 py-3">
               <div className="flex items-center gap-3">
@@ -334,6 +337,7 @@ export function ChatbotWidget() {
               </button>
             </form>
           </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </>

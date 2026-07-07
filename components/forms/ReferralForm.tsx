@@ -9,10 +9,8 @@ import { useState, useCallback } from 'react'
 import { FormField } from './FormField'
 import { FormTextarea } from './FormTextarea'
 import { SubmitButton } from './SubmitButton'
-import { TurnstileWidget } from './TurnstileWidget'
 import { FormSuccessState } from './FormSuccessState'
 import type { FormSubmitStatus } from '@/hooks/useFormSubmit'
-import type { ReferralFormPayload } from '@/types/api'
 import { trackFormSubmit } from '@/features/analytics/events'
 
 const schema = z.object({
@@ -27,11 +25,10 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>
 
-const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ''
+const APPS_SCRIPT_URL = process.env.NEXT_PUBLIC_REFERRAL_APPS_SCRIPT_URL ?? ''
 
 export function ReferralForm() {
   const [status, setStatus] = useState<FormSubmitStatus>('idle')
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
   const [showSuccess, setShowSuccess] = useState(false)
 
   const {
@@ -41,33 +38,27 @@ export function ReferralForm() {
     formState: { errors },
   } = useForm<FormValues>({ resolver: zodResolver(schema) })
 
-  const onToken = useCallback((token: string) => setTurnstileToken(token), [])
-  const onExpire = useCallback(() => setTurnstileToken(null), [])
-
   const onSubmit = async (data: FormValues) => {
-    if (SITE_KEY && !turnstileToken) {
-      toast.error('Please complete the security check.')
+    if (!APPS_SCRIPT_URL) {
+      toast.error('Form service not configured.')
       return
     }
 
     setStatus('loading')
 
-    const payload: ReferralFormPayload = {
-      referrerName: data.referrerName,
-      referrerEmail: data.referrerEmail,
-      candidateName: data.candidateName,
-      candidateEmail: data.candidateEmail,
-      ...(data.candidatePhone && { candidatePhone: data.candidatePhone }),
-      ...(data.candidateRole && { candidateRole: data.candidateRole }),
-      ...(data.notes && { notes: data.notes }),
-      turnstileToken: turnstileToken ?? 'dev-bypass',
-    }
-
     try {
-      const res = await fetch('/api/referral', {
+      const res = await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          type: 'referral',
+          referrerName: data.referrerName,
+          referrerEmail: data.referrerEmail,
+          candidateName: data.candidateName,
+          candidateEmail: data.candidateEmail,
+          candidatePhone: (data.candidatePhone ?? '').replace(/\D/g, ''),
+          candidateRole: data.candidateRole ?? '',
+          notes: data.notes ?? '',
+        }),
       })
 
       const result = (await res.json()) as { success: boolean; error?: string }
@@ -77,7 +68,6 @@ export function ReferralForm() {
         setShowSuccess(true)
         trackFormSubmit('referral')
         reset()
-        setTurnstileToken(null)
       } else {
         setStatus('error')
         toast.error(result.error ?? 'Something went wrong. Please try again.')
@@ -94,7 +84,6 @@ export function ReferralForm() {
     setShowSuccess(false)
     setStatus('idle')
     reset()
-    setTurnstileToken(null)
   }, [reset])
 
   return (
@@ -190,10 +179,6 @@ export function ReferralForm() {
             rows={3}
             hint="Optional · max 500 characters"
           />
-
-          {SITE_KEY && (
-            <TurnstileWidget siteKey={SITE_KEY} onToken={onToken} onExpire={onExpire} />
-          )}
 
           <SubmitButton
             status={status}
