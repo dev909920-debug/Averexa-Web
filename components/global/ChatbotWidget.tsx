@@ -165,7 +165,7 @@ export function ChatbotWidget() {
 
   return (
     <>
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {hasAppeared && !isOpen && (
           <motion.div
             key={`fab-${section.id}`}
@@ -203,22 +203,18 @@ export function ChatbotWidget() {
                   aria-hidden="true"
                 />
               )}
-              <motion.div
+              <motion.button
+                type="button"
+                aria-label="Open chat assistant"
+                onClick={openChat}
+                whileHover={shouldReduceMotion ? {} : { scale: 1.1 }}
+                whileTap={{ scale: 0.92 }}
                 animate={shouldReduceMotion ? {} : { y: [0, -3, 0] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+                transition={shouldReduceMotion ? { type: 'spring', stiffness: 300, damping: 20 } : { y: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' }, default: { type: 'spring', stiffness: 300, damping: 20 } }}
+                className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full shadow-lg shadow-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-900"
               >
-                <motion.button
-                  type="button"
-                  aria-label="Open chat assistant"
-                  onClick={openChat}
-                  whileHover={shouldReduceMotion ? {} : { scale: 1.1 }}
-                  whileTap={{ scale: 0.92 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                  className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full shadow-lg shadow-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-900"
-                >
-                  <Image src={BOT_AVATAR} alt="" fill sizes="56px" className="object-cover" priority />
-                </motion.button>
-              </motion.div>
+                <Image src={BOT_AVATAR} alt="" fill sizes="56px" className="pointer-events-none object-cover" priority />
+              </motion.button>
             </div>
           </motion.div>
         )}
