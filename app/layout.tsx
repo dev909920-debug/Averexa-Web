@@ -9,6 +9,7 @@ import { SkipNavLink } from '@/components/navigation/SkipNavLink'
 import { GlobalFloatingUI } from '@/components/global/GlobalFloatingUI'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { buildOrganizationSchema } from '@/lib/schemas/organization'
+import { GoogleAnalytics } from '@/features/analytics/GoogleAnalytics'
 import {
   GoogleTagManager,
   GoogleTagManagerNoScript,
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning className={fontVariables}>
       <head>
         <GoogleTagManager />
+        <GoogleAnalytics />
         <JsonLd schema={buildOrganizationSchema()} />
       </head>
       <body>
