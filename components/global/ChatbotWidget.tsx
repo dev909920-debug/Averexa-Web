@@ -77,12 +77,9 @@ export function ChatbotWidget() {
     if (foundId !== prevSectionIdRef.current) {
       prevSectionIdRef.current = foundId
       setActiveSection(found)
+      if (found) setIsDismissed(false)
     }
   })
-
-  useEffect(() => {
-    if (activeSection) setIsDismissed(false)
-  }, [activeSection])
 
   const openChat = useCallback(() => {
     setIsOpen(true)

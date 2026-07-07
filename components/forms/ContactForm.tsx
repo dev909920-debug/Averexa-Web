@@ -107,7 +107,7 @@ export function ContactForm() {
     const payload = {
       fullName: data.fullName,
       email: data.email,
-      phone: data.phone,
+      phone: data.phone.replace(/\D/g, ''),
       targetJobTitle: data.targetJobTitle,
       description: data.description ?? '',
       resumeBase64,
@@ -187,7 +187,7 @@ export function ContactForm() {
             label="Email Address"
             name="email"
             type="email"
-            placeholder="raj@example.com"
+            placeholder="you@email.com"
             autoComplete="email"
             error={errors.email?.message}
             leadingIcon="Mail"
@@ -197,7 +197,7 @@ export function ContactForm() {
             label="Phone Number"
             name="phone"
             type="tel"
-            placeholder="+91 98765 43210"
+            placeholder="+1 (731) 226-6022"
             autoComplete="tel"
             error={errors.phone?.message}
             leadingIcon="Phone"

@@ -22,7 +22,7 @@ const LEGAL_LINKS = [
 ]
 
 const CONNECT_LINKS: { label: string; href: string; icon: IconName; external: boolean }[] = [
-  { label: 'Email Us', href: 'mailto:contact@averexaplacement.com', icon: 'Mail', external: false },
+  { label: 'Email Us', href: `mailto:${site.email}`, icon: 'Mail', external: false },
   { label: 'WhatsApp', href: 'https://wa.me/17312266022', icon: 'MessageCircle', external: true },
   { label: 'LinkedIn', href: 'https://linkedin.com', icon: 'Linkedin', external: true },
 ]

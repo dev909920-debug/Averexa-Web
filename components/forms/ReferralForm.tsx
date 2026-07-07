@@ -134,7 +134,7 @@ export function ReferralForm() {
               label="Your Email"
               name="referrerEmail"
               type="email"
-              placeholder="raj@example.com"
+              placeholder="you@email.com"
               autoComplete="email"
               error={errors.referrerEmail?.message}
               leadingIcon="Mail"
@@ -156,7 +156,7 @@ export function ReferralForm() {
               label="Candidate's Email"
               name="candidateEmail"
               type="email"
-              placeholder="priya@example.com"
+              placeholder="colleague@email.com"
               error={errors.candidateEmail?.message}
               leadingIcon="Mail"
             />
@@ -165,7 +165,7 @@ export function ReferralForm() {
               label="Candidate's Phone"
               name="candidatePhone"
               type="tel"
-              placeholder="+91 98765 43210"
+              placeholder="+1 (731) 226-6022"
               error={errors.candidatePhone?.message}
               leadingIcon="Phone"
               hint="Optional"

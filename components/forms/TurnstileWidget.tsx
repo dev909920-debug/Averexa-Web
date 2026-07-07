@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react'
 declare global {
   interface Window {
     turnstile?: {
-      render: (container: string, options: Record<string, unknown>) => string
+      render: (container: HTMLElement, options: Record<string, unknown>) => string
       reset: (widgetId: string) => void
     }
   }
@@ -19,9 +19,9 @@ type TurnstileWidgetProps = {
 
 const SCRIPT_ID = 'cf-turnstile-script'
 
-function renderTurnstile(containerId: string, siteKey: string, onToken: (token: string) => void, onExpire: () => void): string | null {
+function renderTurnstile(container: HTMLElement, siteKey: string, onToken: (token: string) => void, onExpire: () => void): string | null {
   if (!window.turnstile) return null
-  return window.turnstile.render(containerId, {
+  return window.turnstile.render(container, {
     sitekey: siteKey,
     callback: onToken,
     'expired-callback': onExpire,
@@ -31,11 +31,14 @@ function renderTurnstile(containerId: string, siteKey: string, onToken: (token: 
 
 export function TurnstileWidget({ siteKey, onToken, onExpire }: TurnstileWidgetProps) {
   const widgetId = useRef<string | null>(null)
-  const cid = 'cf-turnstile-container'
+  const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
     if (window.turnstile) {
-      widgetId.current = renderTurnstile(cid, siteKey, onToken, onExpire)
+      widgetId.current = renderTurnstile(container, siteKey, onToken, onExpire)
       return
     }
 
@@ -47,7 +50,7 @@ export function TurnstileWidget({ siteKey, onToken, onExpire }: TurnstileWidgetP
     script.async = true
     script.defer = true
     script.onload = () => {
-      widgetId.current = renderTurnstile(cid, siteKey, onToken, onExpire)
+      widgetId.current = renderTurnstile(container, siteKey, onToken, onExpire)
     }
     document.body.appendChild(script)
 
@@ -59,6 +62,6 @@ export function TurnstileWidget({ siteKey, onToken, onExpire }: TurnstileWidgetP
   }, [siteKey, onToken, onExpire])
 
   return (
-    <div id={cid} className="min-h-[65px] flex items-center justify-center" />
+    <div ref={containerRef} className="min-h-[65px] flex items-center justify-center" />
   )
 }

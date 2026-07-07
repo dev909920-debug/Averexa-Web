@@ -25,7 +25,7 @@ export async function processReferralSubmission(data: ReferralData): Promise<voi
       referrerEmail: data.referrerEmail,
       candidateName: data.candidateName,
       candidateEmail: data.candidateEmail,
-      candidatePhone: data.candidatePhone ?? '',
+      candidatePhone: (data.candidatePhone ?? '').replace(/\D/g, ''),
       candidateRole: data.candidateRole ?? '',
       notes: data.notes ?? '',
     }),
