@@ -59,39 +59,85 @@ export function ChatbotWidget() {
   const listRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const prevSectionIdRef = useRef<string | null>(null)
+  const scrollStopTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const autoHideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const timesShownRef = useRef(0)
+  const lastShownAtRef = useRef(0)
 
-  useMotionValueEvent(scrollY, 'change', () => {
-    if (isOpen) return
-    let found: SectionSide | null = null
+  const clearAutoHide = useCallback(() => {
+    if (autoHideTimerRef.current) {
+      clearTimeout(autoHideTimerRef.current)
+      autoHideTimerRef.current = null
+    }
+  }, [])
+
+  const getCurrentSection = useCallback(() => {
     for (const sec of sectionSides) {
       const el = document.getElementById(sec.id)
       if (!el) continue
       const rect = el.getBoundingClientRect()
       const threshold = sec.id === sectionSides[0].id ? 0.55 : 0.4
-      if (rect.top < window.innerHeight * threshold && rect.bottom > 80) {
-        found = sec
-        break
+      if (rect.top < window.innerHeight * threshold && rect.bottom > 80) return sec
+    }
+    return null
+  }, [])
+
+  // Only surface the bot when the user genuinely pauses to read (debounced
+  // scroll-stop), never mid-scroll, and cap how often it nags per visit.
+  useMotionValueEvent(scrollY, 'change', () => {
+    if (isOpen) return
+
+    const currentId = getCurrentSection()?.id ?? null
+    if (currentId !== prevSectionIdRef.current) {
+      prevSectionIdRef.current = currentId
+      if (!currentId) {
+        clearAutoHide()
+        setActiveSection(null)
       }
     }
-    const foundId = found?.id ?? null
-    if (foundId !== prevSectionIdRef.current) {
-      prevSectionIdRef.current = foundId
-      setActiveSection(found)
-      if (found) setIsDismissed(false)
-    }
+
+    if (scrollStopTimerRef.current) clearTimeout(scrollStopTimerRef.current)
+    scrollStopTimerRef.current = setTimeout(() => {
+      if (isOpen) return
+      if (timesShownRef.current >= 3) return
+      if (Date.now() - lastShownAtRef.current < 25000) return
+
+      const sec = sectionSides.find((s) => s.id === prevSectionIdRef.current)
+      if (!sec) return
+
+      timesShownRef.current += 1
+      lastShownAtRef.current = Date.now()
+      setIsDismissed(false)
+      setActiveSection(sec)
+
+      clearAutoHide()
+      autoHideTimerRef.current = setTimeout(() => setIsDismissed(true), 7000)
+    }, 650)
   })
 
+  useEffect(() => {
+    return () => {
+      if (scrollStopTimerRef.current) clearTimeout(scrollStopTimerRef.current)
+      clearAutoHide()
+    }
+  }, [clearAutoHide])
+
   const openChat = useCallback(() => {
+    clearAutoHide()
     setIsOpen(true)
     setMessages((prev) =>
       prev.length === 0 ? [{ id: nextId(), role: 'bot', text: chatGreeting, showMenu: true }] : prev,
     )
-  }, [])
+  }, [clearAutoHide])
 
-  const handleDismiss = useCallback((e: React.MouseEvent) => {
-    e.stopPropagation()
-    setIsDismissed(true)
-  }, [])
+  const handleDismiss = useCallback(
+    (e: React.MouseEvent) => {
+      e.stopPropagation()
+      clearAutoHide()
+      setIsDismissed(true)
+    },
+    [clearAutoHide],
+  )
 
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: 'smooth' })
