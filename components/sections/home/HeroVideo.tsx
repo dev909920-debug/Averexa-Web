@@ -4,7 +4,7 @@ import { motion } from 'motion/react'
 import type { MotionStyle } from 'motion/react'
 
 const VIDEO_URL =
-  'https://res.cloudinary.com/rc8wd02c/video/upload/v1782931752/dq66me_eyxnf1.mp4'
+  'https://res.cloudinary.com/yig3etij/video/upload/v1783422001/dq66me_uy7e0k.mp4'
 
 export function HeroVideo({ style }: { style: MotionStyle }) {
   return (
