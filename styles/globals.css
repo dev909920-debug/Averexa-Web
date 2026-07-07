@@ -480,11 +480,23 @@
   }
 }
 
-@keyframes bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+/* ── Chatbot speech bubble pointers ───────────────────────────────────────── */
+
+.chat-bubble-left::after,
+.chat-bubble-right::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  margin-top: -6px;
+  border: 6px solid transparent;
 }
 
-.animate-bob {
-  animation: bob 2.5s ease-in-out infinite;
+.chat-bubble-left::after {
+  right: 100%;
+  border-right-color: rgba(255, 255, 255, 0.1);
+}
+
+.chat-bubble-right::after {
+  left: 100%;
+  border-left-color: rgba(255, 255, 255, 0.1);
 }

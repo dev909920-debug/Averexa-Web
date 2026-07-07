@@ -54,6 +54,7 @@ export function ChatbotWidget() {
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  const [isDismissed, setIsDismissed] = useState(false)
 
   const listRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -66,16 +67,10 @@ export function ChatbotWidget() {
       const el = document.getElementById(sec.id)
       if (!el) continue
       const rect = el.getBoundingClientRect()
-      if (sec.id === sectionSides[0].id) {
-        if (rect.top < window.innerHeight * 0.55 && rect.bottom > 80) {
-          found = sec
-          break
-        }
-      } else {
-        if (rect.top < window.innerHeight * 0.4 && rect.bottom > 80) {
-          found = sec
-          break
-        }
+      const threshold = sec.id === sectionSides[0].id ? 0.55 : 0.4
+      if (rect.top < window.innerHeight * threshold && rect.bottom > 80) {
+        found = sec
+        break
       }
     }
     const foundId = found?.id ?? null
@@ -85,13 +80,20 @@ export function ChatbotWidget() {
     }
   })
 
+  useEffect(() => {
+    if (activeSection) setIsDismissed(false)
+  }, [activeSection])
+
   const openChat = useCallback(() => {
     setIsOpen(true)
-    prevSectionIdRef.current = null
-    setActiveSection(null)
     setMessages((prev) =>
       prev.length === 0 ? [{ id: nextId(), role: 'bot', text: chatGreeting, showMenu: true }] : prev,
     )
+  }, [])
+
+  const handleDismiss = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation()
+    setIsDismissed(true)
   }, [])
 
   useEffect(() => {
@@ -148,58 +150,57 @@ export function ChatbotWidget() {
 
   return (
     <>
-      <AnimatePresence>
-        {activeSection && !isOpen && (
-          <motion.div
-            key={activeSection.id}
-            initial={
-              shouldReduceMotion
-                ? { opacity: 0 }
-                : { opacity: 0, x: activeSection.side === 'left' ? -280 : 280, scale: 0.5, rotate: activeSection.side === 'left' ? -15 : 15 }
-            }
-            animate={{ opacity: 1, x: 0, scale: 1, rotate: 0 }}
-            exit={
-              shouldReduceMotion
-                ? { opacity: 0 }
-                : { opacity: 0, x: activeSection.side === 'left' ? -200 : 200, scale: 0.5 }
-            }
-            transition={
-              shouldReduceMotion
-                ? { duration: 0.2 }
-                : { type: 'spring', stiffness: 180, damping: 17, mass: 0.85 }
-            }
-            style={{ top: `${activeSection.top}%` }}
-            className={`group fixed z-[10000] ${activeSection.side === 'left' ? 'left-6 sm:left-8' : 'right-6 sm:right-8'}`}
-          >
-            <span
-              className={`pointer-events-none absolute top-1/2 hidden -translate-y-1/2 whitespace-nowrap rounded-lg bg-ink-900/95 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg shadow-black/30 ring-1 ring-white/10 transition-opacity duration-200 group-hover:opacity-100 sm:block ${activeSection.side === 'left' ? 'left-full ml-3' : 'right-full mr-3'}`}
-              aria-hidden="true"
-            >
-              Ask a question
-            </span>
-
-            <div className="relative h-14 w-14">
-              {!shouldReduceMotion && (
-                <span
-                  className="absolute inset-0 rounded-full animate-ping opacity-30"
-                  style={{ background: '#1A8A71' }}
-                  aria-hidden="true"
-                />
-              )}
-              <motion.button
-                type="button"
-                aria-label="Open chat assistant"
-                onClick={openChat}
-                whileHover={shouldReduceMotion ? {} : { scale: 1.1 }}
-                whileTap={{ scale: 0.92 }}
-                className={`bot-fab relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full shadow-lg shadow-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-900 ${shouldReduceMotion ? '' : 'animate-bob'}`}
+      {activeSection && !isOpen && !isDismissed && (
+        <motion.div
+          key={activeSection.id}
+          initial={
+            shouldReduceMotion
+              ? { opacity: 0 }
+              : { opacity: 0, x: activeSection.side === 'left' ? -280 : 280, scale: 0.5, rotate: activeSection.side === 'left' ? -15 : 15 }
+          }
+          animate={{ opacity: 1, x: 0, scale: 1, rotate: 0 }}
+          transition={
+            shouldReduceMotion
+              ? { duration: 0.2 }
+              : { type: 'spring', stiffness: 180, damping: 17, mass: 0.85 }
+          }
+          style={{ top: `${activeSection.top}%` }}
+          className={`group fixed z-[10000] ${activeSection.side === 'left' ? 'left-6 sm:left-8' : 'right-6 sm:right-8'}`}
+        >
+            <div className={`flex items-center gap-3 ${activeSection.side === 'right' ? 'flex-row-reverse' : ''}`}>
+              <div
+                className={`relative rounded-2xl border border-white/10 bg-charcoal-800/60 px-4 py-2.5 text-sm text-white shadow-lg shadow-black/30 backdrop-blur-xl ${activeSection.side === 'right' ? 'chat-bubble-right' : 'chat-bubble-left'}`}
               >
-                <Image src={BOT_AVATAR} alt="" fill sizes="56px" className="pointer-events-none object-cover" priority />
-              </motion.button>
+                <div className="flex items-center gap-2">
+                  <span>Need help? 👋</span>
+                  <button
+                    type="button"
+                    aria-label="Dismiss"
+                    onClick={handleDismiss}
+                    className="flex h-3.5 w-3.5 items-center justify-center rounded text-slate-500 transition-colors hover:text-white"
+                  >
+                    <X className="h-3 w-3" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="relative h-20 w-20 flex-shrink-0">
+                <motion.button
+                  type="button"
+                  aria-label="Open chat assistant"
+                  onClick={openChat}
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.08 }}
+                  whileTap={{ scale: 0.92 }}
+                  animate={shouldReduceMotion ? {} : { y: [0, -4, 0] }}
+                  transition={shouldReduceMotion ? {} : { y: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' }, default: { type: 'spring', stiffness: 300, damping: 20 } }}
+                  className="relative flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border-2 border-emerald-400/30 shadow-lg shadow-emerald-400/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-900"
+                >
+                  <Image src={BOT_AVATAR} alt="" fill sizes="80px" className="pointer-events-none object-cover" priority />
+                </motion.button>
+              </div>
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
 
       <AnimatePresence>
         {isOpen && (
