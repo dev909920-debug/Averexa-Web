@@ -127,7 +127,7 @@ export function TestimonialsSection() {
                     lineHeight: 1,
                   }}
                 >
-                  90%
+                  94%
                 </span>
                 <span
                   style={{

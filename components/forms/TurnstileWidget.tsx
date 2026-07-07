@@ -1,84 +1,64 @@
 'use client'
 
-import { useEffect, useRef, useCallback } from 'react'
+import { useEffect, useRef } from 'react'
 
 declare global {
   interface Window {
     turnstile?: {
-      render: (container: HTMLElement, options: TurnstileOptions) => string
-      remove: (widgetId: string) => void
+      render: (container: string, options: Record<string, unknown>) => string
+      reset: (widgetId: string) => void
     }
   }
-}
-
-type TurnstileOptions = {
-  sitekey: string
-  theme?: 'light' | 'dark' | 'auto'
-  callback?: (token: string) => void
-  'expired-callback'?: () => void
 }
 
 type TurnstileWidgetProps = {
   siteKey: string
   onToken: (token: string) => void
-  onExpire?: () => void
+  onExpire: () => void
+}
+
+const SCRIPT_ID = 'cf-turnstile-script'
+
+function renderTurnstile(containerId: string, siteKey: string, onToken: (token: string) => void, onExpire: () => void): string | null {
+  if (!window.turnstile) return null
+  return window.turnstile.render(containerId, {
+    sitekey: siteKey,
+    callback: onToken,
+    'expired-callback': onExpire,
+    theme: 'dark',
+  })
 }
 
 export function TurnstileWidget({ siteKey, onToken, onExpire }: TurnstileWidgetProps) {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const widgetIdRef = useRef<string | null>(null)
-  const onTokenRef = useRef(onToken)
-  const onExpireRef = useRef(onExpire)
-
-  useEffect(() => { onTokenRef.current = onToken })
-  useEffect(() => { onExpireRef.current = onExpire })
-
-  const renderWidget = useCallback(() => {
-    if (!containerRef.current || widgetIdRef.current || !window.turnstile) return
-    widgetIdRef.current = window.turnstile.render(containerRef.current, {
-      sitekey: siteKey,
-      theme: 'dark',
-      callback: (token) => onTokenRef.current(token),
-      'expired-callback': () => onExpireRef.current?.(),
-    })
-  }, [siteKey])
+  const widgetId = useRef<string | null>(null)
+  const cid = 'cf-turnstile-container'
 
   useEffect(() => {
-    const SCRIPT_ID = 'cf-turnstile-script'
-    const SCRIPT_SRC = 'https://challenges.cloudflare.com/turnstile/v0/api.js'
-
     if (window.turnstile) {
-      renderWidget()
+      widgetId.current = renderTurnstile(cid, siteKey, onToken, onExpire)
       return
     }
 
-    if (!document.getElementById(SCRIPT_ID)) {
-      const script = document.createElement('script')
-      script.id = SCRIPT_ID
-      script.src = SCRIPT_SRC
-      script.async = true
-      script.defer = true
-      script.onload = renderWidget
-      document.head.appendChild(script)
-    } else {
-      const interval = setInterval(() => {
-        if (window.turnstile) {
-          clearInterval(interval)
-          renderWidget()
-        }
-      }, 100)
-      return () => clearInterval(interval)
-    }
-  }, [renderWidget])
+    if (document.getElementById(SCRIPT_ID)) return
 
-  useEffect(() => {
+    const script = document.createElement('script')
+    script.id = SCRIPT_ID
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js'
+    script.async = true
+    script.defer = true
+    script.onload = () => {
+      widgetId.current = renderTurnstile(cid, siteKey, onToken, onExpire)
+    }
+    document.body.appendChild(script)
+
     return () => {
-      if (widgetIdRef.current && window.turnstile) {
-        window.turnstile.remove(widgetIdRef.current)
-        widgetIdRef.current = null
+      if (widgetId.current && window.turnstile) {
+        window.turnstile.reset(widgetId.current)
       }
     }
-  }, [])
+  }, [siteKey, onToken, onExpire])
 
-  return <div ref={containerRef} className="min-h-[65px]" />
+  return (
+    <div id={cid} className="min-h-[65px] flex items-center justify-center" />
+  )
 }

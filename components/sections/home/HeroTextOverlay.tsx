@@ -7,8 +7,8 @@ import { staggerItem } from '@/lib/motion'
 
 const trustItems = [
   '120+ Placements',
-  '90% Success Rate',
-  '3+ Years Experience',
+  '94% Success Rate',
+  '4+ Years Experience',
   'US & Canada Focus',
 ]
 

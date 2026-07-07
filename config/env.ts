@@ -5,16 +5,13 @@ const e = (schema: z.ZodTypeAny) =>
   z.preprocess((v) => (v === '' ? undefined : v), schema)
 
 const serverEnvSchema = z.object({
-  RESEND_API_KEY: e(z.string().min(1).optional()),
-  GOOGLE_SHEETS_CLIENT_EMAIL: e(z.string().email().optional()),
-  GOOGLE_SHEETS_PRIVATE_KEY: e(z.string().min(1).optional()),
-  GOOGLE_SHEETS_SPREADSHEET_ID: e(z.string().min(1).optional()),
+  GOOGLE_SHEETS_WEBHOOK_URL: e(z.string().url().optional()),
   CLOUDFLARE_TURNSTILE_SECRET_KEY: e(z.string().min(1).optional()),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
 })
 
 const clientEnvSchema = z.object({
-  NEXT_PUBLIC_TURNSTILE_SITE_KEY: e(z.string().min(1).optional()),
+  NEXT_PUBLIC_APPS_SCRIPT_URL: e(z.string().url().optional()),
   NEXT_PUBLIC_GA_MEASUREMENT_ID: e(z.string().optional()),
   NEXT_PUBLIC_GTM_ID: e(z.string().optional()),
   NEXT_PUBLIC_SITE_URL: e(z.string().url().default('https://averexa.com')),

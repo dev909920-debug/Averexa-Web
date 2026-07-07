@@ -20,7 +20,9 @@ const ContentSecurityPolicy = `
     https://challenges.cloudflare.com
     https://www.google-analytics.com
     https://analytics.google.com
-    https://www.googletagmanager.com;
+    https://www.googletagmanager.com
+    https://script.google.com
+    https://script.googleusercontent.com;
   media-src 'self' blob: https://res.cloudinary.com;
   object-src 'none';
   base-uri 'self';

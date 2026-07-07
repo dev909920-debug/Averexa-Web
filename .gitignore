@@ -42,3 +42,6 @@ lighthouse-report-*.html
 
 # Playwright MCP (screenshots, logs)
 .playwright-mcp/
+
+# Development reference files
+DEPLOYMENT_PLAN.md

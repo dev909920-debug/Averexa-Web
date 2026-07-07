@@ -7,15 +7,6 @@ export type APIResponse<T> = {
   code?: string
 }
 
-export type ContactFormPayload = {
-  fullName: string
-  email: string
-  phone: string
-  targetJobTitle: string
-  description?: string
-  turnstileToken: string
-}
-
 export type ReferralFormPayload = {
   referrerName: string
   referrerEmail: string

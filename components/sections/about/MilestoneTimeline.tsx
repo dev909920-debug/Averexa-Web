@@ -25,7 +25,7 @@ const milestones = [
     period: 'Year 3',
     title: 'Momentum',
     description:
-      'Crossed 120+ successful placements with a 90% success rate a milestone that proves our model works.',
+      'Crossed 120+ successful placements with a 94% success rate a milestone that proves our model works.',
   },
   {
     id: 'today',

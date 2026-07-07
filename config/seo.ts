@@ -51,7 +51,7 @@ export const defaultMetadata: Metadata = {
     description: site.description,
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: `${site.name} ${site.tagline}`,
@@ -64,7 +64,7 @@ export const defaultMetadata: Metadata = {
     creator: '@averexa',
     title: `${site.name} ${site.tagline}`,
     description: site.description,
-    images: ['/og-image.jpg'],
+    images: ['/og-image.png'],
   },
   icons: {
     icon: [

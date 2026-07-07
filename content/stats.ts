@@ -16,13 +16,13 @@ export const stats: Stat[] = [
   },
   {
     id: 'success-rate',
-    value: 90,
+    value: 94,
     suffix: '%',
     label: 'Success Rate',
   },
   {
     id: 'experience',
-    value: 3,
+    value: 4,
     suffix: '+',
     label: 'Years of Experience',
   },

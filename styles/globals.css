@@ -408,3 +408,61 @@
     transform: none !important;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   BLOCK 7: Form Loader Animations
+   ───────────────────────────────────────────────────────────────────────── */
+
+.loader-text {
+  font-size: 2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #ffffff;
+  filter: drop-shadow(0 0 0.05em rgba(255, 255, 255, 0.25));
+}
+
+.loader-char {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.loader-char span {
+  animation:
+    loaderScroll 2s cubic-bezier(0.1, 0.6, 0.9, 0.4) infinite,
+    loaderShine 2s cubic-bezier(0.1, 0.6, 0.9, 0.4) infinite;
+}
+
+.loader-line {
+  animation: loaderWobble 2s cubic-bezier(0.5, 0.8, 0.5, 0.2) infinite;
+}
+
+@keyframes loaderScroll {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes loaderShine {
+  0% { background-position: -98% 0; }
+  100% { background-position: 102% 0; }
+}
+
+@keyframes loaderWobble {
+  0% { transform: translateX(-90%); }
+  50% { transform: translateX(90%); }
+  100% { transform: translateX(-90%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-char span,
+  .loader-line {
+    animation: none;
+  }
+  .loader-line {
+    opacity: 0.5;
+  }
+}

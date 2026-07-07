@@ -1,0 +1,14 @@
+{
+  "name": "Averexa Placement",
+  "short_name": "Averexa",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0F172A",
+  "background_color": "#0F172A",
+  "display": "standalone"
+}

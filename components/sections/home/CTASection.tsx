@@ -16,8 +16,8 @@ type TickerItem = {
 
 const tickerItems: TickerItem[] = [
   { label: '120+ Placements', icon: 'Award' },
-  { label: '90% Success Rate', icon: 'TrendingUp' },
-  { label: '3+ Years Experience', icon: 'Clock' },
+  { label: '94% Success Rate', icon: 'TrendingUp' },
+  { label: '4+ Years Experience', icon: 'Clock' },
   { label: 'US & Canada Focus', icon: 'Globe' },
   { label: 'Guaranteed Interviews', icon: 'CheckCircle' },
   { label: 'Expert Guidance', icon: 'Target' },

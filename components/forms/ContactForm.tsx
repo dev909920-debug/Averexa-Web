@@ -8,12 +8,10 @@ import { toast } from 'sonner'
 import { useState, useCallback, useRef } from 'react'
 import { FormField } from './FormField'
 import { FormTextarea } from './FormTextarea'
-import { SubmitButton } from './SubmitButton'
-import { TurnstileWidget } from './TurnstileWidget'
+import { FormLoader } from './FormLoader'
 import { FormSuccessState } from './FormSuccessState'
 import { Icon } from '@/components/ui/Icon'
 import type { FormSubmitStatus } from '@/hooks/useFormSubmit'
-import type { ContactFormPayload } from '@/types/api'
 import { trackFormSubmit } from '@/features/analytics/events'
 
 const schema = z.object({
@@ -26,13 +24,24 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>
 
-const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ''
+const APPS_SCRIPT_URL = process.env.NEXT_PUBLIC_APPS_SCRIPT_URL ?? ''
 const ACCEPTED_TYPES = ['.pdf', '.doc', '.docx']
 const MAX_FILE_MB = 5
 
+function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onload = () => {
+      const result = reader.result as string
+      resolve(result.split(',')[1])
+    }
+    reader.onerror = () => reject(reader.error)
+    reader.readAsDataURL(file)
+  })
+}
+
 export function ContactForm() {
   const [status, setStatus] = useState<FormSubmitStatus>('idle')
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null)
   const [showSuccess, setShowSuccess] = useState(false)
   const [resumeFile, setResumeFile] = useState<File | null>(null)
   const [resumeError, setResumeError] = useState<string | null>(null)
@@ -44,9 +53,6 @@ export function ContactForm() {
     reset,
     formState: { errors },
   } = useForm<FormValues>({ resolver: zodResolver(schema) })
-
-  const onToken = useCallback((token: string) => setTurnstileToken(token), [])
-  const onExpire = useCallback(() => setTurnstileToken(null), [])
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     setResumeError(null)
@@ -74,26 +80,44 @@ export function ContactForm() {
   }
 
   const onSubmit = async (data: FormValues) => {
-    if (SITE_KEY && !turnstileToken) {
-      toast.error('Please complete the security check.')
+    if (!APPS_SCRIPT_URL) {
+      toast.error('Form service not configured.')
       return
     }
 
     setStatus('loading')
 
-    const payload: ContactFormPayload = {
+    let resumeBase64 = ''
+    let resumeMime = ''
+    let resumeName = ''
+
+    if (resumeFile) {
+      try {
+        resumeBase64 = await fileToBase64(resumeFile)
+        resumeMime = resumeFile.type
+        resumeName = resumeFile.name
+      } catch {
+        setStatus('error')
+        toast.error('Failed to process resume file. Please try again.')
+        setTimeout(() => setStatus('idle'), 3000)
+        return
+      }
+    }
+
+    const payload = {
       fullName: data.fullName,
       email: data.email,
       phone: data.phone,
       targetJobTitle: data.targetJobTitle,
-      ...(data.description !== undefined && { description: data.description }),
-      turnstileToken: turnstileToken ?? 'dev-bypass',
+      description: data.description ?? '',
+      resumeBase64,
+      resumeMime,
+      resumeName,
     }
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       })
 
@@ -105,7 +129,6 @@ export function ContactForm() {
         trackFormSubmit('contact')
         reset()
         setResumeFile(null)
-        setTurnstileToken(null)
       } else {
         setStatus('error')
         toast.error(result.error ?? 'Something went wrong. Please try again.')
@@ -123,13 +146,22 @@ export function ContactForm() {
     setStatus('idle')
     reset()
     setResumeFile(null)
-    setTurnstileToken(null)
   }, [reset])
 
   return (
     <AnimatePresence mode="wait">
       {showSuccess ? (
         <FormSuccessState key="success" onReset={handleReset} />
+      ) : status === 'loading' ? (
+        <motion.div
+          key="loader"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <FormLoader />
+        </motion.div>
       ) : (
         <motion.form
           key="form"
@@ -265,18 +297,12 @@ export function ContactForm() {
             hint="Optional · max 500 characters"
           />
 
-          {SITE_KEY && (
-            <TurnstileWidget siteKey={SITE_KEY} onToken={onToken} onExpire={onExpire} />
-          )}
-
-          <SubmitButton
-            status={status}
-            idleLabel="Send Enquiry"
-            loadingLabel="Sending…"
-            successLabel="Enquiry Sent!"
-            errorLabel="Try Again"
-            className="self-start"
-          />
+          <button
+            type="submit"
+            className="self-start h-11 px-6 rounded-lg bg-emerald-500 hover:bg-emerald-400 active:bg-emerald-600 font-medium text-sm text-white transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            Send Enquiry
+          </button>
         </motion.form>
       )}
     </AnimatePresence>
