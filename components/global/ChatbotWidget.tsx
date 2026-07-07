@@ -22,15 +22,9 @@ const ease = [0.16, 1, 0.3, 1] as const
 
 const BOT_AVATAR = '/assets/chatbot/bot-avatar.png'
 
-const SCROLL_STOP_DELAY = 400
-const MIN_SCROLL_TO_TRIGGER = 60
-const FALLBACK_APPEAR_DELAY = 1800
-
 type SectionSide = { id: string; side: 'left' | 'right'; top: number }
 
 const sectionSides: SectionSide[] = [
-  { id: 'hero', side: 'right', top: 75 },
-  { id: 'about', side: 'left', top: 40 },
   { id: 'services', side: 'right', top: 35 },
   { id: 'process', side: 'left', top: 50 },
   { id: 'stats', side: 'right', top: 25 },
@@ -39,8 +33,6 @@ const sectionSides: SectionSide[] = [
   { id: 'faq', side: 'left', top: 40 },
   { id: 'cta', side: 'right', top: 50 },
 ]
-
-const defaultSection = sectionSides[0]
 
 type Message = {
   id: string
@@ -57,55 +49,46 @@ export function ChatbotWidget() {
   const { shouldReduceMotion } = useReducedMotionContext()
   const { scrollY } = useLenisScroll()
 
-  const [hasAppeared, setHasAppeared] = useState(false)
+  const [activeSection, setActiveSection] = useState<SectionSide | null>(null)
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
-  const [section, setSection] = useState<SectionSide>(defaultSection)
 
-  const maxScrollRef = useRef(0)
-  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const listRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
-  const prevSectionIdRef = useRef(defaultSection.id)
+  const prevSectionIdRef = useRef<string | null>(null)
 
-  useMotionValueEvent(scrollY, 'change', (latest) => {
-    if (!hasAppeared) {
-      maxScrollRef.current = Math.max(maxScrollRef.current, latest)
-      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current)
-      scrollTimeoutRef.current = setTimeout(() => {
-        if (maxScrollRef.current > MIN_SCROLL_TO_TRIGGER) setHasAppeared(true)
-      }, SCROLL_STOP_DELAY)
-      return
-    }
+  useMotionValueEvent(scrollY, 'change', () => {
+    if (isOpen) return
+    let found: SectionSide | null = null
     for (const sec of sectionSides) {
       const el = document.getElementById(sec.id)
       if (!el) continue
       const rect = el.getBoundingClientRect()
-      if (rect.top < window.innerHeight * 0.4 && rect.bottom > window.innerHeight * 0.15) {
-        if (sec.id !== prevSectionIdRef.current) {
-          prevSectionIdRef.current = sec.id
-          setSection(sec)
+      if (sec.id === sectionSides[0].id) {
+        if (rect.top < window.innerHeight * 0.55 && rect.bottom > 80) {
+          found = sec
+          break
         }
-        break
+      } else {
+        if (rect.top < window.innerHeight * 0.4 && rect.bottom > 80) {
+          found = sec
+          break
+        }
       }
+    }
+    const foundId = found?.id ?? null
+    if (foundId !== prevSectionIdRef.current) {
+      prevSectionIdRef.current = foundId
+      setActiveSection(found)
     }
   })
 
-  useEffect(() => {
-    const fallbackTimer = setTimeout(() => setHasAppeared(true), FALLBACK_APPEAR_DELAY)
-    return () => clearTimeout(fallbackTimer)
-  }, [])
-
-  useEffect(() => {
-    return () => {
-      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current)
-    }
-  }, [])
-
   const openChat = useCallback(() => {
     setIsOpen(true)
+    prevSectionIdRef.current = null
+    setActiveSection(null)
     setMessages((prev) =>
       prev.length === 0 ? [{ id: nextId(), role: 'bot', text: chatGreeting, showMenu: true }] : prev,
     )
@@ -166,30 +149,30 @@ export function ChatbotWidget() {
   return (
     <>
       <AnimatePresence>
-        {hasAppeared && !isOpen && (
+        {activeSection && !isOpen && (
           <motion.div
-            key={`fab-${section.id}`}
+            key={activeSection.id}
             initial={
               shouldReduceMotion
                 ? { opacity: 0 }
-                : { opacity: 0, x: section.side === 'left' ? -280 : 280, scale: 0.5, rotate: section.side === 'left' ? -15 : 15 }
+                : { opacity: 0, x: activeSection.side === 'left' ? -280 : 280, scale: 0.5, rotate: activeSection.side === 'left' ? -15 : 15 }
             }
             animate={{ opacity: 1, x: 0, scale: 1, rotate: 0 }}
             exit={
               shouldReduceMotion
                 ? { opacity: 0 }
-                : { opacity: 0, x: section.side === 'left' ? -200 : 200, scale: 0.5 }
+                : { opacity: 0, x: activeSection.side === 'left' ? -200 : 200, scale: 0.5 }
             }
             transition={
               shouldReduceMotion
                 ? { duration: 0.2 }
                 : { type: 'spring', stiffness: 180, damping: 17, mass: 0.85 }
             }
-            style={{ top: `${section.top}%` }}
-            className={`group fixed z-[10000] ${section.side === 'left' ? 'left-6 sm:left-8' : 'right-6 sm:right-8'}`}
+            style={{ top: `${activeSection.top}%` }}
+            className={`group fixed z-[10000] ${activeSection.side === 'left' ? 'left-6 sm:left-8' : 'right-6 sm:right-8'}`}
           >
             <span
-              className={`pointer-events-none absolute top-1/2 hidden -translate-y-1/2 whitespace-nowrap rounded-lg bg-ink-900/95 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg shadow-black/30 ring-1 ring-white/10 transition-opacity duration-200 group-hover:opacity-100 sm:block ${section.side === 'left' ? 'left-full ml-3' : 'right-full mr-3'}`}
+              className={`pointer-events-none absolute top-1/2 hidden -translate-y-1/2 whitespace-nowrap rounded-lg bg-ink-900/95 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg shadow-black/30 ring-1 ring-white/10 transition-opacity duration-200 group-hover:opacity-100 sm:block ${activeSection.side === 'left' ? 'left-full ml-3' : 'right-full mr-3'}`}
               aria-hidden="true"
             >
               Ask a question
@@ -209,9 +192,7 @@ export function ChatbotWidget() {
                 onClick={openChat}
                 whileHover={shouldReduceMotion ? {} : { scale: 1.1 }}
                 whileTap={{ scale: 0.92 }}
-                animate={shouldReduceMotion ? {} : { y: [0, -3, 0] }}
-                transition={shouldReduceMotion ? { type: 'spring', stiffness: 300, damping: 20 } : { y: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' }, default: { type: 'spring', stiffness: 300, damping: 20 } }}
-                className="relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full shadow-lg shadow-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-900"
+                className={`bot-fab relative flex h-14 w-14 items-center justify-center overflow-hidden rounded-full shadow-lg shadow-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-900 ${shouldReduceMotion ? '' : 'animate-bob'}`}
               >
                 <Image src={BOT_AVATAR} alt="" fill sizes="56px" className="pointer-events-none object-cover" priority />
               </motion.button>
