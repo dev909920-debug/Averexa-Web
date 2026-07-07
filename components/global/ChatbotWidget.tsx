@@ -145,7 +145,7 @@ export function ChatbotWidget() {
                 ? { duration: 0.2 }
                 : { type: 'spring', stiffness: 140, damping: 18, mass: 0.9 }
             }
-            className="floating-safe-bottom-stacked group fixed right-4 z-[100] sm:right-6"
+            className="floating-safe-bottom-stacked group fixed right-4 z-[10000] sm:right-6"
           >
             <span
               className="pointer-events-none absolute right-full mr-3 top-1/2 hidden -translate-y-1/2 whitespace-nowrap rounded-lg bg-ink-900/95 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg shadow-black/30 ring-1 ring-white/10 transition-opacity duration-200 group-hover:opacity-100 sm:block"
@@ -189,7 +189,7 @@ export function ChatbotWidget() {
             role="dialog"
             aria-modal="true"
             aria-label={`${CHATBOT_NAME} chat`}
-            className="floating-safe-bottom fixed right-4 z-[110] flex h-[min(560px,calc(100dvh-6rem))] w-[calc(100vw-2rem)] max-w-[380px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-charcoal-800 shadow-2xl shadow-black/50 sm:right-6"
+            className="floating-safe-bottom fixed right-4 z-[10001] flex h-[min(560px,calc(100dvh-6rem))] w-[calc(100vw-2rem)] max-w-[380px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-charcoal-800 shadow-2xl shadow-black/50 sm:right-6"
           >
             <div className="flex items-center justify-between gap-3 border-b border-white/10 bg-ink-900/60 px-4 py-3">
               <div className="flex items-center gap-3">
