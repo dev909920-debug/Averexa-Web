@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { toast } from 'sonner'
 import { useState, useCallback, useRef } from 'react'
 import { FormField } from './FormField'
+import { cleanPhoneNumber } from '@/lib/utils'
 import { FormTextarea } from './FormTextarea'
 import { FormLoader } from './FormLoader'
 import { FormSuccessState } from './FormSuccessState'
@@ -107,7 +108,7 @@ export function ContactForm() {
     const payload = {
       fullName: data.fullName,
       email: data.email,
-      phone: data.phone.replace(/\D/g, ''),
+      phone: cleanPhoneNumber(data.phone),
       targetJobTitle: data.targetJobTitle,
       description: data.description ?? '',
       resumeBase64,

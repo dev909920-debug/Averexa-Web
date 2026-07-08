@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { toast } from 'sonner'
 import { useState, useCallback } from 'react'
 import { FormField } from './FormField'
+import { cleanPhoneNumber } from '@/lib/utils'
 import { FormTextarea } from './FormTextarea'
 import { SubmitButton } from './SubmitButton'
 import { FormSuccessState } from './FormSuccessState'
@@ -46,6 +47,8 @@ export function ReferralForm() {
 
     setStatus('loading')
 
+    const cleanedPhone = cleanPhoneNumber(data.candidatePhone ?? '')
+
     try {
       const res = await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
@@ -55,7 +58,7 @@ export function ReferralForm() {
           referrerEmail: data.referrerEmail,
           candidateName: data.candidateName,
           candidateEmail: data.candidateEmail,
-          candidatePhone: (data.candidatePhone ?? '').replace(/\D/g, ''),
+          candidatePhone: cleanedPhone,
           candidateRole: data.candidateRole ?? '',
           notes: data.notes ?? '',
         }),
