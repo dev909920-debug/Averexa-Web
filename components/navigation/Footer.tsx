@@ -24,7 +24,7 @@ const LEGAL_LINKS = [
 const CONNECT_LINKS: { label: string; href: string; icon: IconName; external: boolean }[] = [
   { label: 'Email Us', href: `mailto:${site.email}`, icon: 'Mail', external: false },
   { label: 'WhatsApp', href: 'https://wa.me/17312266022', icon: 'MessageCircle', external: true },
-  { label: 'LinkedIn', href: 'https://linkedin.com', icon: 'Linkedin', external: true },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/averexa-placement/', icon: 'Linkedin', external: true },
 ]
 
 const LABEL_STYLE: React.CSSProperties = {
@@ -160,6 +160,29 @@ export function Footer() {
             </div>
 
           </div>
+        </div>
+      </div>
+
+      <div className="border-b border-white/[0.05]">
+        <div className="container-site py-5">
+          <p
+            className="text-center"
+            style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '0.75rem',
+              color: 'rgba(255,255,255,0.35)',
+            }}
+          >
+            Built by{' '}
+            <a
+              href="https://manharcreatives.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-white/25 underline-offset-2 transition-colors duration-200 hover:text-white"
+            >
+              @Manhar Creatives
+            </a>
+          </p>
         </div>
       </div>
 
