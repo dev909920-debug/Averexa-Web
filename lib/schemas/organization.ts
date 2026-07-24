@@ -24,6 +24,6 @@ export function buildOrganizationSchema() {
       email: site.email,
       contactType: 'customer support',
     },
-    sameAs: [site.social.linkedin, site.social.twitter],
+    sameAs: [site.social.linkedin, site.social.twitter, site.social.instagram],
   }
 }

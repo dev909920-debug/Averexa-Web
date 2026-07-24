@@ -29,6 +29,12 @@ const contactInfo = [
     value: `${site.address.street}, ${site.address.city}, ${site.address.state} ${site.address.zip}`,
     href: `https://maps.google.com/?q=${encodeURIComponent(`${site.address.street}, ${site.address.city}, ${site.address.state} ${site.address.zip}`)}`,
   },
+  {
+    icon: 'Instagram' as const,
+    label: 'Instagram',
+    value: '@averexa_placement',
+    href: site.social.instagram,
+  },
 ]
 
 export function ContactFormSection() {

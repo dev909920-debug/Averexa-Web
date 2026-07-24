@@ -11,6 +11,7 @@ export const site = {
   social: {
     linkedin: 'https://linkedin.com/company/averexa-placement',
     twitter: 'https://twitter.com/averexa',
+    instagram: 'https://www.instagram.com/averexa_placement?igsh=MXAyY2ZmbXFhMWRiZw==',
   },
   address: {
     street: '737 Walker Rd Apt B',

@@ -5,6 +5,7 @@ import { buildServiceSchema } from '@/lib/schemas/service'
 import { services } from '@/content/services'
 import { ServicesHero } from '@/components/sections/services/ServicesHero'
 import { ServiceGridSection } from '@/components/sections/services/ServiceGridSection'
+import { RolesSection } from '@/components/sections/services/RolesSection'
 import { ServicesFAQSection } from '@/components/sections/services/ServicesFAQSection'
 import { CTASection } from '@/components/sections/home/CTASection'
 
@@ -43,6 +44,7 @@ export default function ServicesPage() {
       ))}
       <ServicesHero />
       <ServiceGridSection />
+      <RolesSection />
       <ServicesFAQSection />
       <CTASection />
     </main>

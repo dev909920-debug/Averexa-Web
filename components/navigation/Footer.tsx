@@ -25,6 +25,7 @@ const CONNECT_LINKS: { label: string; href: string; icon: IconName; external: bo
   { label: 'Email Us', href: `mailto:${site.email}`, icon: 'Mail', external: false },
   { label: 'WhatsApp', href: 'https://wa.me/17312266022', icon: 'MessageCircle', external: true },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/averexa-placement/', icon: 'Linkedin', external: true },
+  { label: 'Instagram', href: site.social.instagram, icon: 'Instagram', external: true },
 ]
 
 const LABEL_STYLE: React.CSSProperties = {
